@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DJ Events &amp; Club Nights — Amuse Events</title>
+<meta name="description" content="Buy tickets to Amuse Events DJ nights and club takeovers across London. Powered by Visisto."/>
+<link rel="icon" href="assets/logo-mark.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+<style>
+  /* Page-local: Visisto embed look */
+  .events-hero {
+    background: var(--ink); color: var(--paper);
+    padding: 100px 0 80px; position: relative; overflow: hidden;
+  }
+  .events-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 18% 20%, rgba(217,119,87,.18), transparent 40%),
+      radial-gradient(circle at 82% 80%, rgba(217,119,87,.12), transparent 40%);
+    pointer-events: none;
+  }
+  .events-hero .container { position: relative; }
+  .events-hero .crumb a, .events-hero .crumb b { color: rgba(246,241,232,.7); }
+  .events-hero .crumb b { color: var(--paper); }
+
+  /* Filter bar */
+  .events-filter {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px; display: inline-flex; gap: 4px;
+  }
+  .events-filter button {
+    border: 0; background: transparent; padding: 10px 18px; border-radius: 999px;
+    font: 500 13px var(--sans); cursor: pointer; color: var(--ink-2);
+    letter-spacing: -.005em;
+  }
+  .events-filter button.active { background: var(--ink); color: var(--paper); }
+
+  /* Event cards list */
+  .event-card {
+    display: grid; grid-template-columns: 220px 1fr auto;
+    gap: 32px; padding: 28px; background: var(--paper);
+    border: 1px solid var(--line); border-radius: 24px;
+    transition: all .2s ease; align-items: center;
+  }
+  .event-card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(45,45,45,.06); }
+  .event-card .ph { aspect-ratio: 1/1; border-radius: 16px; }
+  .event-card .when {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 10px;
+  }
+  .event-card h3 { font-family: var(--serif); font-size: 32px; margin: 0 0 6px; letter-spacing: -.02em; line-height: 1.05; }
+  .event-card .where { color: var(--ink-3); font-size: 14px; margin-bottom: 14px; }
+  .event-card .lineup { display: flex; gap: 8px; flex-wrap: wrap; }
+  .event-card .lineup .dj {
+    background: var(--paper-2); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px;
+    font-size: 12px; font-weight: 500; color: var(--ink-2);
+  }
+  .event-card .price { text-align: right; }
+  .event-card .price .from { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .event-card .price .num { font-family: var(--serif); font-size: 40px; line-height: 1; letter-spacing: -.025em; margin: 4px 0 12px; }
+  .event-card .status {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500;
+    color: var(--ink-3); margin-top: 6px;
+  }
+  .event-card .status .bar { width: 60px; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+  .event-card .status .bar i { display:block; height: 100%; background: var(--amber); }
+
+  /* Visisto embed */
+  .visisto {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 32px;
+    overflow: hidden; box-shadow: 0 24px 48px rgba(45,45,45,.08);
+  }
+  .visisto-head {
+    background: var(--ink); color: var(--paper);
+    padding: 18px 28px; display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .visisto-head .brand-tag { display: inline-flex; align-items: center; gap: 8px; opacity: .8; }
+  .visisto-head .brand-tag .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(217,119,87,.2);
+  }
+  .visisto-event-head {
+    padding: 36px 40px; border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end;
+  }
+  .visisto-event-head h2 { font-family: var(--serif); font-size: 44px; line-height: 1.05; letter-spacing: -.025em; margin: 0; }
+  .visisto-event-head .meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 14px; color: var(--ink-3); font-size: 14px; }
+  .visisto-event-head .meta b { color: var(--ink); font-weight: 600; }
+  .visisto-event-head .countdown {
+    display: flex; gap: 8px;
+  }
+  .visisto-event-head .countdown .unit {
+    background: var(--paper-2); border: 1px solid var(--line); padding: 12px 14px; border-radius: 12px;
+    text-align: center; min-width: 64px;
+  }
+  .visisto-event-head .countdown .unit b { display: block; font-family: var(--serif); font-size: 28px; line-height: 1; letter-spacing: -.02em; }
+  .visisto-event-head .countdown .unit small { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); }
+
+  .visisto-body { display: grid; grid-template-columns: 1.4fr 1fr; }
+  .tiers { padding: 32px 40px; border-right: 1px solid var(--line); }
+  .tier {
+    border: 1px solid var(--line); border-radius: 18px; padding: 22px;
+    margin-bottom: 14px; display: grid; grid-template-columns: 1fr auto auto; gap: 20px;
+    align-items: center; transition: all .15s ease; cursor: pointer;
+    position: relative;
+  }
+  .tier:hover { border-color: var(--ink-2); }
+  .tier.active { border-color: var(--amber); background: rgba(217,119,87,.04); }
+  .tier .tag {
+    position: absolute; top: -10px; left: 22px; background: var(--ink); color: var(--paper);
+    padding: 3px 10px; border-radius: 999px; font: 500 10px var(--mono); letter-spacing: .14em; text-transform: uppercase;
+  }
+  .tier.amber-tag .tag { background: var(--amber); }
+  .tier .name { font-family: var(--serif); font-size: 22px; letter-spacing: -.015em; margin-bottom: 4px; }
+  .tier .desc { font-size: 13px; color: var(--ink-3); max-width: 38ch; line-height: 1.5; }
+  .tier .price-col { text-align: right; }
+  .tier .price-col .num { font-family: var(--serif); font-size: 28px; line-height: 1; letter-spacing: -.02em; }
+  .tier .price-col .fee { font: 400 11px var(--mono); color: var(--ink-3); margin-top: 4px; }
+  .tier .stepper { display: flex; align-items: center; gap: 10px; }
+  .tier .stepper button {
+    width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--paper); cursor: pointer; font-size: 16px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tier .stepper button:hover { border-color: var(--ink); }
+  .tier .stepper button:disabled { opacity: .35; cursor: not-allowed; }
+  .tier .stepper .qty { font-family: var(--serif); font-size: 20px; min-width: 20px; text-align: center; }
+  .tier.sold { opacity: .55; pointer-events: none; }
+  .tier.sold .stepper { display: none; }
+  .tier.sold::after { content: "SOLD OUT"; font: 500 11px var(--mono); letter-spacing: .14em; color: var(--ink-3); }
+
+  .checkout {
+    padding: 32px; background: var(--paper-2); display: flex; flex-direction: column;
+  }
+  .checkout h4 { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 16px; }
+  .order-list { flex: 1; display: flex; flex-direction: column; gap: 12px; min-height: 80px; }
+  .order-item { display: flex; justify-content: space-between; font-size: 14px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .order-item .label-l { color: var(--ink-2); }
+  .order-item .qty { color: var(--ink-3); margin-right: 8px; font-family: var(--mono); }
+  .order-item .amount { font-family: var(--serif); }
+  .order-empty { color: var(--ink-3); font-style: italic; padding: 24px 0; text-align: center; font-size: 13px; }
+
+  .totals { padding-top: 16px; border-top: 1px solid var(--line); margin-top: 12px; }
+  .totals .line { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-3); margin-bottom: 8px; }
+  .totals .grand { display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; border-top: 1px solid var(--line); }
+  .totals .grand b { font-family: var(--serif); font-size: 32px; letter-spacing: -.02em; }
+
+  .checkout .promo { display: flex; gap: 8px; margin-top: 16px; }
+  .checkout .promo input {
+    flex: 1; border: 1px solid var(--line); background: var(--paper); padding: 10px 14px;
+    border-radius: 10px; font: 400 13px var(--sans);
+  }
+  .checkout .promo button { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--ink); background: transparent; cursor: pointer; font: 500 13px var(--sans); }
+
+  .pay-btn {
+    margin-top: 18px; background: var(--amber); color: #fff; border: 0;
+    padding: 18px; border-radius: 14px; font: 600 15px var(--sans);
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+    letter-spacing: -.005em; transition: background .15s ease;
+  }
+  .pay-btn:hover { background: var(--amber-2); }
+  .pay-btn:disabled { background: var(--line); color: var(--ink-3); cursor: not-allowed; }
+
+  .pay-meta {
+    margin-top: 12px; text-align: center; font-size: 11px; color: var(--ink-3);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+
+  /* Powered by */
+  .visisto-foot {
+    padding: 14px 28px; background: var(--paper-2); border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    font: 400 11px var(--mono); color: var(--ink-3); letter-spacing: .12em; text-transform: uppercase;
+  }
+  .visisto-foot .vstamp { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); font-weight: 500; }
+  .visisto-foot .vstamp .v {
+    width: 16px; height: 16px; border-radius: 4px; background: var(--ink); color: var(--paper);
+    display: inline-flex; align-items: center; justify-content: center; font-family: var(--serif); font-style: italic; font-size: 11px;
+  }
+
+  /* Lineup card */
+  .lineup-card {
+    display: grid; grid-template-columns: 80px 1fr; gap: 16px; align-items: center;
+    background: var(--paper); border: 1px solid var(--line); padding: 16px; border-radius: 16px;
+  }
+  .lineup-card .ph { width: 80px; height: 80px; border-radius: 12px; aspect-ratio: 1/1; }
+  .lineup-card h4 { font-family: var(--serif); font-size: 22px; letter-spacing: -.015em; margin: 0 0 4px; }
+  .lineup-card p { font-size: 13px; color: var(--ink-3); margin: 0; }
+
+  @media (max-width: 880px) {
+    .event-card { grid-template-columns: 1fr; }
+    .visisto-body { grid-template-columns: 1fr; }
+    .tiers { border-right: 0; border-bottom: 1px solid var(--line); }
+    .visisto-event-head { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-page="services">
+<div data-include="header"></div>
+
+<!-- HERO -->
+<section class="events-hero" data-screen-label="01 Events Hero">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; margin-top: 32px;">
+      <div>
+        <span class="eyebrow" style="color: var(--amber);">Live this season</span>
+        <h1 class="h-display h1" style="margin-top: 24px; color: var(--paper);">Dance floors,<br/><em style="font-style:italic; color: var(--amber);">in our hands</em>.</h1>
+        <p class="lede" style="margin-top: 24px; color: rgba(246,241,232,.85);">Six DJ nights and club takeovers between now and June. Tickets through Visisto — secure, instant, on your phone before you leave the page.</p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end;">
+        <div class="stat amber" style="text-align: right;"><div class="n" style="color: var(--paper);">06</div><div class="l" style="color: rgba(246,241,232,.6);">Upcoming nights</div></div>
+        <div class="stat" style="text-align: right;"><div class="n" style="color: var(--paper);">2,400<span style="color: var(--amber)">+</span></div><div class="l" style="color: rgba(246,241,232,.6);">Tickets sold this year</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIST OF EVENTS -->
+<section style="padding: 80px 0 40px;">
+  <div class="container">
+    <div class="row-between reveal" style="margin-bottom: 32px; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <span class="eyebrow">— upcoming nights —</span>
+        <h2 class="h-display h3" style="margin-top: 12px;">Pick a night.</h2>
+      </div>
+      <div class="events-filter">
+        <button class="active" data-f="all">All nights</button>
+        <button data-f="house">House</button>
+        <button data-f="bolly">Bollywood</button>
+        <button data-f="hiphop">Hip-hop</button>
+        <button data-f="garage">Garage</button>
+      </div>
+    </div>
+
+    <div class="reveal" id="eventList" style="display: flex; flex-direction: column; gap: 16px;">
+
+      <a href="#book" class="event-card" data-tag="bolly" onclick="selectEvent(event, 0)">
+        <div class="ph amber-tint" data-label="Tabla &amp; Synths · Apr"></div>
+        <div>
+          <div class="when">Sat 11 Apr · 9pm – 4am</div>
+          <h3>Tabla &amp; Synths · Vol. III</h3>
+          <p class="where">Phonox · Brixton, SW9</p>
+          <div class="lineup"><span class="dj">Anish Kumar</span><span class="dj">Pri Singh</span><span class="dj">Amuse Residents</span></div>
+        </div>
+        <div class="price">
+          <div class="from">From</div>
+          <div class="num">£18</div>
+          <div class="status"><div class="bar"><i style="width:74%"></i></div> 74% sold</div>
+        </div>
+      </a>
+
+      <a href="#book" class="event-card" data-tag="house" onclick="selectEvent(event, 1)">
+        <div class="ph dark" data-label="Late Garden · May"></div>
+        <div>
+          <div class="when">Fri 02 May · 8pm – 2am</div>
+          <h3>Late Garden Sessions</h3>
+          <p class="where">Hoxton Yard · Shoreditch, E2</p>
+          <div class="lineup"><span class="dj">Hannah Wants (B2B)</span><span class="dj">Maara</span><span class="dj">Lewis Boardman</span></div>
+        </div>
+        <div class="price">
+          <div class="from">From</div>
+          <div class="num">£24</div>
+          <div class="status"><div class="bar"><i style="width:42%"></i></div> 42% sold</div>
+        </div>
+      </a>
+
+      <a href="#book" class="event-card" data-tag="garage">
+        <div class="ph" data-label="UKG · May 23"></div>
+        <div>
+          <div class="when">Sat 23 May · 10pm – 4am</div>
+          <h3>Two-Step Sundays · UKG Special</h3>
+          <p class="where">XOYO · Old Street, EC2A</p>
+          <div class="lineup"><span class="dj">Conducta</span><span class="dj">Salute</span><span class="dj">Holly Lester</span></div>
+        </div>
+        <div class="price">
+          <div class="from">From</div>
+          <div class="num">£20</div>
+          <div class="status"><div class="bar"><i style="width:18%"></i></div> 18% sold</div>
+        </div>
+      </a>
+
+      <a href="#book" class="event-card" data-tag="hiphop">
+        <div class="ph dark" data-label="Hip-hop · Jun"></div>
+        <div>
+          <div class="when">Sat 06 Jun · 10pm – 3am</div>
+          <h3>The Cut · 90s Hip-hop</h3>
+          <p class="where">The Cause · Tottenham, N17</p>
+          <div class="lineup"><span class="dj">Rampage Sound</span><span class="dj">DJ Snips</span><span class="dj">Manara</span></div>
+        </div>
+        <div class="price">
+          <div class="from">From</div>
+          <div class="num">£16</div>
+          <div class="status"><div class="bar"><i style="width:96%"></i></div> Last release</div>
+        </div>
+      </a>
+
+      <a href="#book" class="event-card" data-tag="bolly">
+        <div class="ph amber-tint" data-label="Bolly Pop · Jun"></div>
+        <div>
+          <div class="when">Fri 19 Jun · 9pm – 3am</div>
+          <h3>Bolly Pop · Pride Edition</h3>
+          <p class="where">Heaven · Charing Cross, WC2N</p>
+          <div class="lineup"><span class="dj">DJ Ritu</span><span class="dj">Nikita Gandhi</span><span class="dj">Amuse Residents</span></div>
+        </div>
+        <div class="price">
+          <div class="from">From</div>
+          <div class="num">£22</div>
+          <div class="status"><div class="bar"><i style="width:55%"></i></div> 55% sold</div>
+        </div>
+      </a>
+
+      <a href="#book" class="event-card" data-tag="house">
+        <div class="ph" data-label="Sunset Rooftop · Jul"></div>
+        <div>
+          <div class="when">Sat 04 Jul · 4pm – 11pm</div>
+          <h3>Sunset Rooftop · Vol. VI</h3>
+          <p class="where">Netil 360 · London Fields, E8</p>
+          <div class="lineup"><span class="dj">Folamour</span><span class="dj">Shanti Celeste</span><span class="dj">Tash LC</span></div>
+        </div>
+        <div class="price">
+          <div class="from">From</div>
+          <div class="num">£28</div>
+          <div class="status"><div class="bar"><i style="width:88%"></i></div> 88% sold</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- VISISTO TICKETING EMBED -->
+<section id="book" style="padding: 80px 0 120px;">
+  <div class="container" style="max-width: 1200px;">
+    <div class="reveal" style="margin-bottom: 32px;">
+      <span class="eyebrow">— book your tickets —</span>
+      <h2 class="h-display h2" style="margin-top: 12px;" id="bookTitle">Tabla &amp; Synths · Vol. III</h2>
+    </div>
+
+    <div class="visisto reveal">
+      <div class="visisto-head">
+        <span class="brand-tag"><span class="dot"></span> Live · accepting bookings</span>
+        <span>Secure checkout · SSL encrypted</span>
+      </div>
+
+      <div class="visisto-event-head">
+        <div>
+          <h2 id="vEventTitle">Tabla &amp; Synths · Vol. III</h2>
+          <div class="meta">
+            <span><b>📍 Phonox</b> · 418 Brixton Rd, SW9 7AY</span>
+            <span><b>🗓 Sat 11 Apr 2026</b></span>
+            <span><b>🕘 9pm – 4am</b> · 18+</span>
+          </div>
+        </div>
+        <div class="countdown" id="countdown">
+          <div class="unit"><b id="cdD">42</b><small>days</small></div>
+          <div class="unit"><b id="cdH">06</b><small>hrs</small></div>
+          <div class="unit"><b id="cdM">18</b><small>min</small></div>
+          <div class="unit"><b id="cdS">04</b><small>sec</small></div>
+        </div>
+      </div>
+
+      <div class="visisto-body">
+        <!-- Tier list -->
+        <div class="tiers" id="tiers">
+          <div class="tier" data-price="18" data-name="Early Bird">
+            <span class="tag amber">Final 14</span>
+            <div>
+              <div class="name">Early Bird</div>
+              <div class="desc">First release. Closes when sold out — usually inside the first 48 hours.</div>
+            </div>
+            <div class="price-col">
+              <div class="num">£18</div>
+              <div class="fee">+ £1.20 fee</div>
+            </div>
+            <div class="stepper">
+              <button onclick="step('eb',-1)">−</button>
+              <span class="qty" id="qty-eb">0</span>
+              <button onclick="step('eb',1)">+</button>
+            </div>
+          </div>
+
+          <div class="tier amber-tag" data-price="24" data-name="General Admission">
+            <span class="tag">Most popular</span>
+            <div>
+              <div class="name">General Admission</div>
+              <div class="desc">Standard entry. Doors from 9pm. Cloakroom included. Re-entry at door discretion.</div>
+            </div>
+            <div class="price-col">
+              <div class="num">£24</div>
+              <div class="fee">+ £1.60 fee</div>
+            </div>
+            <div class="stepper">
+              <button onclick="step('ga',-1)">−</button>
+              <span class="qty" id="qty-ga">0</span>
+              <button onclick="step('ga',1)">+</button>
+            </div>
+          </div>
+
+          <div class="tier" data-price="38" data-name="Late Release">
+            <div>
+              <div class="name">Late Release</div>
+              <div class="desc">Available from week-of. Same access as GA — priced honestly for last-minute dates.</div>
+            </div>
+            <div class="price-col">
+              <div class="num">£38</div>
+              <div class="fee">+ £2.10 fee</div>
+            </div>
+            <div class="stepper">
+              <button onclick="step('lr',-1)">−</button>
+              <span class="qty" id="qty-lr">0</span>
+              <button onclick="step('lr',1)">+</button>
+            </div>
+          </div>
+
+          <div class="tier" data-price="65" data-name="Booth + Drink">
+            <span class="tag">VIP</span>
+            <div>
+              <div class="name">Booth Access + Welcome Drink</div>
+              <div class="desc">Skip the queue. Booth wristband for the night. One welcome cocktail at the door.</div>
+            </div>
+            <div class="price-col">
+              <div class="num">£65</div>
+              <div class="fee">+ £3.40 fee</div>
+            </div>
+            <div class="stepper">
+              <button onclick="step('vip',-1)">−</button>
+              <span class="qty" id="qty-vip">0</span>
+              <button onclick="step('vip',1)">+</button>
+            </div>
+          </div>
+
+          <div class="tier sold">
+            <div>
+              <div class="name">Group of 6 Bundle</div>
+              <div class="desc">Six GA tickets at £20 each — saved for groups. <b>Returned tomorrow at 12pm.</b></div>
+            </div>
+            <div class="price-col">
+              <div class="num">£120</div>
+              <div class="fee">bundle</div>
+            </div>
+            <div class="stepper">
+              <button>−</button><span class="qty">0</span><button>+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkout -->
+        <div class="checkout">
+          <h4>Your order</h4>
+          <div class="order-list" id="orderList">
+            <div class="order-empty">No tickets selected yet — pick a tier on the left.</div>
+          </div>
+
+          <div class="totals" id="totals" hidden>
+            <div class="line"><span>Subtotal</span><span id="sub">£0.00</span></div>
+            <div class="line"><span>Booking fee <small>(Visisto)</small></span><span id="fee">£0.00</span></div>
+            <div class="line"><span>VAT included</span><span>—</span></div>
+            <div class="grand"><span>Total</span><b id="grand">£0.00</b></div>
+          </div>
+
+          <div class="promo">
+            <input placeholder="Promo code (e.g. AMUSE10)"/>
+            <button>Apply</button>
+          </div>
+
+          <button class="pay-btn" id="payBtn" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Continue to secure checkout
+          </button>
+          <div class="pay-meta">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>
+            Apple Pay · Google Pay · Visa · Mastercard · AmEx
+          </div>
+        </div>
+      </div>
+
+      <div class="visisto-foot">
+        <span>Tickets &amp; refunds processed by Visisto · Order ref TBC</span>
+        <span class="vstamp"><span class="v">V</span> Powered by Visisto</span>
+      </div>
+    </div>
+
+    <p class="mono muted" style="text-align: center; margin-top: 24px; font-size: 11px;">
+      14-day refund window · Tickets are non-transferable · Resale only via Visisto Exchange
+    </p>
+  </div>
+</section>
+
+<!-- LINEUP / NIGHT INFO -->
+<section style="padding: 0 0 120px;">
+  <div class="container" style="max-width: 1200px;">
+    <div class="reveal" style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px;">
+      <div>
+        <span class="eyebrow">— lineup —</span>
+        <h2 class="h-display h3" style="margin-top: 12px;">On the<br/>decks tonight.</h2>
+        <p class="muted" style="margin-top: 16px;">A South-Asian/electronic crossover night, three years deep. Live tabla, modular synths, Bollywood edits and a sound system rebuilt for it.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <div class="lineup-card"><div class="ph amber-tint" data-label="AK"></div><div><h4>Anish Kumar</h4><p>Headline · 90 min set</p></div></div>
+        <div class="lineup-card"><div class="ph" data-label="PS"></div><div><h4>Pri Singh</h4><p>Direct support · 75 min</p></div></div>
+        <div class="lineup-card"><div class="ph dark" data-label="AR"></div><div><h4>Amuse Residents</h4><p>Warm-up &amp; close · b2b</p></div></div>
+        <div class="lineup-card"><div class="ph" data-label="LT"></div><div><h4>Live Tabla</h4><p>Special guest · 30 min</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOST YOUR OWN -->
+<section style="padding: 0 0 120px;">
+  <div class="container">
+    <div class="reveal" style="background: var(--ink); color: var(--paper); border-radius: 32px; padding: 64px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;">
+      <div>
+        <span class="eyebrow" style="color: rgba(246,241,232,.6);">— promote your own night? —</span>
+        <h2 class="h-display h3" style="color: var(--paper); margin-top: 12px;">We can host <em style="font-style:italic;">your event</em> on the same ticketing engine.</h2>
+        <p style="margin-top: 20px; color: rgba(246,241,232,.75);">Same Visisto embed, your branding, our event team behind it. From 80-cap basement parties to 1,200-cap warehouse nights.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <a href="contact.html" class="btn btn-amber btn-lg">Pitch us your night <span class="arrow">→</span></a>
+        <a href="services.html#dj" class="btn btn-ghost btn-lg" style="color: var(--paper); border-color: rgba(246,241,232,.4);">DJ &amp; club services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-include="footer"></div>
+<script src="shell.js"></script>
+<script>
+  // --- Visisto-style ticket cart ---
+  const cart = { eb: 0, ga: 0, lr: 0, vip: 0 };
+  const meta = {
+    eb:  { name: "Early Bird",          price: 18, fee: 1.20 },
+    ga:  { name: "General Admission",   price: 24, fee: 1.60 },
+    lr:  { name: "Late Release",        price: 38, fee: 2.10 },
+    vip: { name: "Booth + Welcome Drink", price: 65, fee: 3.40 },
+  };
+  const fmt = (n) => "£" + n.toFixed(2);
+
+  function step(key, delta) {
+    cart[key] = Math.max(0, Math.min(10, cart[key] + delta));
+    document.getElementById("qty-" + key).textContent = cart[key];
+    // Highlight active tier rows
+    document.querySelectorAll(".tier").forEach(t => {
+      const stepperBtn = t.querySelector(".stepper");
+      if (!stepperBtn) return;
+      const k = stepperBtn.querySelector("button[onclick*='step']");
+      if (!k) return;
+      const m = k.getAttribute("onclick").match(/step\('(\w+)'/);
+      if (m && cart[m[1]] > 0) t.classList.add("active");
+      else t.classList.remove("active");
+    });
+    render();
+  }
+  function render() {
+    const list = document.getElementById("orderList");
+    let sub = 0, fee = 0, count = 0;
+    const lines = [];
+    for (const k of Object.keys(cart)) {
+      if (cart[k] > 0) {
+        sub  += cart[k] * meta[k].price;
+        fee  += cart[k] * meta[k].fee;
+        count += cart[k];
+        lines.push(`<div class="order-item"><span class="label-l"><span class="qty">${cart[k]}×</span>${meta[k].name}</span><span class="amount">${fmt(cart[k]*meta[k].price)}</span></div>`);
+      }
+    }
+    if (count === 0) {
+      list.innerHTML = `<div class="order-empty">No tickets selected yet — pick a tier on the left.</div>`;
+      document.getElementById("totals").hidden = true;
+      document.getElementById("payBtn").disabled = true;
+      document.getElementById("payBtn").innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Continue to secure checkout';
+    } else {
+      list.innerHTML = lines.join("");
+      document.getElementById("totals").hidden = false;
+      document.getElementById("sub").textContent = fmt(sub);
+      document.getElementById("fee").textContent = fmt(fee);
+      document.getElementById("grand").textContent = fmt(sub + fee);
+      const btn = document.getElementById("payBtn");
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Pay ${fmt(sub+fee)} · ${count} ticket${count>1?'s':''}`;
+    }
+  }
+  function selectEvent(e, idx) {
+    // Smooth scroll only — leaves placeholder copy as-is
+    if (e) { e.preventDefault(); document.getElementById("book").scrollIntoView({behavior:"smooth"}); }
+  }
+
+  // Filter chips
+  document.querySelectorAll(".events-filter button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".events-filter button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const f = btn.dataset.f;
+      document.querySelectorAll("#eventList .event-card").forEach(c => {
+        c.style.display = (f === "all" || c.dataset.tag === f) ? "" : "none";
+      });
+    });
+  });
+
+  // Live countdown
+  function tickCountdown() {
+    const target = new Date("2026-04-11T21:00:00").getTime();
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+    const h = Math.floor(diff / 3600000);  diff -= h * 3600000;
+    const m = Math.floor(diff / 60000);    diff -= m * 60000;
+    const s = Math.floor(diff / 1000);
+    const pad = (n) => String(n).padStart(2,"0");
+    document.getElementById("cdD").textContent = pad(d);
+    document.getElementById("cdH").textContent = pad(h);
+    document.getElementById("cdM").textContent = pad(m);
+    document.getElementById("cdS").textContent = pad(s);
+  }
+  setInterval(tickCountdown, 1000); tickCountdown();
+</script>
+</body>
+</html>
