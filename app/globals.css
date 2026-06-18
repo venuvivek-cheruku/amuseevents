@@ -1197,6 +1197,34 @@ section:not(.dark-section) .step { border-bottom-color: var(--line); }
   .icon-check { @apply inline-block h-4 w-4 flex-none; }
 }
 
+/* Unlayered contrast overrides for legacy typography classes on dark surfaces. */
+.events-hero .h-display,
+.panel-cta-dark .h-display,
+.panel-cta-amber .h-display {
+  color: inherit;
+}
+
+.events-hero .lede {
+  color: rgba(246,241,232,.85);
+}
+
+.events-hero .eyebrow {
+  color: var(--amber);
+}
+
+.panel-cta-dark .eyebrow {
+  color: rgba(246,241,232,.6);
+}
+
+.panel-cta-dark .lede,
+.panel-cta-dark .muted {
+  color: rgba(246,241,232,.7);
+}
+
+.panel-cta-amber .eyebrow {
+  color: rgba(255,255,255,.85);
+}
+
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 880px) {
   .event-card { grid-template-columns: 1fr; }
