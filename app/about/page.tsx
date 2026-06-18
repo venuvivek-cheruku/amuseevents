@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
+import { ButtonArrow, RatingStars } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'The Studio — About Amuse Events',
@@ -35,12 +36,12 @@ const TEAM = [
 ]
 
 const REVIEWS = [
-  { stars: '★★★★★', text: '"Calm, brilliant, fairly priced. Replied on a Sunday afternoon."', av: 'JM', name: 'Jess Mitchell', where: '60th birthday · Twickenham' },
-  { stars: '★★★★★', text: '"They write the run-sheet better than our own ops people."', av: 'RA', name: 'Raj Aggarwal', where: 'Atlas · Canary Wharf' },
-  { stars: '★★★★★', text: '"My daughter still talks about the magician. Best money we spent."', av: 'SO', name: "Sara O'Connell", where: 'Kids party · Hounslow' },
-  { stars: '★★★★★', text: '"Held our entire weekend so quietly we forgot we\'d hired anyone."', av: 'PD', name: 'Priya & Daniel', where: 'Wedding · Richmond' },
-  { stars: '★★★★★', text: '"Re-quoted in 24 hours every time we changed our minds."', av: 'FK', name: 'Farah K.', where: 'Engagement · Soho' },
-  { stars: '★★★★★', text: '"Honest about what they couldn\'t do. That\'s why we trusted the rest."', av: 'JT', name: 'James T.', where: 'Product launch · Shoreditch' },
+  { text: '"Calm, brilliant, fairly priced. Replied on a Sunday afternoon."', av: 'JM', name: 'Jess Mitchell', where: '60th birthday · Twickenham' },
+  { text: '"They write the run-sheet better than our own ops people."', av: 'RA', name: 'Raj Aggarwal', where: 'Atlas · Canary Wharf' },
+  { text: '"My daughter still talks about the magician. Best money we spent."', av: 'SO', name: "Sara O'Connell", where: 'Kids party · Hounslow' },
+  { text: '"Held our entire weekend so quietly we forgot we\'d hired anyone."', av: 'PD', name: 'Priya & Daniel', where: 'Wedding · Richmond' },
+  { text: '"Re-quoted in 24 hours every time we changed our minds."', av: 'FK', name: 'Farah K.', where: 'Engagement · Soho' },
+  { text: '"Honest about what they couldn\'t do. That\'s why we trusted the rest."', av: 'JT', name: 'James T.', where: 'Product launch · Shoreditch' },
 ]
 
 export default function AboutPage() {
@@ -56,12 +57,12 @@ export default function AboutPage() {
       {/* ── Page hero ──────────────────────────────────── */}
       <section className="page-hero">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 64, alignItems: 'end' }}>
+          <div className="hero-split">
             <div>
               <span className="eyebrow">Isleworth, London · est. 2014</span>
-              <h1 className="h-display h1" style={{ marginTop: 24 }}>
+              <h1 className="h-display h1 hero-title-gap">
                 A small studio,<br />
-                <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>eleven years</em><br />
+                <em className="brand-accent">eleven years</em><br />
                 of saying yes carefully.
               </h1>
             </div>
@@ -74,21 +75,21 @@ export default function AboutPage() {
       </section>
 
       {/* ── Founder story ──────────────────────────────── */}
-      <section style={{ padding: '120px 0' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80, alignItems: 'center' }}>
-          <div className="ph reveal" data-label="Founder · Aanya at the studio" style={{ aspectRatio: '4/5' }} />
+      <section className="section-page">
+        <div className="container content-split-reverse">
+          <div className="ph reveal image-4-5" data-label="Founder · Aanya at the studio" />
           <Reveal>
             <span className="eyebrow">— our story —</span>
-            <h2 className="h-display h2" style={{ marginTop: 18 }}>
-              Started with one wedding<br />in a <em style={{ fontStyle: 'italic' }}>friend's garden</em>.
+            <h2 className="h-display h2 title-gap">
+              Started with one wedding<br />in a <em className="italic">friend's garden</em>.
             </h2>
-            <p className="body-text" style={{ marginTop: 24 }}>
+            <p className="body-text mt-6">
               In 2014, Aanya planned her best friend's wedding in a back garden in Isleworth. It was
               sixty guests, two folding tables, a borrowed marquee and a karaoke machine. Eleven years
               later, we've held everything from a £180k product launch to a five-year-old's pirate party
               — but the brief is still the same: <strong>nothing on the day surprises you except the good bits</strong>.
             </p>
-            <p className="body-text" style={{ marginTop: 18 }}>
+            <p className="body-text mt-[18px]">
               We stayed small on purpose. Eleven people, no juniors learning on your day, no sub-contracting
               the bits that matter. The voice you fall for in the consultation is the same one keeping
               things calm at 11pm when the rain starts.
@@ -98,21 +99,21 @@ export default function AboutPage() {
       </section>
 
       {/* ── Principles ─────────────────────────────────── */}
-      <section className="dark-section" style={{ padding: '140px 0', borderRadius: '32px 32px 0 0' }}>
+      <section className="dark-section section-page-xl section-rounded-dark">
         <div className="container">
-          <Reveal style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 64px' }}>
-            <span className="eyebrow center" style={{ color: 'rgba(246,241,232,.6)' }}>— five rules —</span>
-            <h2 className="h-display h2" style={{ color: 'var(--paper)', marginTop: 18 }}>
+          <Reveal className="center-intro">
+            <span className="eyebrow center text-paper-muted">— five rules —</span>
+            <h2 className="h-display h2 title-gap text-paper">
               How we run<br />
-              <em style={{ fontStyle: 'italic' }}>the studio</em>.
+              <em className="italic">the studio</em>.
             </h2>
           </Reveal>
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 24 }}>
+          <Reveal className="grid-5-cards">
             {PRINCIPLES.map((p) => (
               <div key={p.n}>
-                <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 56, color: 'var(--amber)', lineHeight: 1 }}>{p.n}</div>
-                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 22, margin: '14px 0 8px', color: 'var(--paper)' }}>{p.title}</h3>
-                <p style={{ color: 'rgba(246,241,232,.65)', fontSize: 14 }}>{p.body}</p>
+                <div className="serif-accent text-[56px]">{p.n}</div>
+                <h3 className="serif-card-title my-3.5 mb-2 text-paper">{p.title}</h3>
+                <p className="small-paper-muted">{p.body}</p>
               </div>
             ))}
           </Reveal>
@@ -120,22 +121,21 @@ export default function AboutPage() {
       </section>
 
       {/* ── Team ───────────────────────────────────────── */}
-      <section id="team" style={{ padding: '140px 0' }}>
+      <section id="team" className="section-page-xl">
         <div className="container">
-          <Reveal style={{ marginBottom: 64 }}>
+          <Reveal className="mb-16">
             <span className="eyebrow">— the eleven —</span>
-            <h2 className="h-display h2" style={{ marginTop: 18 }}>Meet the studio.</h2>
+            <h2 className="h-display h2 title-gap">Meet the studio.</h2>
           </Reveal>
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '32px 24px' }}>
+          <Reveal className="grid-4-cards">
             {TEAM.map((m) => (
               <div key={m.name}>
                 <div
-                  className={`ph${m.img ? ' ' + m.img : ''}`}
+                  className={`ph image-square rounded-ae-lg ${m.light ? 'bg-paper-2' : ''}${m.img ? ' ' + m.img : ''}`}
                   data-label={m.label}
-                  style={{ aspectRatio: '1/1', borderRadius: 20, ...(m.light ? { background: 'var(--paper-2)' } : {}) }}
                 />
-                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 22, margin: '16px 0 4px' }}>{m.name}</h3>
-                <p className="muted" style={{ fontSize: 13 }}>{m.role}</p>
+                <h3 className="serif-card-title mt-4 mb-1">{m.name}</h3>
+                <p className="muted text-[13px]">{m.role}</p>
               </div>
             ))}
           </Reveal>
@@ -143,25 +143,25 @@ export default function AboutPage() {
       </section>
 
       {/* ── Reviews ────────────────────────────────────── */}
-      <section id="reviews" style={{ padding: '100px 0', background: 'var(--paper-2)' }}>
+      <section id="reviews" className="section-paper-2 py-[100px]">
         <div className="container">
-          <Reveal className="row-between" style={{ marginBottom: 48, flexWrap: 'wrap', gap: 24 }}>
+          <Reveal className="section-heading-row mb-12">
             <div>
               <span className="eyebrow">— what people say —</span>
-              <h2 className="h-display h2" style={{ marginTop: 18 }}>
-                213 reviews. <em style={{ fontStyle: 'italic' }}>4.9 stars.</em>
+              <h2 className="h-display h2 title-gap">
+                213 reviews. <em className="italic">4.9 stars.</em>
               </h2>
             </div>
-            <div className="row" style={{ gap: 16 }}>
+            <div className="flex items-center gap-4">
               <span className="pill amber">Google</span>
               <span className="pill">Trustpilot</span>
               <span className="pill">Hitched</span>
             </div>
           </Reveal>
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
+          <Reveal className="grid-3-reviews">
             {REVIEWS.map((r) => (
               <div key={r.name} className="review">
-                <div className="stars">{r.stars}</div>
+                <div className="stars"><RatingStars /></div>
                 <p className="text">{r.text}</p>
                 <div className="who">
                   <div className="av">{r.av}</div>
@@ -177,18 +177,18 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ────────────────────────────────────────── */}
-      <section style={{ padding: '120px 0' }}>
+      <section className="section-page">
         <div className="container">
           <Reveal
             data-scroll="cta"
-            style={{ background: 'var(--amber)', borderRadius: 32, padding: 80, color: '#fff', textAlign: 'center' }}
+            className="panel-cta panel-cta-amber panel-center"
           >
-            <h2 className="h-display h2" style={{ color: '#fff' }}>Come say hi.</h2>
-            <p style={{ marginTop: 18, fontSize: 18, color: 'rgba(255,255,255,.9)' }}>
+            <h2 className="h-display h2 text-white">Come say hi.</h2>
+            <p className="mt-[18px] text-lg text-white/90">
               Coffee at the studio in Isleworth. No deposit, no pitch.
             </p>
-            <Link href="/contact" className="btn btn-lg" style={{ background: '#fff', color: 'var(--amber-2)', marginTop: 32, display: 'inline-flex' }}>
-              Book a 20-min consult <span className="arrow">→</span>
+            <Link href="/contact" className="btn btn-lg btn-white-amber mt-8">
+              Book a 20-min consult <ButtonArrow />
             </Link>
           </Reveal>
         </div>

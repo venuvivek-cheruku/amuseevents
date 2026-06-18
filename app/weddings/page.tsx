@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
+import { ButtonArrow, IconCheck, RatingStars } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Wedding Planning London',
@@ -75,87 +76,81 @@ export default function WeddingsPage() {
       {/* ── Page hero ──────────────────────────────────── */}
       <section className="page-hero">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 64, alignItems: 'end' }}>
+          <div className="hero-split-wedding">
             <div>
               <span className="eyebrow">Weddings · the calm way</span>
-              <h1 className="h-display h1" style={{ marginTop: 24 }}>
+              <h1 className="h-display h1 hero-title-gap">
                 Your wedding,<br />
-                <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>held quietly</em><br />
+                <em className="brand-accent">held quietly</em><br />
                 by people who care.
               </h1>
-              <p className="lede" style={{ marginTop: 28 }}>
+              <p className="lede lede-gap">
                 Eleven years. Two hundred weddings. One promise — nothing on the day
                 surprises you except the good bits.
               </p>
-              <div className="row" style={{ gap: 12, marginTop: 36, flexWrap: 'wrap' }}>
+              <div className="actions-row mt-9">
                 <Link href="/contact" className="btn btn-amber btn-lg">
-                  Check 2026 availability <span className="arrow">→</span>
+                  Check 2026 availability <ButtonArrow />
                 </Link>
                 <a href="#packages" className="btn btn-ghost btn-lg">See packages</a>
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-              <div className="ph amber-tint" data-label="Wedding · ceremony" style={{ aspectRatio: '3/4' }} />
-              <div className="ph" data-label="Wedding · reception" style={{ aspectRatio: '3/4', marginTop: 32 }} />
-              <div className="ph" data-label="Wedding · couple" style={{ aspectRatio: '3/4' }} />
-              <div className="ph" data-label="Wedding · detail" style={{ aspectRatio: '3/4' }} />
+            <div className="wedding-gallery">
+              <div className="ph amber-tint image-3-4" data-label="Wedding · ceremony" />
+              <div className="ph image-3-4 wedding-gallery-offset" data-label="Wedding · reception" />
+              <div className="ph image-3-4" data-label="Wedding · couple" />
+              <div className="ph image-3-4" data-label="Wedding · detail" />
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Packages ───────────────────────────────────── */}
-      <section id="packages" style={{ padding: '120px 0', background: 'var(--paper-2)' }}>
+      <section id="packages" className="section-page section-paper-2">
         <div className="container">
-          <Reveal style={{ textAlign: 'center', marginBottom: 64 }}>
+          <Reveal className="center-intro">
             <span className="eyebrow center">— pricing —</span>
-            <h2 className="h-display h2" style={{ marginTop: 18 }}>
+            <h2 className="h-display h2 title-gap">
               Three packages.<br />
-              <em style={{ fontStyle: 'italic' }}>No hidden anything.</em>
+              <em className="italic">No hidden anything.</em>
             </h2>
-            <p className="lede" style={{ margin: '24px auto 0' }}>
+            <p className="lede mx-auto mt-6">
               Pick a starting point. Move things in or out. We'll re-quote in 24 hours, no questions.
             </p>
           </Reveal>
 
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, alignItems: 'stretch' }}>
+          <Reveal className="grid-3-cards items-stretch">
             {PACKAGES.map((pkg) => (
               <div
                 key={pkg.title}
-                className="card"
-                style={{
-                  display: 'flex', flexDirection: 'column',
-                  ...(pkg.featured ? { background: 'var(--ink)', color: 'var(--paper)', borderColor: 'var(--ink)' } : {}),
-                }}
+                className={`card flex flex-col${pkg.featured ? ' card-dark' : ''}`}
               >
                 <span
-                  className="pill"
-                  style={{
-                    alignSelf: 'flex-start',
-                    ...(pkg.featured ? { background: 'var(--amber)', color: '#fff', borderColor: 'var(--amber)' } : {}),
-                  }}
+                  className={`pill self-start${pkg.featured ? ' bg-amber text-white border-amber' : ''}`}
                 >
                   {pkg.pill}
                 </span>
-                <h3 className="h-display h4" style={{ marginTop: 18, ...(pkg.featured ? { color: 'var(--paper)' } : {}) }}>
+                <h3 className={`h-display h4 mt-[18px]${pkg.featured ? ' text-paper' : ''}`}>
                   {pkg.title}
                 </h3>
-                <div style={{ fontFamily: 'var(--serif)', fontSize: 56, lineHeight: 1, margin: '14px 0', letterSpacing: '-.03em', ...(pkg.featured ? { color: 'var(--paper)' } : {}) }}>
+                <div className={`my-3.5 font-serif text-[56px] leading-none tracking-[-.03em]${pkg.featured ? ' text-paper' : ''}`}>
                   {pkg.price}
-                  <span style={{ fontSize: 16, color: pkg.featured ? 'rgba(246,241,232,.6)' : 'var(--ink-3)', fontFamily: 'var(--sans)' }}>
+                  <span className={`font-sans text-base${pkg.featured ? ' text-paper/60' : ' text-ink-3'}`}>
                     {' '}/ from
                   </span>
                 </div>
-                <p style={{ fontSize: 14, color: pkg.featured ? 'rgba(246,241,232,.7)' : 'var(--ink-3)' }}>{pkg.desc}</p>
-                <ul style={{ margin: '24px 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12, fontSize: 14 }}>
+                <p className={`text-sm${pkg.featured ? ' text-paper/70' : ' text-ink-3'}`}>{pkg.desc}</p>
+                <ul className="my-6 flex list-none flex-col gap-3 p-0 text-sm">
                   {pkg.features.map((f) => (
-                    <li key={f} style={{ color: pkg.featured ? 'rgba(246,241,232,.9)' : 'inherit' }}>✓ {f}</li>
+                    <li key={f} className={`flex gap-2${pkg.featured ? ' text-paper/90' : ''}`}>
+                      <IconCheck className="icon-check mt-0.5" aria-hidden="true" />
+                      <span>{f}</span>
+                    </li>
                   ))}
                 </ul>
                 <Link
                   href="/contact"
-                  className={`btn ${pkg.featured ? 'btn-amber' : 'btn-ghost'}`}
-                  style={{ marginTop: 'auto' }}
+                  className={`btn mt-auto ${pkg.featured ? 'btn-amber' : 'btn-ghost'}`}
                 >
                   {pkg.cta}
                 </Link>
@@ -163,41 +158,37 @@ export default function WeddingsPage() {
             ))}
           </Reveal>
 
-          <p className="reveal mono" style={{ textAlign: 'center', marginTop: 32, color: 'var(--ink-3)' }}>
+          <p className="reveal mono mt-8 text-center text-ink-3">
             all packages include the discovery call · mood-board · vendor playbook · VAT inc.
           </p>
         </div>
       </section>
 
       {/* ── Timeline ───────────────────────────────────── */}
-      <section style={{ padding: '140px 0' }}>
+      <section className="section-page-xl">
         <div className="container">
-          <Reveal style={{ textAlign: 'center', marginBottom: 64 }}>
+          <Reveal className="center-intro">
             <span className="eyebrow center">— the journey —</span>
-            <h2 className="h-display h2" style={{ marginTop: 18 }}>
-              From <em style={{ fontStyle: 'italic' }}>first call</em><br />
-              to <em style={{ fontStyle: 'italic' }}>last dance</em>.
+            <h2 className="h-display h2 title-gap">
+              From <em className="italic">first call</em><br />
+              to <em className="italic">last dance</em>.
             </h2>
           </Reveal>
 
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 24, position: 'relative' }}>
-            <div style={{ position: 'absolute', top: 16, left: '8%', right: '8%', height: 1, background: 'var(--line)' }} />
+          <Reveal className="timeline">
+            <div className="timeline-line" />
             {TIMELINE.map((t) => (
-              <div key={t.n} style={{ position: 'relative', paddingTop: 48, textAlign: 'center' }}>
-                <div style={{
-                  position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
-                  width: 32, height: 32, borderRadius: '50%',
-                  background: t.amber ? 'var(--amber)' : t.n === 5 ? 'var(--ink)' : 'var(--paper)',
-                  color: t.amber ? '#fff' : t.n === 5 ? 'var(--paper)' : 'var(--ink)',
-                  border: !t.amber && t.n !== 5 ? '1.5px solid var(--ink)' : 'none',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'var(--serif)', fontStyle: 'italic', fontWeight: 600,
-                }}>
+              <div key={t.n} className="timeline-item">
+                <div
+                  className={`timeline-dot absolute left-1/2 top-0 -translate-x-1/2 ${
+                    t.amber ? 'border-0 bg-amber text-white' : t.n === 5 ? 'border-0 bg-ink text-paper' : 'border-[1.5px] border-ink bg-paper text-ink'
+                  }`}
+                >
                   {t.n}
                 </div>
-                <div className="mono muted" style={{ textTransform: 'uppercase', fontSize: 11 }}>{t.month}</div>
-                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 22, margin: '8px 0', letterSpacing: '-.015em' }}>{t.title}</h3>
-                <p className="muted" style={{ fontSize: 13 }}>{t.body}</p>
+                <div className="mono muted text-[11px] uppercase">{t.month}</div>
+                <h3 className="timeline-title">{t.title}</h3>
+                <p className="muted text-[13px]">{t.body}</p>
               </div>
             ))}
           </Reveal>
@@ -205,19 +196,19 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Recent weddings ────────────────────────────── */}
-      <section style={{ padding: '60px 0 140px', background: 'var(--paper-2)' }}>
+      <section className="section-paper-2 pt-[60px] pb-[140px]">
         <div className="container">
-          <Reveal className="row-between" style={{ alignItems: 'end', flexWrap: 'wrap', gap: 24, marginBottom: 48 }}>
+          <Reveal className="section-heading-row mb-12">
             <div>
               <span className="eyebrow">Recent weddings</span>
-              <h2 className="h-display h2" style={{ marginTop: 18 }}>
-                A few from <em style={{ fontStyle: 'italic' }}>last season</em>
+              <h2 className="h-display h2 title-gap">
+                A few from <em className="italic">last season</em>
               </h2>
             </div>
-            <Link href="/contact" className="btn btn-ghost">Full portfolio <span className="arrow">→</span></Link>
+            <Link href="/contact" className="btn btn-ghost">Full portfolio <ButtonArrow /></Link>
           </Reveal>
 
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+          <Reveal className="grid-3-cards">
             {[
               { img: 'amber-tint', label: 'P&D · Richmond', cat: 'September 2025', where: 'Richmond Hill', title: 'Priya & Daniel', desc: '140 guests · partial planning · garden ceremony, marquee dinner, late-night DJ.' },
               { img: '', label: 'A&S · Twickenham', cat: 'August 2025', where: 'Twickenham', title: 'Aisha & Sam', desc: '90 guests · full planning · intimate boathouse, vegan menu, sunset Sufi singers.' },
@@ -235,14 +226,14 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Testimonial ────────────────────────────────── */}
-      <section style={{ padding: '120px 0' }}>
+      <section className="section-page">
         <div className="container">
           <Reveal>
             <div className="testimonial">
               <div className="ph amber-tint" data-label="P&D candid · garden" />
               <div>
-                <div className="stars">★★★★★</div>
-                <p className="quote" style={{ marginTop: 14 }}>
+                <div className="stars"><RatingStars /></div>
+                <p className="quote mt-3.5">
                   We handed them a mood board and a guest list and they handled everything else.
                   On the day we were genuinely just guests at our own wedding. Worth every penny.
                 </p>
@@ -260,31 +251,27 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────── */}
-      <section style={{ padding: '100px 0', background: 'var(--paper-2)' }}>
+      <section className="section-paper-2 py-[100px]">
         <div className="container">
-          <Reveal style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 64, alignItems: 'start' }}>
-            <div style={{ position: 'sticky', top: 120 }}>
+          <Reveal className="content-split-start">
+            <div className="sticky-aside">
               <span className="eyebrow">— FAQ —</span>
-              <h2 className="h-display h2" style={{ marginTop: 18 }}>
-                The questions<br />we hear <em style={{ fontStyle: 'italic' }}>most</em>.
+              <h2 className="h-display h2 title-gap">
+                The questions<br />we hear <em className="italic">most</em>.
               </h2>
             </div>
             <div>
               {FAQS.map((faq, i) => (
                 <details
                   key={faq.q}
-                  style={{ borderBottom: '1px solid var(--line)', padding: '24px 0' }}
+                  className="faq-item"
                   open={i === 0}
                 >
-                  <summary style={{
-                    cursor: 'pointer', fontFamily: 'var(--serif)', fontSize: 22,
-                    letterSpacing: '-.015em', listStyle: 'none',
-                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  }}>
+                  <summary className="faq-summary items-center tracking-[-.015em]">
                     {faq.q}
-                    <span style={{ color: 'var(--amber)', fontSize: 28, fontStyle: 'italic' }}>+</span>
+                    <span className="faq-plus">+</span>
                   </summary>
-                  <p style={{ marginTop: 16, color: 'var(--ink-3)' }}>{faq.a}</p>
+                  <p className="faq-answer">{faq.a}</p>
                 </details>
               ))}
             </div>
@@ -293,20 +280,20 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── CTA ────────────────────────────────────────── */}
-      <section style={{ padding: '120px 0' }}>
+      <section className="section-page">
         <div className="container">
           <Reveal
             data-scroll="cta"
-            style={{ background: 'var(--amber)', borderRadius: 32, padding: 80, color: '#fff', textAlign: 'center', position: 'relative', overflow: 'hidden' }}
+            className="panel-cta panel-cta-amber panel-center"
           >
-            <div style={{ position: 'absolute', top: -100, right: -100, width: 360, height: 360, borderRadius: '50%', background: 'rgba(255,255,255,.08)' }} />
-            <h2 className="h-display h2" style={{ color: '#fff' }}>Tell us your date.</h2>
-            <p style={{ marginTop: 18, fontSize: 18, color: 'rgba(255,255,255,.9)' }}>
+            <div className="cta-orb-lg" />
+            <h2 className="h-display h2 text-white">Tell us your date.</h2>
+            <p className="mt-[18px] text-lg text-white/90">
               We'll come back within 4 hours, every time.
             </p>
-            <div className="row" style={{ gap: 14, marginTop: 32, justifyContent: 'center' }}>
-              <Link href="/contact" className="btn" style={{ background: '#fff', color: 'var(--amber-2)', height: 60, fontSize: 16, padding: '0 32px' }}>
-                Check availability <span className="arrow">→</span>
+            <div className="actions-center mt-8">
+              <Link href="/contact" className="btn btn-lg btn-white-amber">
+                Check availability <ButtonArrow />
               </Link>
             </div>
           </Reveal>

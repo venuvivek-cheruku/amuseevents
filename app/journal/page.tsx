@@ -80,12 +80,12 @@ export default function JournalPage() {
       {/* ── Page hero ──────────────────────────────────── */}
       <section className="page-hero">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 64, alignItems: 'end' }}>
+          <div className="hero-split">
             <div>
               <span className="eyebrow">Notes from the studio</span>
-              <h1 className="h-display h1" style={{ marginTop: 24 }}>
+              <h1 className="h-display h1 hero-title-gap">
                 Things we<br />
-                <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>learn</em>, things we<br />
+                <em className="brand-accent">learn</em>, things we<br />
                 get wrong, things that work.
               </h1>
             </div>
@@ -98,26 +98,26 @@ export default function JournalPage() {
       </section>
 
       {/* ── Featured ───────────────────────────────────── */}
-      <section style={{ padding: '80px 0' }}>
+      <section className="section-page-short">
         <div className="container">
-          <Reveal style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center' }}>
-            <div className="ph amber-tint" data-label="Spring 2026 weddings · feature" style={{ aspectRatio: '4/3', borderRadius: 'var(--r-md)' }} />
+          <Reveal className="grid items-center gap-12 [grid-template-columns:1.2fr_1fr]">
+            <div className="ph amber-tint image-4-3 rounded-media" data-label="Spring 2026 weddings · feature" />
             <div>
-              <div className="row" style={{ gap: 12, marginBottom: 18 }}>
+              <div className="actions-row mb-[18px]">
                 <span className="pill amber">— Featured —</span>
                 <span className="pill">Trends</span>
                 <span className="pill">8 min read</span>
               </div>
               <h2 className="h-display h2">
-                What's actually changing in <em style={{ fontStyle: 'italic' }}>spring 2026</em> weddings.
+                What's actually changing in <em className="italic">spring 2026</em> weddings.
               </h2>
-              <p className="lede" style={{ marginTop: 20 }}>
+              <p className="lede mt-5">
                 Less white tents. More dinner-plate moments. A field report from our last six bookings
                 — and the four trends we're seeing rise across the season.
               </p>
-              <div className="row" style={{ gap: 12, marginTop: 24 }}>
-                <div className="av" style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--paper-3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 600 }}>AM</div>
-                <span className="muted" style={{ fontSize: 13 }}>Aanya Mehta · 4 days ago</span>
+              <div className="actions-row mt-6">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper-3 text-xs font-semibold">AM</div>
+                <span className="muted text-[13px]">Aanya Mehta · 4 days ago</span>
               </div>
             </div>
           </Reveal>
@@ -125,9 +125,9 @@ export default function JournalPage() {
       </section>
 
       {/* ── Posts grid ─────────────────────────────────── */}
-      <section style={{ padding: '80px 0 140px' }}>
+      <section className="section-page-top">
         <div className="container">
-          <div className="chip-row reveal" style={{ marginBottom: 40 }}>
+          <div className="chip-row reveal mb-10">
             <button className="chip active">All posts</button>
             <button className="chip">Weddings</button>
             <button className="chip">Corporate</button>
@@ -136,7 +136,7 @@ export default function JournalPage() {
             <button className="chip">Behind the scenes</button>
           </div>
 
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '32px 24px' }}>
+          <Reveal className="grid-3-cards gap-x-6 gap-y-8">
             {POSTS.map((post) => (
               <Link key={post.title} href="#" className="article">
                 <div className={`ph ph-tall${post.img ? ' ' + post.img : ''}`} data-label={post.imgLabel} />
@@ -153,18 +153,18 @@ export default function JournalPage() {
       </section>
 
       {/* ── Newsletter ─────────────────────────────────── */}
-      <section style={{ padding: '0 0 140px' }}>
+      <section className="pb-[140px]">
         <div className="container">
           <Reveal
             data-scroll="cta"
-            style={{ background: 'var(--ink)', color: 'var(--paper)', borderRadius: 32, padding: 64, display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 64, alignItems: 'center' }}
+            className="panel-cta-sm panel-cta-dark cta-split-dark"
           >
             <div>
-              <span className="eyebrow" style={{ color: 'rgba(246,241,232,.6)' }}>— quarterly journal —</span>
-              <h2 className="h-display h3" style={{ color: 'var(--paper)', marginTop: 12 }}>
-                Four times a year. <em style={{ fontStyle: 'italic' }}>Never more.</em>
+              <span className="eyebrow text-paper-muted">— quarterly journal —</span>
+              <h2 className="h-display h3 mt-3 text-paper">
+                Four times a year. <em className="italic">Never more.</em>
               </h2>
-              <p style={{ marginTop: 16, color: 'rgba(246,241,232,.7)' }}>
+              <p className="mt-4 text-paper/70">
                 Field notes, post-mortems, real numbers from real events. We hate inbox noise too.
               </p>
             </div>

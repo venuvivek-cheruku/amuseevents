@@ -27,13 +27,12 @@ export function EventCard({ event, onSelect }: EventCardProps) {
           alt={event.title}
           width={220}
           height={220}
-          style={{ borderRadius: 16, objectFit: 'cover', aspectRatio: '1/1' }}
+          className="aspect-square rounded-2xl object-cover"
         />
       ) : (
         <div
-          className={`ph ${event.imageStyle ?? ''}`}
+          className={`ph image-square rounded-2xl ${event.imageStyle ?? ''}`}
           data-label={event.title}
-          style={{ aspectRatio: '1/1', borderRadius: 16 }}
         />
       )}
 
@@ -58,9 +57,7 @@ export function EventCard({ event, onSelect }: EventCardProps) {
         <div className="from">From</div>
         <div className="num">£{event.priceFrom}</div>
         <div className="status">
-          <div className="bar">
-            <i style={{ width: `${event.soldPercentage}%` }} />
-          </div>
+          <progress className="event-progress" max={100} value={event.soldPercentage} aria-label={`${event.soldPercentage}% sold`} />
           {statusLabel}
         </div>
       </div>

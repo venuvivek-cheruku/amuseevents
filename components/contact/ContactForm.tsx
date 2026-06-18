@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { ButtonArrow, IconCheck } from '@/components/icons/AppIcons'
 
 const EVENT_TYPES = ['Wedding', 'Birthday', 'Kids party', 'Corporate', 'DJ / club', 'Other'] as const
 
@@ -42,9 +43,9 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div style={{ padding: '48px 0', textAlign: 'center' }}>
-        <div style={{ fontSize: 48, marginBottom: 16 }}>✓</div>
-        <h2 className="h-display h3" style={{ marginBottom: 12 }}>Sent — we'll reply tonight.</h2>
+      <div className="form-success">
+        <div className="success-mark flex justify-center"><IconCheck aria-hidden="true" /></div>
+        <h2 className="h-display h3 mb-3">Sent — we'll reply tonight.</h2>
         <p className="muted">Check your inbox for a confirmation. We usually reply same evening.</p>
       </div>
     )
@@ -52,13 +53,13 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="h-display h3" style={{ marginBottom: 8 }}>Quick brief</h2>
-      <p className="muted" style={{ marginBottom: 32 }}>
+      <h2 className="h-display h3 mb-2">Quick brief</h2>
+      <p className="muted mb-8">
         Don't worry if you don't have answers yet — leave it blank.
       </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="stack-20">
+        <div className="grid-two-fields">
           <div className="field">
             <label>Your name</label>
             <input name="name" placeholder="Priya Singh" required />
@@ -69,7 +70,7 @@ export function ContactForm() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <div className="grid-two-fields">
           <div className="field">
             <label>Phone (optional)</label>
             <input name="phone" placeholder="+44 7xxx xxx xxx" />
@@ -82,7 +83,7 @@ export function ContactForm() {
 
         <div className="field">
           <label>Type of event</label>
-          <div className="pill-row" style={{ marginTop: 4 }}>
+          <div className="pill-row mt-1">
             {EVENT_TYPES.map((t) => (
               <button
                 key={t}
@@ -96,7 +97,7 @@ export function ContactForm() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <div className="grid-two-fields">
           <div className="field">
             <label>Approx. guests</label>
             <select name="guests">
@@ -140,24 +141,23 @@ export function ContactForm() {
           </select>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 18, background: 'var(--paper-2)', borderRadius: 14 }}>
-          <input type="checkbox" id="wa-ok" style={{ width: 18, height: 18 }} />
-          <label htmlFor="wa-ok" style={{ fontSize: 13, color: 'var(--ink-2)' }}>
+        <div className="checkbox-row">
+          <input type="checkbox" id="wa-ok" className="checkbox-input" />
+          <label htmlFor="wa-ok" className="text-[13px] text-ink-2">
             Yes, you can text me on WhatsApp — usually faster than email.
           </label>
         </div>
 
-        {error && <p style={{ color: 'var(--amber-2)', fontSize: 14 }}>{error}</p>}
+        {error && <p className="text-sm text-amber-2">{error}</p>}
 
         <button
           type="submit"
-          className="btn btn-amber btn-lg"
-          style={{ marginTop: 12 }}
+          className="btn btn-amber btn-lg mt-3"
           disabled={loading}
         >
-          {loading ? 'Sending…' : <>Send the brief <span className="arrow">→</span></>}
+          {loading ? 'Sending...' : <>Send the brief <ButtonArrow /></>}
         </button>
-        <p className="mono muted" style={{ textAlign: 'center', fontSize: 11 }}>
+        <p className="mono muted form-submit-note">
           We reply within 4 hours, including weekends.
         </p>
       </div>

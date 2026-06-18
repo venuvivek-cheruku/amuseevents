@@ -6,6 +6,7 @@ import { EventCard } from './EventCard'
 import { VisistoWidget } from './VisistoWidget'
 import { Reveal } from '@/components/Reveal'
 import Link from 'next/link'
+import { ButtonArrow } from '@/components/icons/AppIcons'
 
 const GENRE_FILTERS: { key: 'all' | EventGenre; label: string }[] = [
   { key: 'all',    label: 'All nights' },
@@ -45,12 +46,12 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
   return (
     <>
       {/* ── Event list ───────────────────────────────── */}
-      <section style={{ padding: '80px 0 40px' }}>
+      <section className="pt-20 pb-10">
         <div className="container">
-          <Reveal className="row-between" style={{ marginBottom: 32, flexWrap: 'wrap', gap: 24 }}>
+          <Reveal className="section-heading-row mb-8">
             <div>
               <span className="eyebrow">— upcoming nights —</span>
-              <h2 className="h-display h3" style={{ marginTop: 12 }}>
+              <h2 className="h-display h3 mt-3">
                 Pick a night.
               </h2>
             </div>
@@ -72,10 +73,10 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
           <div
             id="eventList"
             role="list"
-            style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+            className="flex flex-col gap-4"
           >
             {filteredEvents.length === 0 ? (
-              <p className="muted" style={{ padding: '48px 0', textAlign: 'center' }}>
+              <p className="muted py-12 text-center">
                 No events in this genre right now — check back soon.
               </p>
             ) : (
@@ -96,15 +97,14 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
       <section
         id="book"
         ref={bookRef}
-        style={{ padding: '80px 0 120px' }}
+        className="section-page-deep-bottom"
         aria-label="Book tickets"
       >
-        <div className="container" style={{ maxWidth: 1200 }}>
-          <Reveal style={{ marginBottom: 32 }}>
+        <div className="container max-w-[1200px]">
+          <Reveal className="mb-8">
             <span className="eyebrow">— book your tickets —</span>
             <h2
-              className="h-display h2"
-              style={{ marginTop: 12 }}
+              className="h-display h2 mt-3"
               aria-live="polite"
             >
               {selectedEvent?.title}
@@ -118,8 +118,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
           )}
 
           <p
-            className="mono muted"
-            style={{ textAlign: 'center', marginTop: 24, fontSize: 11 }}
+            className="mono muted mt-6 text-center text-[11px]"
           >
             14-day refund window · Tickets are non-transferable · Resale only via
             Visisto Exchange
@@ -142,42 +141,29 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
 
 function LineupSection({ event }: { event: Event }) {
   return (
-    <section style={{ padding: '0 0 120px' }}>
-      <div className="container" style={{ maxWidth: 1200 }}>
-        <Reveal
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1.4fr',
-            gap: 64,
-          }}
-        >
+    <section className="pb-[120px]">
+      <div className="container max-w-[1200px]">
+        <Reveal className="content-split-start">
           <div>
             <span className="eyebrow">— lineup —</span>
-            <h2 className="h-display h3" style={{ marginTop: 12 }}>
+            <h2 className="h-display h3 mt-3">
               On the
               <br />
               decks tonight.
             </h2>
             {event.description && (
-              <p className="muted" style={{ marginTop: 16 }}>
+              <p className="muted mt-4">
                 {event.description}
               </p>
             )}
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 14,
-            }}
-          >
+          <div className="grid grid-cols-2 gap-3.5">
             {event.lineupDetail!.map((artist) => (
               <div key={artist.name} className="lineup-card">
                 <div
-                  className={`ph ${artist.imageStyle ?? ''}`}
                   data-label={artist.initials}
-                  style={{ width: 80, height: 80, borderRadius: 12 }}
+                  className={`ph h-20 w-20 rounded-ae-md ${artist.imageStyle ?? ''}`}
                 />
                 <div>
                   <h4>{artist.name}</h4>
@@ -196,59 +182,33 @@ function LineupSection({ event }: { event: Event }) {
 
 function HostYourOwnCta() {
   return (
-    <section style={{ padding: '0 0 120px' }}>
+    <section className="pb-[120px]">
       <div className="container">
         <Reveal
           data-scroll="cta"
-          style={{
-            background: 'var(--ink)',
-            color: 'var(--paper)',
-            borderRadius: 32,
-            padding: 64,
-            display: 'grid',
-            gridTemplateColumns: '1.4fr 1fr',
-            gap: 64,
-            alignItems: 'center',
-          }}
+          className="panel-cta-sm panel-cta-dark events-cta-grid"
         >
           <div>
-            <span
-              className="eyebrow"
-              style={{ color: 'rgba(246,241,232,.6)' }}
-            >
+            <span className="eyebrow text-paper-muted">
               — promote your own night? —
             </span>
-            <h2
-              className="h-display h3"
-              style={{ color: 'var(--paper)', marginTop: 12 }}
-            >
+            <h2 className="h-display h3 mt-3 text-paper">
               We can host{' '}
-              <em style={{ fontStyle: 'italic' }}>your event</em> on the same
+              <em className="italic">your event</em> on the same
               ticketing engine.
             </h2>
-            <p
-              style={{
-                marginTop: 20,
-                color: 'rgba(246,241,232,.75)',
-              }}
-            >
+            <p className="mt-5 text-paper/75">
               Same Visisto embed, your branding, our event team behind it. From
               80-cap basement parties to 1,200-cap warehouse nights.
             </p>
           </div>
-          <div
-            style={{ display: 'flex', flexDirection: 'column', gap: 12 }}
-          >
+          <div className="flex flex-col gap-3">
             <Link href="/contact" className="btn btn-amber btn-lg">
-              Pitch us your night <span className="arrow">→</span>
+              Pitch us your night <ButtonArrow />
             </Link>
             <Link
               href="/services#dj"
-              className="btn btn-ghost btn-lg"
-              style={{
-                color: 'var(--paper)',
-                borderColor: 'rgba(246,241,232,.4)',
-              }}
+              className="btn btn-ghost btn-lg btn-paper-outline"
             >
               DJ &amp; club services
             </Link>

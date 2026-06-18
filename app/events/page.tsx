@@ -51,33 +51,23 @@ export default async function EventsPage() {
       <section className="events-hero" aria-label="Events hero">
         <HeroIntro />
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1.2fr 1fr',
-              gap: 64,
-              alignItems: 'end',
-              marginTop: 32,
-            }}
-          >
+          <div className="hero-split-events mt-8">
             <div>
               <span
                 data-hero="eyebrow"
-                className="eyebrow"
-                style={{ color: 'var(--amber)' }}
+                className="eyebrow text-amber"
               >
                 Live this season
               </span>
               <h1
-                className="h-display h1"
-                style={{ marginTop: 24, color: 'var(--paper)' }}
+                className="h-display h1 hero-title-gap text-paper"
               >
-                <span data-hero="title-1" style={{ display: 'block' }}>
+                <span data-hero="title-1" className="block">
                   Dance floors,
                 </span>
                 <em
                   data-hero="title-2"
-                  style={{ display: 'block', fontStyle: 'italic', color: 'var(--amber)' }}
+                  className="block brand-accent"
                 >
                   in our hands
                 </em>
@@ -85,8 +75,7 @@ export default async function EventsPage() {
               </h1>
               <p
                 data-hero="lede"
-                className="lede"
-                style={{ marginTop: 24, color: 'rgba(246,241,232,.85)' }}
+                className="lede mt-6 text-paper/85"
               >
                 Six DJ nights and club takeovers between now and June. Tickets
                 through Visisto — secure, instant, on your phone before you
@@ -95,15 +84,15 @@ export default async function EventsPage() {
             </div>
 
             <div className="stats-row dark">
-              <div data-hero="stat" className="stat amber">
-                <div className="n" style={{ color: 'var(--paper)' }}>06</div>
-                <div className="l" style={{ color: 'rgba(246,241,232,.6)' }}>Upcoming nights</div>
+              <div data-hero="stat" className="stat amber events-stat-dark">
+                <div className="n">06</div>
+                <div className="l">Upcoming nights</div>
               </div>
-              <div data-hero="stat" className="stat">
-                <div className="n" style={{ color: 'var(--paper)' }}>
-                  2,400<span style={{ color: 'var(--amber)' }}>+</span>
+              <div data-hero="stat" className="stat events-stat-dark">
+                <div className="n">
+                  2,400<span className="stat-accent">+</span>
                 </div>
-                <div className="l" style={{ color: 'rgba(246,241,232,.6)' }}>Tickets sold this year</div>
+                <div className="l">Tickets sold this year</div>
               </div>
             </div>
           </div>

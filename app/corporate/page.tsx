@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
+import { ButtonArrow, RatingStars } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Corporate & Office Events London',
@@ -50,63 +51,63 @@ export default function CorporatePage() {
       <JsonLd data={breadcrumb} />
 
       {/* ── Page hero (aubergine) ───────────────────────── */}
-      <section className="page-hero aubergine-section" style={{ border: 0 }}>
+      <section className="page-hero aubergine-section border-0">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 64, alignItems: 'end' }}>
+          <div className="hero-split-corporate">
             <div>
               <span className="eyebrow">Corporate &amp; office events</span>
-              <h1 className="h-display h1" style={{ marginTop: 24 }}>
+              <h1 className="h-display h1 hero-title-gap">
                 Discreet,<br />on time,<br />
-                <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>on brand</em>.
+                <em className="brand-accent">on brand</em>.
               </h1>
-              <p className="lede" style={{ marginTop: 28 }}>
+              <p className="lede lede-gap">
                 Launches, conferences, summer parties, off-sites, awards nights. We've delivered
                 for fintech, agencies, family offices and law firms — quietly, since 2014.
               </p>
-              <div className="row" style={{ gap: 12, marginTop: 36 }}>
+              <div className="actions-row mt-9">
                 <Link href="/contact" className="btn btn-amber btn-lg">
-                  Brief us in 5 minutes <span className="arrow">→</span>
+                  Brief us in 5 minutes <ButtonArrow />
                 </Link>
-                <a href="#case-studies" className="btn btn-ghost btn-lg" style={{ color: 'var(--paper)', borderColor: 'rgba(246,241,232,.4)' }}>
+                <a href="#case-studies" className="btn btn-ghost btn-lg btn-paper-outline">
                   See case studies
                 </a>
               </div>
             </div>
-            <div className="ph dark" data-label="Corporate launch · stage build" style={{ aspectRatio: '4/5' }} />
+            <div className="ph dark image-4-5" data-label="Corporate launch · stage build" />
           </div>
         </div>
       </section>
 
       {/* ── Trust logos ────────────────────────────────── */}
-      <section style={{ padding: '64px 0', borderBottom: '1px solid var(--line)' }}>
+      <section className="section-page-short section-bordered">
         <div className="container">
-          <p className="mono" style={{ textAlign: 'center', color: 'var(--ink-3)', marginBottom: 32, letterSpacing: '.14em', textTransform: 'uppercase' }}>
+          <p className="mono mb-8 text-center uppercase tracking-[.14em] text-ink-3">
             Trusted by — anonymised on request
           </p>
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(6,1fr)', gap: 24, alignItems: 'center' }}>
-            {['Fintech ◆', 'Law firm ◆', 'Agency ◆', 'Hotel group ◆', 'Family office ◆', 'Tech start-up ◆'].map((label) => (
-              <div key={label} className="ph" data-label={label} style={{ aspectRatio: '5/2', background: 'var(--paper-2)' }} />
+          <Reveal className="grid-6-logos">
+            {['Fintech', 'Law firm', 'Agency', 'Hotel group', 'Family office', 'Tech start-up'].map((label) => (
+              <div key={label} className="ph image-logo" data-label={label} />
             ))}
           </Reveal>
         </div>
       </section>
 
       {/* ── What we deliver ────────────────────────────── */}
-      <section style={{ padding: '120px 0' }}>
+      <section className="section-page">
         <div className="container">
-          <Reveal style={{ marginBottom: 64, maxWidth: 720 }}>
+          <Reveal className="section-heading-narrow mb-16">
             <span className="eyebrow">— what we deliver —</span>
-            <h2 className="h-display h2" style={{ marginTop: 18 }}>
+            <h2 className="h-display h2 title-gap">
               Six formats,<br />
-              <em style={{ fontStyle: 'italic' }}>one signature</em>: it just runs.
+              <em className="italic">one signature</em>: it just runs.
             </h2>
           </Reveal>
-          <Reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+          <Reveal className="grid-3-cards">
             {FORMATS.map((f) => (
               <div key={f.n} className="card">
                 <span className="pill amber">{f.n}</span>
-                <h3 style={{ fontFamily: 'var(--serif)', fontSize: 26, margin: '14px 0 8px', letterSpacing: '-.015em' }}>{f.title}</h3>
-                <p className="muted" style={{ fontSize: 14 }}>{f.body}</p>
+                <h3 className="serif-card-title-lg my-3.5 mb-2">{f.title}</h3>
+                <p className="muted text-sm">{f.body}</p>
               </div>
             ))}
           </Reveal>
@@ -114,23 +115,23 @@ export default function CorporatePage() {
       </section>
 
       {/* ── Case studies ───────────────────────────────── */}
-      <section id="case-studies" style={{ padding: '120px 0', background: 'var(--paper-2)' }}>
+      <section id="case-studies" className="section-page section-paper-2">
         <div className="container">
-          <Reveal style={{ marginBottom: 56 }}>
+          <Reveal className="mb-14">
             <span className="eyebrow">— recent —</span>
-            <h2 className="h-display h2" style={{ marginTop: 18 }}>
-              Three from <em style={{ fontStyle: 'italic' }}>this year</em>
+            <h2 className="h-display h2 title-gap">
+              Three from <em className="italic">this year</em>
             </h2>
           </Reveal>
-          <Reveal style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
+          <Reveal className="grid-2-cards">
             {CASE_STUDIES.map((cs) => (
-              <div key={cs.title} className="card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                <div className={`ph${cs.img ? ' ' + cs.img : ''}`} data-label={cs.label} style={{ aspectRatio: '16/9' }} />
-                <div style={{ padding: 32 }}>
-                  <div className="mono muted" style={{ textTransform: 'uppercase', marginBottom: 12 }}>— {cs.date}</div>
+              <div key={cs.title} className="card card-flat">
+                <div className={`ph image-16-9${cs.img ? ' ' + cs.img : ''}`} data-label={cs.label} />
+                <div className="card-pad">
+                  <div className="mono muted mb-3 uppercase">— {cs.date}</div>
                   <h3 className="h-display h4">{cs.title}</h3>
-                  <p className="muted" style={{ marginTop: 12 }}>{cs.body}</p>
-                  <div className="row" style={{ gap: 16, marginTop: 20, flexWrap: 'wrap' }}>
+                  <p className="muted mt-3">{cs.body}</p>
+                  <div className="flex flex-wrap items-center gap-4 mt-5">
                     {cs.pills.map((p) => <span key={p} className="pill">{p}</span>)}
                   </div>
                 </div>
@@ -141,14 +142,14 @@ export default function CorporatePage() {
       </section>
 
       {/* ── Testimonial ────────────────────────────────── */}
-      <section style={{ padding: '120px 0' }}>
+      <section className="section-page">
         <div className="container">
           <Reveal>
             <div className="testimonial">
               <div className="ph dark" data-label="Atlas team" />
               <div>
-                <div className="stars">★★★★★</div>
-                <p className="quote" style={{ marginTop: 14 }}>
+                <div className="stars"><RatingStars /></div>
+                <p className="quote mt-3.5">
                   Booked them for our launch. Marquee, sound, food — one team, zero stress.
                   They write the run-sheet better than our own ops people.
                 </p>
@@ -166,22 +167,22 @@ export default function CorporatePage() {
       </section>
 
       {/* ── CTA ────────────────────────────────────────── */}
-      <section style={{ padding: '80px 0 120px' }}>
+      <section className="section-page-deep-bottom">
         <div className="container">
           <Reveal
             data-scroll="cta"
-            style={{ background: 'var(--ink)', color: 'var(--paper)', borderRadius: 32, padding: 80, textAlign: 'center' }}
+            className="panel-cta panel-cta-dark panel-center"
           >
-            <h2 className="h-display h2" style={{ color: 'var(--paper)' }}>
-              Brief us in <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>five minutes</em>.
+            <h2 className="h-display h2 text-paper">
+              Brief us in <em className="brand-accent">five minutes</em>.
             </h2>
-            <p style={{ margin: '18px auto 0', fontSize: 18, color: 'rgba(246,241,232,.75)', maxWidth: '52ch' }}>
+            <p className="mx-auto mt-[18px] max-w-[52ch] text-lg text-paper/75">
               NDA on request. Procurement-friendly invoicing. We work with internal events teams
               or take it end-to-end.
             </p>
-            <div className="row" style={{ gap: 14, marginTop: 36, justifyContent: 'center' }}>
+            <div className="actions-center mt-9">
               <Link href="/contact" className="btn btn-amber btn-lg">
-                Send a brief <span className="arrow">→</span>
+                Send a brief <ButtonArrow />
               </Link>
             </div>
           </Reveal>

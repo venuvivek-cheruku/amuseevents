@@ -83,7 +83,7 @@ function buildEmailHtml(data: ContactFormData): string {
 function buildConfirmationHtml(name: string): string {
   return `
     <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
-      <h2 style="color:#191614">Thanks, ${esc(name)} 👋</h2>
+      <h2 style="color:#191614">Thanks, ${esc(name)}</h2>
       <p style="color:#2B2622;line-height:1.6">
         We've got your message and will reply within 4 working hours. If it's
         urgent, WhatsApp us directly at

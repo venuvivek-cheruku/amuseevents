@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ContactForm } from '@/components/contact/ContactForm'
+import { ButtonArrow } from '@/components/icons/AppIcons'
 import { CONTACT } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -38,13 +39,13 @@ export default function ContactPage() {
       {/* ── Page hero ──────────────────────────────────── */}
       <section className="page-hero">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 64, alignItems: 'end' }}>
+          <div className="hero-split">
             <div>
               <span className="eyebrow">Say hi</span>
-              <h1 className="h-display h1" style={{ marginTop: 24 }}>
+              <h1 className="h-display h1 hero-title-gap">
                 Tell us about<br />
                 your day.{' '}
-                <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>In your words.</em>
+                <em className="brand-accent">In your words.</em>
               </h1>
             </div>
             <p className="lede">
@@ -56,60 +57,59 @@ export default function ContactPage() {
       </section>
 
       {/* ── Form + sidebar ──────────────────────────────── */}
-      <section style={{ padding: '80px 0 140px' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 80 }}>
+      <section className="section-page-top">
+        <div className="container content-split-wide">
           <Reveal>
             <ContactForm />
           </Reveal>
 
-          <aside className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <aside className="reveal stack-24">
             {/* Phone card */}
             <div className="card">
               <span className="eyebrow">— prefer to talk —</span>
-              <h3 className="h-display h4" style={{ margin: '14px 0 8px' }}>Old-school hello</h3>
+              <h3 className="h-display h4 my-3.5 mb-2">Old-school hello</h3>
               <a
                 href={`tel:${CONTACT.phoneTel}`}
-                style={{ display: 'block', fontFamily: 'var(--serif)', fontSize: 28, letterSpacing: '-.02em', color: 'var(--ink)', margin: '18px 0 6px' }}
+                className="contact-phone"
               >
                 {CONTACT.phone}
               </a>
-              <p className="muted" style={{ fontSize: 13, marginBottom: 18 }}>Mon–Fri 9am–7pm · Sat by appointment</p>
+              <p className="muted mb-[18px] text-[13px]">Mon–Fri 9am–7pm · Sat by appointment</p>
               <a
                 href={`mailto:${CONTACT.email}`}
-                style={{ display: 'block', fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 18, color: 'var(--ink-2)' }}
+                className="contact-email"
               >
                 {CONTACT.email}
               </a>
             </div>
 
             {/* WhatsApp card */}
-            <div className="card" style={{ background: 'var(--ink)', color: 'var(--paper)', borderColor: 'var(--ink)' }}>
-              <span className="eyebrow" style={{ color: 'rgba(246,241,232,.6)' }}>— fastest —</span>
-              <h3 className="h-display h4" style={{ margin: '14px 0 8px', color: 'var(--paper)' }}>WhatsApp the studio</h3>
-              <p style={{ color: 'rgba(246,241,232,.7)', fontSize: 14, marginBottom: 20 }}>
+            <div className="card card-dark">
+              <span className="eyebrow text-paper-muted">— fastest —</span>
+              <h3 className="h-display h4 my-3.5 mb-2 text-paper">WhatsApp the studio</h3>
+              <p className="mb-5 text-sm text-paper/70">
                 Text us a few details. Replies usually inside the hour, 9am–9pm.
               </p>
               <a
                 href={CONTACT.waUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-amber"
-                style={{ width: '100%', justifyContent: 'center' }}
+                className="btn btn-amber w-full justify-center"
               >
-                Open WhatsApp <span className="arrow">→</span>
+                Open WhatsApp <ButtonArrow />
               </a>
             </div>
 
             {/* Studio address card */}
             <div className="card">
               <span className="eyebrow">— visit —</span>
-              <h3 className="h-display h4" style={{ margin: '14px 0 8px' }}>The studio</h3>
-              <p style={{ fontFamily: 'var(--serif)', fontSize: 18, lineHeight: 1.4, color: 'var(--ink-2)', margin: '14px 0' }}>
+              <h3 className="h-display h4 my-3.5 mb-2">The studio</h3>
+              <p className="contact-address">
                 Above Bloom &amp; Petal<br />
                 112 South Street<br />
                 Isleworth, TW7 7BB
               </p>
-              <p className="muted" style={{ fontSize: 13 }}>
+              <p className="muted text-[13px]">
                 2 min from Isleworth station · Free street parking after 6pm
               </p>
             </div>
@@ -118,29 +118,26 @@ export default function ContactPage() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────── */}
-      <section id="faq" style={{ padding: '100px 0 140px', background: 'var(--paper-2)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 64, alignItems: 'start' }}>
-          <div style={{ position: 'sticky', top: 120 }}>
+      <section id="faq" className="section-paper-2 pt-[100px] pb-[140px]">
+        <div className="container content-split-start">
+          <div className="sticky-aside">
             <span className="eyebrow">— FAQ —</span>
-            <h2 className="h-display h2" style={{ marginTop: 18 }}>
-              Before you<br />get in <em style={{ fontStyle: 'italic' }}>touch</em>.
+            <h2 className="h-display h2 title-gap">
+              Before you<br />get in <em className="italic">touch</em>.
             </h2>
           </div>
           <Reveal>
             {FAQS.map((faq, i) => (
               <details
                 key={faq.q}
-                style={{ borderBottom: '1px solid var(--line)', padding: '24px 0' }}
+                className="faq-item"
                 open={i === 0}
               >
-                <summary style={{
-                  cursor: 'pointer', fontFamily: 'var(--serif)', fontSize: 22,
-                  listStyle: 'none', display: 'flex', justifyContent: 'space-between',
-                }}>
+                <summary className="faq-summary">
                   {faq.q}
-                  <span style={{ color: 'var(--amber)', fontStyle: 'italic', fontSize: 28 }}>+</span>
+                  <span className="faq-plus">+</span>
                 </summary>
-                <p style={{ marginTop: 16, color: 'var(--ink-3)' }}>{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </Reveal>

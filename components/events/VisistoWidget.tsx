@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { fmt, fmtFee, pad2, formatDate, calcCountdown } from '@/lib/utils'
 import type { Event, TicketTier } from '@/lib/types'
+import { IconCalendar, IconClock, IconLocation, IconLock, IconShield } from '@/components/icons/AppIcons'
 
 /* ── Countdown ────────────────────────────────────── */
 
@@ -135,15 +136,18 @@ export function VisistoWidget({ event }: { event: Event }) {
         <div>
           <h2>{event.title}</h2>
           <div className="meta">
-            <span>
-              <b>📍 {event.venue}</b> · {event.address}
+            <span className="inline-flex items-center gap-1.5">
+              <IconLocation className="icon-meta" aria-hidden="true" />
+              <b>{event.venue}</b> · {event.address}
             </span>
-            <span>
-              <b>🗓 {formatDate(event.date)}</b>
+            <span className="inline-flex items-center gap-1.5">
+              <IconCalendar className="icon-meta" aria-hidden="true" />
+              <b>{formatDate(event.date)}</b>
             </span>
-            <span>
+            <span className="inline-flex items-center gap-1.5">
+              <IconClock className="icon-meta" aria-hidden="true" />
               <b>
-                🕘 {event.startTime} – {event.endTime}
+                {event.startTime} – {event.endTime}
               </b>{' '}
               · {event.ageRestriction ?? '18+'}
             </span>
@@ -218,12 +222,12 @@ export function VisistoWidget({ event }: { event: Event }) {
           <PromoField />
 
           <button className="pay-btn" disabled={!hasItems}>
-            <LockIcon />
+            <IconLock aria-hidden="true" />
             {payLabel}
           </button>
 
           <div className="pay-meta">
-            <ShieldIcon />
+            <IconShield aria-hidden="true" />
             Apple Pay · Google Pay · Visa · Mastercard · AmEx
           </div>
         </div>
@@ -257,22 +261,5 @@ function PromoField() {
         Apply
       </button>
     </div>
-  )
-}
-
-function LockIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="3" y="11" width="18" height="11" rx="2" />
-      <path d="M7 11V7a5 5 0 0110 0v4" />
-    </svg>
-  )
-}
-
-function ShieldIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z" />
-    </svg>
   )
 }

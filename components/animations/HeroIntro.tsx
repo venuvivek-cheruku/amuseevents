@@ -49,5 +49,5 @@ export function HeroIntro() {
     { scope: ctx }
   )
 
-  return <div ref={ctx} style={{ display: 'contents' }} />
+  return <div ref={ctx} className="contents" />
 }

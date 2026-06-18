@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
+import { ButtonArrow, IconSparkle } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Services — Event Planning London',
@@ -172,12 +173,12 @@ export default function ServicesPage() {
       {/* ── Page hero ──────────────────────────────────── */}
       <section className="page-hero">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 64, alignItems: 'end' }}>
+          <div className="hero-split">
             <div>
               <span className="eyebrow">Ten things we do well</span>
-              <h1 className="h-display h1" style={{ marginTop: 24 }}>
+              <h1 className="h-display h1 hero-title-gap">
                 Whatever the<br />moment,{' '}
-                <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>we hold it</em>.
+                <em className="brand-accent">we hold it</em>.
               </h1>
             </div>
             <p className="lede">
@@ -189,9 +190,9 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Services list ──────────────────────────────── */}
-      <section style={{ padding: '100px 0' }}>
+      <section className="py-[100px]">
         <div className="container">
-          <div className="chip-row reveal" style={{ marginBottom: 56 }}>
+          <div className="chip-row reveal mb-14">
             <button className="chip active">All services</button>
             <button className="chip">Celebrations</button>
             <button className="chip">Corporate</button>
@@ -200,23 +201,16 @@ export default function ServicesPage() {
           </div>
 
           {SERVICES.map((s) => (
-            <Reveal key={s.id} id={s.id} style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 64,
-              alignItems: 'center',
-              padding: '48px 0',
-              borderTop: '1px solid var(--line)',
-            }}>
+            <Reveal key={s.id} id={s.id} className="grid grid-cols-2 items-center gap-16 border-t border-line py-12">
               {s.imageLeft ? (
                 <>
-                  <div className={`ph${s.imageStyle ? ' ' + s.imageStyle : ''}`} data-label={s.imageLabel} style={{ aspectRatio: '4/3' }} />
+                  <div className={`ph image-4-3${s.imageStyle ? ' ' + s.imageStyle : ''}`} data-label={s.imageLabel} />
                   <ServiceContent s={s} />
                 </>
               ) : (
                 <>
                   <ServiceContent s={s} />
-                  <div className={`ph${s.imageStyle ? ' ' + s.imageStyle : ''}`} data-label={s.imageLabel} style={{ aspectRatio: '4/3' }} />
+                  <div className={`ph image-4-3${s.imageStyle ? ' ' + s.imageStyle : ''}`} data-label={s.imageLabel} />
                 </>
               )}
             </Reveal>
@@ -225,27 +219,26 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CTA ────────────────────────────────────────── */}
-      <section style={{ padding: '60px 0 120px' }}>
+      <section className="section-page-tight-bottom">
         <div className="container">
           <Reveal
             data-scroll="cta"
-            style={{ background: 'var(--ink)', color: 'var(--paper)', borderRadius: 32, padding: 80, textAlign: 'center' }}
+            className="panel-cta panel-cta-dark panel-center"
           >
-            <span className="eyebrow" style={{ color: 'rgba(246,241,232,.6)', justifyContent: 'center' }}>
+            <span className="eyebrow center text-paper-muted">
               Not sure which service?
             </span>
-            <h2 className="h-display h2" style={{ color: 'var(--paper)', marginTop: 18 }}>
+            <h2 className="h-display h2 title-gap text-paper">
               Tell us the day.<br />We'll suggest the shape.
             </h2>
-            <div className="row" style={{ gap: 14, marginTop: 36, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="actions-center mt-9">
               <Link href="/contact" className="btn btn-amber btn-lg">
-                Free 20-min consult <span className="arrow">→</span>
+                Free 20-min consult <ButtonArrow />
               </Link>
               <a
                 href="https://api.whatsapp.com/send?phone=447449470276"
                 target="_blank" rel="noreferrer"
-                className="btn btn-ghost btn-lg"
-                style={{ color: 'var(--paper)', borderColor: 'rgba(246,241,232,.4)' }}
+                className="btn btn-ghost btn-lg btn-paper-outline"
               >
                 WhatsApp instead
               </a>
@@ -260,18 +253,23 @@ export default function ServicesPage() {
 function ServiceContent({ s }: { s: (typeof SERVICES)[0] }) {
   return (
     <div>
-      <div className="row" style={{ gap: 12, marginBottom: 20 }}>
+      <div className="actions-row mb-5">
         <span className="pill amber">{s.num} — {s.cat}</span>
         {s.tag && <span className="pill">{s.tag}</span>}
       </div>
       <h2 className="h-display h3">{s.title}</h2>
-      <p className="body-text" style={{ marginTop: 16, maxWidth: '56ch' }}>{s.body}</p>
-      <ul style={{ margin: '24px 0', paddingLeft: 0, listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 24px' }}>
-        {s.features.map((f) => <li key={f}>✦ {f}</li>)}
+      <p className="body-text mt-4 max-w-[56ch]">{s.body}</p>
+      <ul className="grid-two-list my-6">
+        {s.features.map((f) => (
+          <li key={f} className="flex gap-2">
+            <IconSparkle className="icon-feature" aria-hidden="true" />
+            <span>{f}</span>
+          </li>
+        ))}
       </ul>
-      <div className="row" style={{ gap: 12 }}>
+      <div className="actions-row">
         <Link href={s.href} className="btn btn-primary">
-          {s.cta} <span className="arrow">→</span>
+          {s.cta} <ButtonArrow />
         </Link>
         <span className="mono muted">{s.from}</span>
       </div>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
+import { ButtonArrow, IconBars, IconPhone, IconWhatsApp, IconX } from '@/components/icons/AppIcons'
 import { CONTACT } from '@/lib/utils'
 const { waUrl: WA_URL, phone: PHONE, phoneTel: PHONE_TEL } = CONTACT
 
@@ -53,7 +54,7 @@ export function Header() {
               priority
             />
             <span className="brand-name">
-              amuse <em style={{ fontStyle: 'italic', color: 'var(--amber)' }}>events</em>
+              amuse <em className="brand-accent">events</em>
             </span>
           </Link>
 
@@ -72,10 +73,10 @@ export function Header() {
 
           <div className="nav-cta">
             <a href={`tel:${PHONE_TEL}`} className="nav-phone">
-              📞 {PHONE}
+              <IconPhone aria-hidden="true" /> {PHONE}
             </a>
             <Link href="/contact" className="btn btn-amber btn-sm">
-              Get a quote <span className="arrow">→</span>
+              Get a quote <ButtonArrow />
             </Link>
           </div>
 
@@ -84,9 +85,7 @@ export function Header() {
             aria-label="Open menu"
             onClick={() => setMenuOpen(true)}
           >
-            <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-              <path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
+            <IconBars aria-hidden="true" />
           </button>
         </div>
       </header>
@@ -98,9 +97,7 @@ export function Header() {
           aria-label="Close menu"
           onClick={() => setMenuOpen(false)}
         >
-          <svg width="16" height="16" viewBox="0 0 16 16">
-            <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
+          <IconX aria-hidden="true" />
         </button>
 
         <ul>
@@ -111,11 +108,11 @@ export function Header() {
           ))}
         </ul>
 
-        <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <a href={WA_URL} target="_blank" rel="noreferrer" className="btn btn-amber" style={{ width: '100%' }}>
-            WhatsApp us →
+        <div className="mt-8 flex flex-col gap-3">
+          <a href={WA_URL} target="_blank" rel="noreferrer" className="btn btn-amber w-full">
+            <IconWhatsApp aria-hidden="true" /> WhatsApp us <ButtonArrow />
           </a>
-          <a href={`tel:${PHONE_TEL}`} className="btn btn-ghost" style={{ width: '100%' }}>
+          <a href={`tel:${PHONE_TEL}`} className="btn btn-ghost w-full">
             {PHONE}
           </a>
         </div>
