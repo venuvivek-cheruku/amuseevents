@@ -123,7 +123,7 @@ export default function HomePage() {
               A small studio,<br />
               <em className="italic">a wide range</em> of moments.
             </SectionHeading>
-            <p className="lede max-w-[380px]">
+            <p className="lede max-w-95">
               Ten services. One team. Whether it's a five-year-old's party or a 300-guest gala —
               we plan it the same calm way.
             </p>
@@ -258,7 +258,7 @@ export default function HomePage() {
               From <em className="italic">"is this a good idea?"</em><br />
               to <em className="italic">"that was perfect"</em>.
             </SectionHeading>
-            <p className="lede max-w-[380px]">Five quiet steps. No surprises along the way.</p>
+            <p className="lede max-w-95">Five quiet steps. No surprises along the way.</p>
           </Reveal>
 
           <Reveal className="content-split-sticky">
