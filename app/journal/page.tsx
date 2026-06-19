@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { NewsletterForm } from '@/components/journal/NewsletterForm'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { Pill } from '@/components/ui/Pill'
+import { ArticleCard } from '@/components/ui/ArticleCard'
 
 export const metadata: Metadata = {
   title: 'Journal — Notes from the Studio',
@@ -16,52 +18,54 @@ export const metadata: Metadata = {
   },
 }
 
-const POSTS = [
+const POSTS: {
+  imageStyle?: 'amber-tint' | 'dark'
+  imageLabel: string
+  category: string
+  meta: string
+  title: string
+  body: string
+}[] = [
   {
-    img: '',
-    imgLabel: 'Pricing post',
-    cat: 'Honest pricing',
-    read: '5 min',
+    imageLabel: 'Pricing post',
+    category: 'Honest pricing',
+    meta: '5 min',
     title: 'Why we publish our prices and most planners don\'t',
     body: 'The London events industry has a quote-shock problem. Here\'s how we\'re trying to fix it.',
   },
   {
-    img: 'amber-tint',
-    imgLabel: 'Birthday at home',
-    cat: 'How-to',
-    read: '4 min',
+    imageStyle: 'amber-tint',
+    imageLabel: 'Birthday at home',
+    category: 'How-to',
+    meta: '4 min',
     title: 'Hosting a 50-guest birthday at home (and not losing your mind)',
     body: 'The five things to outsource, the three to keep, and the one rule we always break.',
   },
   {
-    img: '',
-    imgLabel: 'Run of day',
-    cat: 'BTS',
-    read: '6 min',
+    imageLabel: 'Run of day',
+    category: 'BTS',
+    meta: '6 min',
     title: 'Anatomy of a wedding run-of-day, minute by minute',
     body: 'The 14-page document we hand every couple in week-of. Annotated, with the bits that always change.',
   },
   {
-    img: '',
-    imgLabel: 'Corporate budgets',
-    cat: 'Corporate',
-    read: '7 min',
+    imageLabel: 'Corporate budgets',
+    category: 'Corporate',
+    meta: '7 min',
     title: 'Where corporate event budgets actually go in 2026',
     body: 'Pulled from 47 closed quotes this year. Hint: it\'s not the venue.',
   },
   {
-    img: '',
-    imgLabel: 'DJ economics',
-    cat: 'Behind the scenes',
-    read: '5 min',
+    imageLabel: 'DJ economics',
+    category: 'Behind the scenes',
+    meta: '5 min',
     title: 'What it actually costs to put on a 600-cap club night',
     body: 'Sound, lighting, security, talent, insurance, the bit nobody talks about: ticket fees.',
   },
   {
-    img: '',
-    imgLabel: 'Vendor list',
-    cat: 'Weddings',
-    read: '9 min',
+    imageLabel: 'Vendor list',
+    category: 'Weddings',
+    meta: '9 min',
     title: 'Our 2026 vendor list, finally written down',
     body: 'Florists, caterers, calligraphers, bands. The people we trust, organised by neighbourhood.',
   },
@@ -82,7 +86,7 @@ export default function JournalPage() {
         <div className="container">
           <div className="hero-split">
             <div>
-              <span className="eyebrow">Notes from the studio</span>
+              <Eyebrow>Notes from the studio</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Things we<br />
                 <em className="brand-accent">learn</em>, things we<br />
@@ -104,9 +108,9 @@ export default function JournalPage() {
             <div className="ph amber-tint image-4-3 rounded-media" data-label="Spring 2026 weddings · feature" />
             <div>
               <div className="actions-row mb-[18px]">
-                <span className="pill amber">— Featured —</span>
-                <span className="pill">Trends</span>
-                <span className="pill">8 min read</span>
+                <Pill variant="amber">— Featured —</Pill>
+                <Pill>Trends</Pill>
+                <Pill>8 min read</Pill>
               </div>
               <h2 className="h-display h2">
                 What's actually changing in <em className="italic">spring 2026</em> weddings.
@@ -138,15 +142,7 @@ export default function JournalPage() {
 
           <Reveal className="grid-3-cards gap-x-6 gap-y-8">
             {POSTS.map((post) => (
-              <Link key={post.title} href="#" className="article">
-                <div className={`ph ph-tall${post.img ? ' ' + post.img : ''}`} data-label={post.imgLabel} />
-                <div className="meta">
-                  <span className="cat">— {post.cat} —</span>
-                  <span>{post.read}</span>
-                </div>
-                <h3>{post.title}</h3>
-                <p>{post.body}</p>
-              </Link>
+              <ArticleCard key={post.title} href="#" imageTall {...post} />
             ))}
           </Reveal>
         </div>
@@ -160,7 +156,7 @@ export default function JournalPage() {
             className="panel-cta-sm panel-cta-dark cta-split-dark"
           >
             <div>
-              <span className="eyebrow text-paper-muted">— quarterly journal —</span>
+              <Eyebrow className="text-paper-muted">— quarterly journal —</Eyebrow>
               <h2 className="h-display h3 mt-3 text-paper">
                 Four times a year. <em className="italic">Never more.</em>
               </h2>

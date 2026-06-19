@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ButtonArrow, IconCheck } from '@/components/icons/AppIcons'
+import { Btn } from '@/components/ui/Btn'
 
 const EVENT_TYPES = ['Wedding', 'Birthday', 'Kids party', 'Corporate', 'DJ / club', 'Other'] as const
 
@@ -150,13 +151,9 @@ export function ContactForm() {
 
         {error && <p className="text-sm text-amber-2">{error}</p>}
 
-        <button
-          type="submit"
-          className="btn btn-amber btn-lg mt-3"
-          disabled={loading}
-        >
+        <Btn type="submit" variant="amber" size="lg" className="mt-3" disabled={loading}>
           {loading ? 'Sending...' : <>Send the brief <ButtonArrow /></>}
-        </button>
+        </Btn>
         <p className="mono muted form-submit-note">
           We reply within 4 hours, including weekends.
         </p>

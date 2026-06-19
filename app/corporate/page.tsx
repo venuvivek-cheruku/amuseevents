@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
-import { ButtonArrow, RatingStars } from '@/components/icons/AppIcons'
+import { ButtonArrow } from '@/components/icons/AppIcons'
+import { Btn } from '@/components/ui/Btn'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { Pill } from '@/components/ui/Pill'
+import { SectionHeading } from '@/components/ui/SectionHeading'
+import { Testimonial } from '@/components/ui/Testimonial'
+import { CtaPanel } from '@/components/ui/CtaPanel'
 
 export const metadata: Metadata = {
   title: 'Corporate & Office Events London',
@@ -55,7 +60,7 @@ export default function CorporatePage() {
         <div className="container">
           <div className="hero-split-corporate">
             <div>
-              <span className="eyebrow">Corporate &amp; office events</span>
+              <Eyebrow>Corporate &amp; office events</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Discreet,<br />on time,<br />
                 <em className="brand-accent">on brand</em>.
@@ -65,12 +70,12 @@ export default function CorporatePage() {
                 for fintech, agencies, family offices and law firms — quietly, since 2014.
               </p>
               <div className="actions-row mt-9">
-                <Link href="/contact" className="btn btn-amber btn-lg">
+                <Btn href="/contact" variant="amber" size="lg">
                   Brief us in 5 minutes <ButtonArrow />
-                </Link>
-                <a href="#case-studies" className="btn btn-ghost btn-lg btn-paper-outline">
+                </Btn>
+                <Btn href="#case-studies" variant="ghost" size="lg" className="btn-paper-outline">
                   See case studies
-                </a>
+                </Btn>
               </div>
             </div>
             <div className="ph dark image-4-5" data-label="Corporate launch · stage build" />
@@ -96,16 +101,15 @@ export default function CorporatePage() {
       <section className="section-page">
         <div className="container">
           <Reveal className="section-heading-narrow mb-16">
-            <span className="eyebrow">— what we deliver —</span>
-            <h2 className="h-display h2 title-gap">
+            <SectionHeading eyebrow="— what we deliver —">
               Six formats,<br />
               <em className="italic">one signature</em>: it just runs.
-            </h2>
+            </SectionHeading>
           </Reveal>
           <Reveal className="grid-3-cards">
             {FORMATS.map((f) => (
               <div key={f.n} className="card">
-                <span className="pill amber">{f.n}</span>
+                <Pill variant="amber">{f.n}</Pill>
                 <h3 className="serif-card-title-lg my-3.5 mb-2">{f.title}</h3>
                 <p className="muted text-sm">{f.body}</p>
               </div>
@@ -118,10 +122,9 @@ export default function CorporatePage() {
       <section id="case-studies" className="section-page section-paper-2">
         <div className="container">
           <Reveal className="mb-14">
-            <span className="eyebrow">— recent —</span>
-            <h2 className="h-display h2 title-gap">
+            <SectionHeading eyebrow="— recent —">
               Three from <em className="italic">this year</em>
-            </h2>
+            </SectionHeading>
           </Reveal>
           <Reveal className="grid-2-cards">
             {CASE_STUDIES.map((cs) => (
@@ -132,7 +135,7 @@ export default function CorporatePage() {
                   <h3 className="h-display h4">{cs.title}</h3>
                   <p className="muted mt-3">{cs.body}</p>
                   <div className="flex flex-wrap items-center gap-4 mt-5">
-                    {cs.pills.map((p) => <span key={p} className="pill">{p}</span>)}
+                    {cs.pills.map((p) => <Pill key={p}>{p}</Pill>)}
                   </div>
                 </div>
               </div>
@@ -145,49 +148,33 @@ export default function CorporatePage() {
       <section className="section-page">
         <div className="container">
           <Reveal>
-            <div className="testimonial">
-              <div className="ph dark" data-label="Atlas team" />
-              <div>
-                <div className="stars"><RatingStars /></div>
-                <p className="quote mt-3.5">
-                  Booked them for our launch. Marquee, sound, food — one team, zero stress.
-                  They write the run-sheet better than our own ops people.
-                </p>
-                <div className="meta">
-                  <div className="av">RA</div>
-                  <div>
-                    <div className="name">Raj Aggarwal · Head of Brand</div>
-                    <div className="where">Atlas Group · Canary Wharf</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Testimonial
+              imageStyle="dark"
+              imageLabel="Atlas team"
+              quote="Booked them for our launch. Marquee, sound, food — one team, zero stress. They write the run-sheet better than our own ops people."
+              initials="RA"
+              name="Raj Aggarwal · Head of Brand"
+              where="Atlas Group · Canary Wharf"
+            />
           </Reveal>
         </div>
       </section>
 
       {/* ── CTA ────────────────────────────────────────── */}
-      <section className="section-page-deep-bottom">
-        <div className="container">
-          <Reveal
-            data-scroll="cta"
-            className="panel-cta panel-cta-dark panel-center"
-          >
-            <h2 className="h-display h2 text-paper">
-              Brief us in <em className="brand-accent">five minutes</em>.
-            </h2>
-            <p className="mx-auto mt-[18px] max-w-[52ch] text-lg text-paper/75">
-              NDA on request. Procurement-friendly invoicing. We work with internal events teams
-              or take it end-to-end.
-            </p>
-            <div className="actions-center mt-9">
-              <Link href="/contact" className="btn btn-amber btn-lg">
-                Send a brief <ButtonArrow />
-              </Link>
-            </div>
-          </Reveal>
+      <CtaPanel variant="dark" sectionClass="section-page-deep-bottom">
+        <h2 className="h-display h2 text-paper">
+          Brief us in <em className="brand-accent">five minutes</em>.
+        </h2>
+        <p className="mx-auto mt-[18px] max-w-[52ch] text-lg text-paper/75">
+          NDA on request. Procurement-friendly invoicing. We work with internal events teams
+          or take it end-to-end.
+        </p>
+        <div className="actions-center mt-9">
+          <Btn href="/contact" variant="amber" size="lg">
+            Send a brief <ButtonArrow />
+          </Btn>
         </div>
-      </section>
+      </CtaPanel>
     </>
   )
 }

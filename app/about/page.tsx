@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
-import { ButtonArrow, RatingStars } from '@/components/icons/AppIcons'
+import { ButtonArrow } from '@/components/icons/AppIcons'
+import { Btn } from '@/components/ui/Btn'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { Pill } from '@/components/ui/Pill'
+import { SectionHeading } from '@/components/ui/SectionHeading'
+import { ReviewCard } from '@/components/ui/ReviewCard'
+import { CtaPanel } from '@/components/ui/CtaPanel'
 
 export const metadata: Metadata = {
   title: 'The Studio — About Amuse Events',
@@ -21,7 +26,7 @@ const PRINCIPLES = [
   { n: '02', title: 'One number', body: 'One planner per event. Direct line. All hours. End to end.' },
   { n: '03', title: 'No sub-contracting', body: 'The team you meet runs your day. No agencies in the middle.' },
   { n: '04', title: 'Small by design', body: 'We turn down work to keep care high. Six events a month, max.' },
-  { n: '05', title: 'Reply in 4 hours', body: 'Including weekends. If we can\'t, you get a real reason and a real time.' },
+  { n: '05', title: 'Reply in 4 hours', body: "Including weekends. If we can't, you get a real reason and a real time." },
 ]
 
 const TEAM = [
@@ -36,12 +41,12 @@ const TEAM = [
 ]
 
 const REVIEWS = [
-  { text: '"Calm, brilliant, fairly priced. Replied on a Sunday afternoon."', av: 'JM', name: 'Jess Mitchell', where: '60th birthday · Twickenham' },
-  { text: '"They write the run-sheet better than our own ops people."', av: 'RA', name: 'Raj Aggarwal', where: 'Atlas · Canary Wharf' },
-  { text: '"My daughter still talks about the magician. Best money we spent."', av: 'SO', name: "Sara O'Connell", where: 'Kids party · Hounslow' },
-  { text: '"Held our entire weekend so quietly we forgot we\'d hired anyone."', av: 'PD', name: 'Priya & Daniel', where: 'Wedding · Richmond' },
-  { text: '"Re-quoted in 24 hours every time we changed our minds."', av: 'FK', name: 'Farah K.', where: 'Engagement · Soho' },
-  { text: '"Honest about what they couldn\'t do. That\'s why we trusted the rest."', av: 'JT', name: 'James T.', where: 'Product launch · Shoreditch' },
+  { text: '"Calm, brilliant, fairly priced. Replied on a Sunday afternoon."', initials: 'JM', name: 'Jess Mitchell', where: '60th birthday · Twickenham' },
+  { text: '"They write the run-sheet better than our own ops people."', initials: 'RA', name: 'Raj Aggarwal', where: 'Atlas · Canary Wharf' },
+  { text: '"My daughter still talks about the magician. Best money we spent."', initials: 'SO', name: "Sara O'Connell", where: 'Kids party · Hounslow' },
+  { text: '"Held our entire weekend so quietly we forgot we\'d hired anyone."', initials: 'PD', name: 'Priya & Daniel', where: 'Wedding · Richmond' },
+  { text: '"Re-quoted in 24 hours every time we changed our minds."', initials: 'FK', name: 'Farah K.', where: 'Engagement · Soho' },
+  { text: '"Honest about what they couldn\'t do. That\'s why we trusted the rest."', initials: 'JT', name: 'James T.', where: 'Product launch · Shoreditch' },
 ]
 
 export default function AboutPage() {
@@ -59,7 +64,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="hero-split">
             <div>
-              <span className="eyebrow">Isleworth, London · est. 2014</span>
+              <Eyebrow>Isleworth, London · est. 2014</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 A small studio,<br />
                 <em className="brand-accent">eleven years</em><br />
@@ -79,10 +84,9 @@ export default function AboutPage() {
         <div className="container content-split-reverse">
           <div className="ph reveal image-4-5" data-label="Founder · Aanya at the studio" />
           <Reveal>
-            <span className="eyebrow">— our story —</span>
-            <h2 className="h-display h2 title-gap">
+            <SectionHeading eyebrow="— our story —">
               Started with one wedding<br />in a <em className="italic">friend's garden</em>.
-            </h2>
+            </SectionHeading>
             <p className="body-text mt-6">
               In 2014, Aanya planned her best friend's wedding in a back garden in Isleworth. It was
               sixty guests, two folding tables, a borrowed marquee and a karaoke machine. Eleven years
@@ -102,11 +106,10 @@ export default function AboutPage() {
       <section className="dark-section section-page-xl section-rounded-dark">
         <div className="container">
           <Reveal className="center-intro">
-            <span className="eyebrow center text-paper-muted">— five rules —</span>
-            <h2 className="h-display h2 title-gap text-paper">
+            <SectionHeading eyebrow="— five rules —" center>
               How we run<br />
               <em className="italic">the studio</em>.
-            </h2>
+            </SectionHeading>
           </Reveal>
           <Reveal className="grid-5-cards">
             {PRINCIPLES.map((p) => (
@@ -124,8 +127,7 @@ export default function AboutPage() {
       <section id="team" className="section-page-xl">
         <div className="container">
           <Reveal className="mb-16">
-            <span className="eyebrow">— the eleven —</span>
-            <h2 className="h-display h2 title-gap">Meet the studio.</h2>
+            <SectionHeading eyebrow="— the eleven —">Meet the studio.</SectionHeading>
           </Reveal>
           <Reveal className="grid-4-cards">
             {TEAM.map((m) => (
@@ -143,56 +145,36 @@ export default function AboutPage() {
       </section>
 
       {/* ── Reviews ────────────────────────────────────── */}
-      <section id="reviews" className="section-paper-2 py-[100px]">
+      <section id="reviews" className="section-paper-2 section-page-md">
         <div className="container">
           <Reveal className="section-heading-row mb-12">
-            <div>
-              <span className="eyebrow">— what people say —</span>
-              <h2 className="h-display h2 title-gap">
-                213 reviews. <em className="italic">4.9 stars.</em>
-              </h2>
-            </div>
+            <SectionHeading eyebrow="— what people say —">
+              213 reviews. <em className="italic">4.9 stars.</em>
+            </SectionHeading>
             <div className="flex items-center gap-4">
-              <span className="pill amber">Google</span>
-              <span className="pill">Trustpilot</span>
-              <span className="pill">Hitched</span>
+              <Pill variant="amber">Google</Pill>
+              <Pill>Trustpilot</Pill>
+              <Pill>Hitched</Pill>
             </div>
           </Reveal>
           <Reveal className="grid-3-reviews">
             {REVIEWS.map((r) => (
-              <div key={r.name} className="review">
-                <div className="stars"><RatingStars /></div>
-                <p className="text">{r.text}</p>
-                <div className="who">
-                  <div className="av">{r.av}</div>
-                  <div>
-                    <div className="name">{r.name}</div>
-                    <div className="where">{r.where}</div>
-                  </div>
-                </div>
-              </div>
+              <ReviewCard key={r.name} {...r} />
             ))}
           </Reveal>
         </div>
       </section>
 
       {/* ── CTA ────────────────────────────────────────── */}
-      <section className="section-page">
-        <div className="container">
-          <Reveal
-            data-scroll="cta"
-            className="panel-cta panel-cta-amber panel-center"
-          >
-            <h2 className="h-display h2 text-white">Come say hi.</h2>
-            <p className="mt-[18px] text-lg text-white/90">
-              Coffee at the studio in Isleworth. No deposit, no pitch.
-            </p>
-            <Link href="/contact" className="btn btn-lg btn-white-amber mt-8">
-              Book a 20-min consult <ButtonArrow />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      <CtaPanel variant="amber">
+        <h2 className="h-display h2">Come say hi.</h2>
+        <p className="mt-[18px] text-lg text-ink-2">
+          Coffee at the studio in Isleworth. No deposit, no pitch.
+        </p>
+        <Btn href="/contact" variant="primary" size="lg" className="mt-8">
+          Book a 20-min consult <ButtonArrow />
+        </Btn>
+      </CtaPanel>
     </>
   )
 }

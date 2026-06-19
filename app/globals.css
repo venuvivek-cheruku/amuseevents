@@ -415,7 +415,7 @@ section.huge { padding: var(--s-10) 0; }
   background: var(--amber); display: inline-block;
 }
 .pill.dark { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.pill.amber { background: var(--amber-3); border-color: var(--amber); color: var(--amber-2); }
+.pill.amber { background: var(--amber-3); border-color: var(--amber); color: var(--ink); }
 
 /* Image placeholder */
 .ph {
@@ -1156,13 +1156,17 @@ section:not(.dark-section) .step { border-bottom-color: var(--line); }
   .panel-cta { @apply rounded-[32px] p-20; }
   .panel-cta-sm { @apply rounded-[32px] p-16; }
   .panel-cta-dark { @apply bg-ink text-paper; }
-  .panel-cta-amber { @apply relative overflow-hidden bg-amber text-white; }
+  .panel-cta-amber { @apply relative overflow-hidden bg-amber text-ink; }
   .panel-center { @apply text-center; }
   .btn-white-amber { @apply inline-flex bg-white text-amber-2; }
   .btn-paper-outline { @apply border border-paper/40 text-paper; }
   .btn-white-outline { @apply border-[1.5px] border-white/50 bg-transparent text-white; }
-  .cta-orb-lg { @apply absolute -right-[100px] -top-[100px] h-[360px] w-[360px] rounded-full bg-white/10; }
-  .cta-orb-sm { @apply absolute -bottom-[60px] -left-[60px] h-[200px] w-[200px] rounded-full bg-white/10; }
+  .cta-orb-lg { @apply absolute -right-[100px] -top-[100px] h-[360px] w-[360px] rounded-full bg-ink/10; }
+  .cta-orb-sm { @apply absolute -bottom-[60px] -left-[60px] h-[200px] w-[200px] rounded-full bg-ink/10; }
+
+  .section-page-md { @apply py-[100px]; }
+  .section-page-gallery { @apply pt-[60px] pb-[140px]; }
+  .section-page-faq { @apply pt-[100px] pb-[140px]; }
 
   .faq-item { @apply border-b border-line py-6; }
   .faq-summary { @apply flex cursor-pointer list-none justify-between gap-6 font-serif text-[22px] leading-tight; }
@@ -1199,9 +1203,12 @@ section:not(.dark-section) .step { border-bottom-color: var(--line); }
 
 /* Unlayered contrast overrides for legacy typography classes on dark surfaces. */
 .events-hero .h-display,
-.panel-cta-dark .h-display,
-.panel-cta-amber .h-display {
+.panel-cta-dark .h-display {
   color: inherit;
+}
+
+.panel-cta-amber .h-display {
+  color: var(--ink);
 }
 
 .events-hero .lede {
@@ -1222,7 +1229,17 @@ section:not(.dark-section) .step { border-bottom-color: var(--line); }
 }
 
 .panel-cta-amber .eyebrow {
-  color: rgba(255,255,255,.85);
+  color: var(--ink-2);
+}
+.panel-cta-amber .eyebrow::before,
+.panel-cta-amber .eyebrow::after {
+  background: var(--ink-2);
+}
+.panel-cta-amber .lede {
+  color: var(--ink-2);
+}
+.panel-cta-amber .muted {
+  color: var(--ink-2);
 }
 
 /* ── Responsive ───────────────────────────────────── */

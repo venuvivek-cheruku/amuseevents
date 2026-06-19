@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 import { ButtonArrow, IconBars, IconPhone, IconWhatsApp, IconX } from '@/components/icons/AppIcons'
+import { Btn } from '@/components/ui/Btn'
 import { CONTACT } from '@/lib/utils'
 const { waUrl: WA_URL, phone: PHONE, phoneTel: PHONE_TEL } = CONTACT
 
@@ -75,9 +76,9 @@ export function Header() {
             <a href={`tel:${PHONE_TEL}`} className="nav-phone">
               <IconPhone aria-hidden="true" /> {PHONE}
             </a>
-            <Link href="/contact" className="btn btn-amber btn-sm">
+            <Btn href="/contact" variant="amber" size="sm">
               Get a quote <ButtonArrow />
-            </Link>
+            </Btn>
           </div>
 
           <button
@@ -109,12 +110,12 @@ export function Header() {
         </ul>
 
         <div className="mt-8 flex flex-col gap-3">
-          <a href={WA_URL} target="_blank" rel="noreferrer" className="btn btn-amber w-full">
+          <Btn href={WA_URL} variant="amber" external className="w-full">
             <IconWhatsApp aria-hidden="true" /> WhatsApp us <ButtonArrow />
-          </a>
-          <a href={`tel:${PHONE_TEL}`} className="btn btn-ghost w-full">
+          </Btn>
+          <Btn href={`tel:${PHONE_TEL}`} variant="ghost" className="w-full">
             {PHONE}
-          </a>
+          </Btn>
         </div>
       </div>
     </>

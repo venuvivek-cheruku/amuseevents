@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ButtonArrow, IconSparkle } from '@/components/icons/AppIcons'
+import { Btn } from '@/components/ui/Btn'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { Pill } from '@/components/ui/Pill'
+import { CtaPanel } from '@/components/ui/CtaPanel'
+import { CONTACT } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Services — Event Planning London',
@@ -175,7 +179,7 @@ export default function ServicesPage() {
         <div className="container">
           <div className="hero-split">
             <div>
-              <span className="eyebrow">Ten things we do well</span>
+              <Eyebrow>Ten things we do well</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Whatever the<br />moment,{' '}
                 <em className="brand-accent">we hold it</em>.
@@ -190,7 +194,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Services list ──────────────────────────────── */}
-      <section className="py-[100px]">
+      <section className="section-page-md">
         <div className="container">
           <div className="chip-row reveal mb-14">
             <button className="chip active">All services</button>
@@ -219,33 +223,20 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CTA ────────────────────────────────────────── */}
-      <section className="section-page-tight-bottom">
-        <div className="container">
-          <Reveal
-            data-scroll="cta"
-            className="panel-cta panel-cta-dark panel-center"
-          >
-            <span className="eyebrow center text-paper-muted">
-              Not sure which service?
-            </span>
-            <h2 className="h-display h2 title-gap text-paper">
-              Tell us the day.<br />We'll suggest the shape.
-            </h2>
-            <div className="actions-center mt-9">
-              <Link href="/contact" className="btn btn-amber btn-lg">
-                Free 20-min consult <ButtonArrow />
-              </Link>
-              <a
-                href="https://api.whatsapp.com/send?phone=447449470276"
-                target="_blank" rel="noreferrer"
-                className="btn btn-ghost btn-lg btn-paper-outline"
-              >
-                WhatsApp instead
-              </a>
-            </div>
-          </Reveal>
+      <CtaPanel variant="dark" sectionClass="section-page-tight-bottom">
+        <Eyebrow center className="text-paper-muted">Not sure which service?</Eyebrow>
+        <h2 className="h-display h2 title-gap text-paper">
+          Tell us the day.<br />We'll suggest the shape.
+        </h2>
+        <div className="actions-center mt-9">
+          <Btn href="/contact" variant="amber" size="lg">
+            Free 20-min consult <ButtonArrow />
+          </Btn>
+          <Btn href={CONTACT.waUrl} variant="ghost" size="lg" external className="btn-paper-outline">
+            WhatsApp instead
+          </Btn>
         </div>
-      </section>
+      </CtaPanel>
     </>
   )
 }
@@ -254,8 +245,8 @@ function ServiceContent({ s }: { s: (typeof SERVICES)[0] }) {
   return (
     <div>
       <div className="actions-row mb-5">
-        <span className="pill amber">{s.num} — {s.cat}</span>
-        {s.tag && <span className="pill">{s.tag}</span>}
+        <Pill variant="amber">{s.num} — {s.cat}</Pill>
+        {s.tag && <Pill>{s.tag}</Pill>}
       </div>
       <h2 className="h-display h3">{s.title}</h2>
       <p className="body-text mt-4 max-w-[56ch]">{s.body}</p>
@@ -268,9 +259,9 @@ function ServiceContent({ s }: { s: (typeof SERVICES)[0] }) {
         ))}
       </ul>
       <div className="actions-row">
-        <Link href={s.href} className="btn btn-primary">
+        <Btn href={s.href} variant="primary">
           {s.cta} <ButtonArrow />
-        </Link>
+        </Btn>
         <span className="mono muted">{s.from}</span>
       </div>
     </div>

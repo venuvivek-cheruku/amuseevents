@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ContactForm } from '@/components/contact/ContactForm'
 import { ButtonArrow } from '@/components/icons/AppIcons'
+import { Btn } from '@/components/ui/Btn'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { SectionHeading } from '@/components/ui/SectionHeading'
+import { FaqList } from '@/components/ui/FaqList'
 import { CONTACT } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -41,7 +44,7 @@ export default function ContactPage() {
         <div className="container">
           <div className="hero-split">
             <div>
-              <span className="eyebrow">Say hi</span>
+              <Eyebrow>Say hi</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Tell us about<br />
                 your day.{' '}
@@ -66,7 +69,7 @@ export default function ContactPage() {
           <aside className="reveal stack-24">
             {/* Phone card */}
             <div className="card">
-              <span className="eyebrow">— prefer to talk —</span>
+              <Eyebrow>— prefer to talk —</Eyebrow>
               <h3 className="h-display h4 my-3.5 mb-2">Old-school hello</h3>
               <a
                 href={`tel:${CONTACT.phoneTel}`}
@@ -85,24 +88,19 @@ export default function ContactPage() {
 
             {/* WhatsApp card */}
             <div className="card card-dark">
-              <span className="eyebrow text-paper-muted">— fastest —</span>
+              <Eyebrow className="text-paper-muted">— fastest —</Eyebrow>
               <h3 className="h-display h4 my-3.5 mb-2 text-paper">WhatsApp the studio</h3>
               <p className="mb-5 text-sm text-paper/70">
                 Text us a few details. Replies usually inside the hour, 9am–9pm.
               </p>
-              <a
-                href={CONTACT.waUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-amber w-full justify-center"
-              >
+              <Btn href={CONTACT.waUrl} variant="amber" external className="w-full justify-center">
                 Open WhatsApp <ButtonArrow />
-              </a>
+              </Btn>
             </div>
 
             {/* Studio address card */}
             <div className="card">
-              <span className="eyebrow">— visit —</span>
+              <Eyebrow>— visit —</Eyebrow>
               <h3 className="h-display h4 my-3.5 mb-2">The studio</h3>
               <p className="contact-address">
                 Above Bloom &amp; Petal<br />
@@ -118,28 +116,15 @@ export default function ContactPage() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────── */}
-      <section id="faq" className="section-paper-2 pt-[100px] pb-[140px]">
+      <section id="faq" className="section-paper-2 section-page-faq">
         <div className="container content-split-start">
           <div className="sticky-aside">
-            <span className="eyebrow">— FAQ —</span>
-            <h2 className="h-display h2 title-gap">
+            <SectionHeading eyebrow="— FAQ —">
               Before you<br />get in <em className="italic">touch</em>.
-            </h2>
+            </SectionHeading>
           </div>
           <Reveal>
-            {FAQS.map((faq, i) => (
-              <details
-                key={faq.q}
-                className="faq-item"
-                open={i === 0}
-              >
-                <summary className="faq-summary">
-                  {faq.q}
-                  <span className="faq-plus">+</span>
-                </summary>
-                <p className="faq-answer">{faq.a}</p>
-              </details>
-            ))}
+            <FaqList items={FAQS} />
           </Reveal>
         </div>
       </section>
