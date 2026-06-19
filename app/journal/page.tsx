@@ -104,7 +104,7 @@ export default function JournalPage() {
       {/* ── Featured ───────────────────────────────────── */}
       <section className="section-page-short">
         <div className="container">
-          <Reveal className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-8 lg:gap-12">
+          <Reveal className="journal-featured">
             <div className="ph amber-tint image-4-3 rounded-media" data-label="Spring 2026 weddings · feature" />
             <div>
               <div className="actions-row mb-[18px]">

@@ -281,7 +281,7 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="lg:sticky lg:top-[100px]">
+            <div className="process-sidebar">
               <div className="ph dark image-4-5" data-label="Process · planner at venue" />
               <div className="mt-6 rounded-ae-lg border border-paper/10 bg-paper/5 p-7">
                 <div className="eyebrow mb-3 text-amber">— promise —</div>

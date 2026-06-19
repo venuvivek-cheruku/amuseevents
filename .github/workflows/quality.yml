@@ -25,5 +25,13 @@ jobs:
       - name: Check style rules
         run: npm run check:style-rules
 
+      - name: Type check
+        run: npx tsc --noEmit
+
       - name: Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID || 'placeholder' }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET || 'production' }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY || 'placeholder' }}
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL || 'contact@amuseevents.co.uk' }}
