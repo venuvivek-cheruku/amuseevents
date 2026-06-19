@@ -1456,6 +1456,32 @@ section:not(.dark-section) .step { border-bottom-color: var(--line); }
   /* Chip row wraps */
   .chip-row { gap: 6px; }
   .chip     { padding: 6px 12px; font-size: 12px; }
+
+  /* Cap tall portrait images so they don't fill the whole viewport when stacked */
+  .ph.image-4-5 { aspect-ratio: 3/2; }
+  .ph.image-3-4 { aspect-ratio: 4/3; }
+
+  /* Home stats row — reduce top gap */
+  .stats-top-border { margin-top: 40px; }
+
+  /* Events filter — allow horizontal scroll on tiny screens */
+  .events-filter {
+    overflow-x: auto;
+    border-radius: 14px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .events-filter::-webkit-scrollbar { display: none; }
+
+  /* Visisto tiers — reduce padding */
+  .tiers { padding: 24px 20px; }
+  .tier  { gap: 12px; }
+}
+
+/* Newsletter form stacks on small phones */
+@media (max-width: 540px) {
+  .newsletter-form    { flex-direction: column; }
+  .newsletter-input   { width: 100%; }
 }
 
 /* ── ≤ 480px (very small phones) ─────────────────── */

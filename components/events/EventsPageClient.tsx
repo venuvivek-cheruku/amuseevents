@@ -5,8 +5,8 @@ import type { Event, EventGenre } from '@/lib/types'
 import { EventCard } from './EventCard'
 import { VisistoWidget } from './VisistoWidget'
 import { Reveal } from '@/components/Reveal'
-import Link from 'next/link'
 import { ButtonArrow } from '@/components/icons/AppIcons'
+import { Btn } from '@/components/ui/Btn'
 
 const GENRE_FILTERS: { key: 'all' | EventGenre; label: string }[] = [
   { key: 'all',    label: 'All nights' },
@@ -158,7 +158,7 @@ function LineupSection({ event }: { event: Event }) {
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {event.lineupDetail!.map((artist) => (
               <div key={artist.name} className="lineup-card">
                 <div
@@ -203,15 +203,12 @@ function HostYourOwnCta() {
             </p>
           </div>
           <div className="flex flex-col gap-3">
-            <Link href="/contact" className="btn btn-amber btn-lg">
+            <Btn href="/contact" variant="amber" size="lg">
               Pitch us your night <ButtonArrow />
-            </Link>
-            <Link
-              href="/services#dj"
-              className="btn btn-ghost btn-lg btn-paper-outline"
-            >
+            </Btn>
+            <Btn href="/services#dj" variant="ghost" size="lg" className="btn-paper-outline">
               DJ &amp; club services
-            </Link>
+            </Btn>
           </div>
         </Reveal>
       </div>
