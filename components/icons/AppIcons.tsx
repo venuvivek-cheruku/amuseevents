@@ -18,13 +18,13 @@ import {
   FaWhatsapp,
   FaXmark,
 } from 'react-icons/fa6'
-import type { IconBaseProps } from 'react-icons'
+import type { SVGProps } from 'react'
 
 function withClass(base: string, className?: string) {
   return className ? `${base} ${className}` : base
 }
 
-export function ButtonArrow({ className, ...props }: IconBaseProps) {
+export function ButtonArrow({ className, ...props }: SVGProps<SVGSVGElement>) {
   return <FaArrowRight aria-hidden="true" focusable="false" className={withClass('arrow', className)} {...props} />
 }
 
