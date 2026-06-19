@@ -281,7 +281,7 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="sticky top-[100px]">
+            <div className="lg:sticky lg:top-[100px]">
               <div className="ph dark image-4-5" data-label="Process · planner at venue" />
               <div className="mt-6 rounded-ae-lg border border-paper/10 bg-paper/5 p-7">
                 <div className="eyebrow mb-3 text-amber">— promise —</div>
@@ -388,7 +388,7 @@ export default function HomePage() {
                   </Btn>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="lg:text-right">
                 <div className="mb-3.5 font-serif text-lg italic text-ink-2">or, the old way:</div>
                 <a href={`tel:${CONTACT.phoneTel}`} className="mb-[18px] block font-serif text-[clamp(28px,4vw,48px)] leading-tight text-ink">
                   {CONTACT.phone}

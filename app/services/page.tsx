@@ -205,7 +205,7 @@ export default function ServicesPage() {
           </div>
 
           {SERVICES.map((s) => (
-            <Reveal key={s.id} id={s.id} className="grid grid-cols-2 items-center gap-16 border-t border-line py-12">
+            <Reveal key={s.id} id={s.id} className="grid grid-cols-1 lg:grid-cols-2 items-start lg:items-center gap-10 lg:gap-16 border-t border-line py-12">
               {s.imageLeft ? (
                 <>
                   <div className={`ph image-4-3${s.imageStyle ? ' ' + s.imageStyle : ''}`} data-label={s.imageLabel} />
