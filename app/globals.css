@@ -1507,3 +1507,6 @@ section:not(.dark-section) .step { border-bottom-color: var(--line); }
   .mosaic-6x2               { grid-column: span 1; }
   .mosaic-4x2               { grid-column: span 1; }
 }
+.center-intro .eyebrow {
+  margin-bottom: 22px;
+}
