@@ -86,7 +86,9 @@ export default function JournalPage() {
         <div className="container">
           <div className="hero-split">
             <div>
-              <Eyebrow>Notes from the studio</Eyebrow>
+              <div className="pb-4">
+                <Eyebrow>— Notes from the studio —</Eyebrow>
+              </div>
               <h1 className="h-display h1 hero-title-gap">
                 Things we<br />
                 <em className="brand-accent">learn</em>, things we<br />
@@ -104,10 +106,10 @@ export default function JournalPage() {
       {/* ── Featured ───────────────────────────────────── */}
       <section className="section-page-short">
         <div className="container">
-          <Reveal className="journal-featured">
+          <Reveal className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
             <div className="ph amber-tint image-4-3 rounded-media" data-label="Spring 2026 weddings · feature" />
             <div>
-              <div className="actions-row mb-[18px]">
+              <div className="actions-row mb-[18px] flex-wrap">
                 <Pill variant="amber">— Featured —</Pill>
                 <Pill>Trends</Pill>
                 <Pill>8 min read</Pill>
@@ -115,12 +117,14 @@ export default function JournalPage() {
               <h2 className="h-display h2">
                 What's actually changing in <em className="italic">spring 2026</em> weddings.
               </h2>
-              <p className="lede mt-5">
+              <p className="lede mt-4 md:mt-5">
                 Less white tents. More dinner-plate moments. A field report from our last six bookings
                 — and the four trends we're seeing rise across the season.
               </p>
-              <div className="actions-row mt-6">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper-3 text-xs font-semibold">AM</div>
+              <div className="actions-row mt-5 md:mt-6">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper-3 text-xs font-semibold">
+                  AM
+                </div>
                 <span className="muted text-[13px]">Aanya Mehta · 4 days ago</span>
               </div>
             </div>
@@ -131,16 +135,28 @@ export default function JournalPage() {
       {/* ── Posts grid ─────────────────────────────────── */}
       <section className="section-page-top">
         <div className="container">
-          <div className="chip-row reveal mb-10">
-            <button className="chip active">All posts</button>
-            <button className="chip">Weddings</button>
-            <button className="chip">Corporate</button>
-            <button className="chip">Honest pricing</button>
-            <button className="chip">How-to</button>
-            <button className="chip">Behind the scenes</button>
+          <div className="mb-8 flex flex-wrap gap-2 md:mb-10 md:gap-3">
+            <button className="!rounded-full !bg-black !px-4 !py-2 !text-sm !text-white md:!px-5">
+              All posts
+            </button>
+            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
+              Weddings
+            </button>
+            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
+              Corporate
+            </button>
+            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
+              Honest pricing
+            </button>
+            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
+              How-to
+            </button>
+            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
+              Behind the scenes
+            </button>
           </div>
 
-          <Reveal className="grid-3-cards gap-x-6 gap-y-8">
+          <Reveal className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 [&_h3]:font-bold">
             {POSTS.map((post) => (
               <ArticleCard key={post.title} href="#" imageTall {...post} />
             ))}
@@ -149,11 +165,11 @@ export default function JournalPage() {
       </section>
 
       {/* ── Newsletter ─────────────────────────────────── */}
-      <section className="pb-[140px]">
+      <section className="pb-16 md:pb-[140px]">
         <div className="container">
           <Reveal
             data-scroll="cta"
-            className="panel-cta-sm panel-cta-dark cta-split-dark"
+            className="panel-cta-sm panel-cta-dark grid grid-cols-1 items-center gap-8 md:gap-12 lg:grid-cols-[1.1fr_1fr]"
           >
             <div>
               <Eyebrow className="text-paper-muted">— quarterly journal —</Eyebrow>

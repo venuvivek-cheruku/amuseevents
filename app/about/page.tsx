@@ -64,7 +64,9 @@ export default function AboutPage() {
         <div className="container">
           <div className="hero-split">
             <div>
-              <Eyebrow>Isleworth, London · est. 2014</Eyebrow>
+              <Eyebrow className="pb-4 md:pb-6">
+                Isleworth, London · est. 2014
+              </Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 A small studio,<br />
                 <em className="brand-accent">eleven years</em><br />
@@ -81,24 +83,33 @@ export default function AboutPage() {
 
       {/* ── Founder story ──────────────────────────────── */}
       <section className="section-page">
-        <div className="container content-split-reverse">
-          <div className="ph reveal image-4-5" data-label="Founder · Aanya at the studio" />
-          <Reveal>
-            <SectionHeading eyebrow="— our story —">
-              Started with one wedding<br />in a <em className="italic">friend's garden</em>.
-            </SectionHeading>
-            <p className="body-text mt-6">
-              In 2014, Aanya planned her best friend's wedding in a back garden in Isleworth. It was
-              sixty guests, two folding tables, a borrowed marquee and a karaoke machine. Eleven years
-              later, we've held everything from a £180k product launch to a five-year-old's pirate party
-              — but the brief is still the same: <strong>nothing on the day surprises you except the good bits</strong>.
-            </p>
-            <p className="body-text mt-[18px]">
-              We stayed small on purpose. Eleven people, no juniors learning on your day, no sub-contracting
-              the bits that matter. The voice you fall for in the consultation is the same one keeping
-              things calm at 11pm when the rain starts.
-            </p>
-          </Reveal>
+        <div className="container">
+          <div className="grid grid-cols-1 items-center gap-10 md:gap-16 lg:grid-cols-[1fr_1.2fr]">
+            <div className="ph image-4-5 hidden md:block" data-label="Founder · Aanya at the studio" />
+            <Reveal>
+              <div className="pb-4 md:pb-5">
+                <Eyebrow>— our story —</Eyebrow>
+              </div>
+
+              <SectionHeading>
+                Started with one wedding<br />in a <em className="italic">friend's garden</em>.
+              </SectionHeading>
+
+              <div className="mt-6 flex flex-col gap-6">
+                <p className="body-text">
+                  In 2014, Aanya planned her best friend's wedding in a back garden in Isleworth. It was
+                  sixty guests, two folding tables, a borrowed marquee and a karaoke machine. Eleven years
+                  later, we've held everything from a £180k product launch to a five-year-old's pirate party
+                  — but the brief is still the same: <strong>nothing on the day surprises you except the good bits</strong>.
+                </p>
+                <p className="body-text">
+                  We stayed small on purpose. Eleven people, no juniors learning on your day, no sub-contracting
+                  the bits that matter. The voice you fall for in the consultation is the same one keeping
+                  things calm at 11pm when the rain starts.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -111,11 +122,14 @@ export default function AboutPage() {
               <em className="italic">the studio</em>.
             </SectionHeading>
           </Reveal>
-          <Reveal className="grid-5-cards">
+
+          <Reveal className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 md:mt-16">
             {PRINCIPLES.map((p) => (
               <div key={p.n}>
-                <div className="serif-accent text-[56px]">{p.n}</div>
-                <h3 className="serif-card-title my-3.5 mb-2 text-paper">{p.title}</h3>
+                <div className="serif-accent text-[40px] md:text-[56px]">{p.n}</div>
+                <h3 className="serif-card-title !font-bold my-3.5 mb-2 text-paper">
+                  {p.title}
+                </h3>
                 <p className="small-paper-muted">{p.body}</p>
               </div>
             ))}
@@ -126,17 +140,24 @@ export default function AboutPage() {
       {/* ── Team ───────────────────────────────────────── */}
       <section id="team" className="section-page-xl">
         <div className="container">
-          <Reveal className="mb-16">
-            <SectionHeading eyebrow="— the eleven —">Meet the studio.</SectionHeading>
+          <Reveal className="mb-10 md:mb-16">
+            <div className="mb-4">
+              <Eyebrow>— the eleven —</Eyebrow>
+            </div>
+
+            <SectionHeading>
+              Meet the studio.
+            </SectionHeading>
           </Reveal>
-          <Reveal className="grid-4-cards">
+
+          <Reveal className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:gap-8 lg:grid-cols-4">
             {TEAM.map((m) => (
               <div key={m.name}>
                 <div
                   className={`ph image-square rounded-ae-lg ${m.light ? 'bg-paper-2' : ''}${m.img ? ' ' + m.img : ''}`}
                   data-label={m.label}
                 />
-                <h3 className="serif-card-title mt-4 mb-1">{m.name}</h3>
+                <h3 className="serif-card-title !font-bold mt-4 mb-3">{m.name}</h3>
                 <p className="muted text-[13px]">{m.role}</p>
               </div>
             ))}
@@ -147,17 +168,25 @@ export default function AboutPage() {
       {/* ── Reviews ────────────────────────────────────── */}
       <section id="reviews" className="section-paper-2 section-page-md">
         <div className="container">
-          <Reveal className="section-heading-row mb-12">
-            <SectionHeading eyebrow="— what people say —">
-              213 reviews. <em className="italic">4.9 stars.</em>
-            </SectionHeading>
-            <div className="flex items-center gap-4">
+          <Reveal className="mb-8 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="pb-4">
+                <Eyebrow>— what people say —</Eyebrow>
+              </div>
+
+              <SectionHeading>
+                213 reviews. <em className="italic">4.9 stars.</em>
+              </SectionHeading>
+            </div>
+
+            <div className="flex items-center gap-3 md:gap-4">
               <Pill variant="amber">Google</Pill>
               <Pill>Trustpilot</Pill>
               <Pill>Hitched</Pill>
             </div>
           </Reveal>
-          <Reveal className="grid-3-reviews">
+
+          <Reveal className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-5">
             {REVIEWS.map((r) => (
               <ReviewCard key={r.name} {...r} />
             ))}
@@ -167,11 +196,16 @@ export default function AboutPage() {
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="amber">
-        <h2 className="h-display h2">Come say hi.</h2>
-        <p className="mt-[18px] text-lg text-ink-2">
+        <h2 className="h-display h2 !text-paper">Come say hi.</h2>
+        <p className="mt-[18px] text-lg !text-paper">
           Coffee at the studio in Isleworth. No deposit, no pitch.
         </p>
-        <Btn href="/contact" variant="primary" size="lg" className="mt-8">
+        <Btn
+          href="/contact"
+          variant="primary"
+          size="lg"
+          className="mt-8 !bg-paper !text-amber"
+        >
           Book a 20-min consult <ButtonArrow />
         </Btn>
       </CtaPanel>

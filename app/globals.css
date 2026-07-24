@@ -2966,3 +2966,6 @@ section:not(.dark-section) .step {
     grid-column: span 1;
   }
 }
+.center-intro .eyebrow {
+  margin-bottom: 22px;
+}

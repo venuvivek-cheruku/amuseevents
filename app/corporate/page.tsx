@@ -60,25 +60,36 @@ export default function CorporatePage() {
         <div className="container">
           <div className="hero-split-corporate">
             <div>
-              <Eyebrow>Corporate &amp; office events</Eyebrow>
+              <div className="pb-4 pt-4 md:pb-6">
+                <Eyebrow>Corporate &amp; office events</Eyebrow>
+              </div>
+
               <h1 className="h-display h1 hero-title-gap">
                 Discreet,<br />on time,<br />
                 <em className="brand-accent">on brand</em>.
               </h1>
+
               <p className="lede lede-gap">
                 Launches, conferences, summer parties, off-sites, awards nights. We've delivered
                 for fintech, agencies, family offices and law firms — quietly, since 2014.
               </p>
-              <div className="actions-row mt-9">
+
+              <div className="actions-row mt-6 flex-wrap md:mt-9">
                 <Btn href="/contact" variant="amber" size="lg">
                   Brief us in 5 minutes <ButtonArrow />
                 </Btn>
-                <Btn href="#case-studies" variant="ghost" size="lg" className="btn-paper-outline">
+                <Btn
+                  href="#case-studies"
+                  variant="ghost"
+                  size="lg"
+                  className="!border !border-line !text-paper hover:!border-line hover:!text-paper hover:!bg-transparent"
+                >
                   See case studies
                 </Btn>
               </div>
             </div>
-            <div className="ph dark image-4-5" data-label="Corporate launch · stage build" />
+
+            <div className="ph dark image-4-5 hidden md:block" data-label="Corporate launch · stage build" />
           </div>
         </div>
       </section>
@@ -86,10 +97,10 @@ export default function CorporatePage() {
       {/* ── Trust logos ────────────────────────────────── */}
       <section className="section-page-short section-bordered">
         <div className="container">
-          <p className="mono mb-8 text-center uppercase tracking-[.14em] text-ink-3">
+          <p className="mono mb-6 text-center uppercase tracking-[.14em] text-ink-3 md:mb-8">
             Trusted by — anonymised on request
           </p>
-          <Reveal className="grid-6-logos">
+          <Reveal className="grid grid-cols-2 items-center gap-4 md:grid-cols-3 lg:grid-cols-6 lg:gap-6">
             {['Fintech', 'Law firm', 'Agency', 'Hotel group', 'Family office', 'Tech start-up'].map((label) => (
               <div key={label} className="ph image-logo" data-label={label} />
             ))}
@@ -100,17 +111,24 @@ export default function CorporatePage() {
       {/* ── What we deliver ────────────────────────────── */}
       <section className="section-page">
         <div className="container">
-          <Reveal className="section-heading-narrow mb-16">
-            <SectionHeading eyebrow="— what we deliver —">
+          <Reveal className="section-heading-narrow mb-10 pb-2 pt-6 md:mb-16 md:pt-10">
+            <div className="mb-4">
+              <Eyebrow>— what we deliver —</Eyebrow>
+            </div>
+
+            <SectionHeading>
               Six formats,<br />
               <em className="italic">one signature</em>: it just runs.
             </SectionHeading>
           </Reveal>
-          <Reveal className="grid-3-cards">
+
+          <Reveal className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {FORMATS.map((f) => (
               <div key={f.n} className="card">
                 <Pill variant="amber">{f.n}</Pill>
-                <h3 className="serif-card-title-lg my-3.5 mb-2">{f.title}</h3>
+                <h3 className="serif-card-title-lg !font-semibold my-3.5 mb-2">
+                  {f.title}
+                </h3>
                 <p className="muted text-sm">{f.body}</p>
               </div>
             ))}
@@ -119,23 +137,40 @@ export default function CorporatePage() {
       </section>
 
       {/* ── Case studies ───────────────────────────────── */}
-      <section id="case-studies" className="section-page section-paper-2">
+      <section id="case-studies" className="section-page bg-paper-2">
         <div className="container">
-          <Reveal className="mb-14">
-            <SectionHeading eyebrow="— recent —">
-              Three from <em className="italic">this year</em>
+          <Reveal className="section-heading-narrow mb-10 pb-2 pt-6 md:mb-16 md:pt-10">
+            <div className="mb-4">
+              <Eyebrow>— recent —</Eyebrow>
+            </div>
+
+            <SectionHeading>
+              Two from <em className="italic">this year</em>
             </SectionHeading>
           </Reveal>
-          <Reveal className="grid-2-cards">
-            {CASE_STUDIES.map((cs) => (
-              <div key={cs.title} className="card card-flat">
-                <div className={`ph image-16-9${cs.img ? ' ' + cs.img : ''}`} data-label={cs.label} />
-                <div className="card-pad">
-                  <div className="mono muted mb-3 uppercase">— {cs.date}</div>
-                  <h3 className="h-display h4">{cs.title}</h3>
-                  <p className="muted mt-3">{cs.body}</p>
-                  <div className="flex flex-wrap items-center gap-4 mt-5">
-                    {cs.pills.map((p) => <Pill key={p}>{p}</Pill>)}
+
+          <Reveal className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {CASE_STUDIES.map((c) => (
+              <div key={c.title} className="card !p-0 overflow-hidden">
+                <div
+                  className={`ph image-16-9 rounded-none ${c.img ? c.img : ''}`}
+                  data-label={c.label}
+                />
+
+                <div className="px-5 pb-6 pt-3 md:px-8 md:pb-8">
+                  <p className="mono mb-3 text-[11px] uppercase tracking-[.14em] text-ink-3">
+                    {c.date}
+                  </p>
+                  <h3 className="serif-card-title-lg !font-semibold mb-3">
+                    {c.title}
+                  </h3>
+                  <p className="muted text-sm mb-4">{c.body}</p>
+                  <div className="chip-row flex-wrap">
+                    {c.pills.map((pill) => (
+                      <span key={pill} className="chip !bg-paper-2">
+                        {pill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
