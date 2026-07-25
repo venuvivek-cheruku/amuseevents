@@ -45,10 +45,18 @@ const EVENT_FIELDS = `
 
 export async function getAllEvents(): Promise<Event[]> {
   const query = `*[_type == "event" && published == true] | order(date asc) { ${EVENT_FIELDS} }`
-  return sanityClient.fetch<Event[]>(query, {}, { next: { revalidate: 300 } })
+  try {
+    return await sanityClient.fetch<Event[]>(query, {}, { next: { revalidate: 300 } })
+  } catch {
+    return []
+  }
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | null> {
   const query = `*[_type == "event" && slug.current == $slug][0] { ${EVENT_FIELDS} }`
-  return sanityClient.fetch<Event | null>(query, { slug }, { next: { revalidate: 300 } })
+  try {
+    return await sanityClient.fetch<Event | null>(query, { slug }, { next: { revalidate: 300 } })
+  } catch {
+    return null
+  }
 }
