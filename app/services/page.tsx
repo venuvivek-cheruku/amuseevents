@@ -11,34 +11,19 @@ import { CONTACT } from '@/lib/utils'
 export const metadata: Metadata = {
   title: 'Services — Event Planning London',
   description:
-    'Ten event services from a London studio. Weddings, birthdays, corporate, kids parties, DJ nights, outdoor events, production and more. Calm planning. Joyful days.',
+    'Eight event services from a London studio. Birthdays, kids parties, DJ nights, outdoor events, production and more. Calm planning. Joyful days.',
   alternates: { canonical: 'https://amuseevents.co.uk/services' },
   openGraph: {
     title: 'Services — Amuse Events',
-    description: 'Ten event services. One team. From quiet 30-guest dinners to 600-person launches.',
+    description: 'Eight event services. One team. From quiet 30-guest dinners to 600-person launches.',
     url: 'https://amuseevents.co.uk/services',
   },
 }
 
 const SERVICES = [
   {
-    id: 'weddings',
-    num: '01',
-    cat: 'Celebrations',
-    tag: 'Most popular',
-    title: 'Weddings',
-    body: 'From day-of coordination to full design and planning. Three packages, no hidden costs, three quiet planners on your side from month -9 to last dance.',
-    features: ['Day-of coordination', 'Partial planning', 'Full planning & design', 'Vendor sourcing', 'Run-of-day timeline', 'On-site team of 2–4'],
-    href: '/weddings',
-    cta: 'Wedding packages',
-    from: 'from £1,400',
-    imageStyle: 'amber-tint',
-    imageLabel: 'Wedding · ceremony detail',
-    imageLeft: true,
-  },
-  {
     id: 'birthdays',
-    num: '02',
+    num: '01',
     cat: 'Celebrations',
     title: 'Birthdays',
     body: 'Big numbers (50ths, 60ths, 70ths) and the small ones too. We handle the venue, food, music and styling — you just send the invites.',
@@ -48,11 +33,11 @@ const SERVICES = [
     from: 'from £900',
     imageStyle: '',
     imageLabel: 'Birthday · 50th · garden',
-    imageLeft: false,
+    imageLeft: true,
   },
   {
     id: 'kids',
-    num: '03',
+    num: '02',
     cat: 'Celebrations',
     title: 'Kids entertainment',
     body: 'Magicians, character actors, balloon artists, soft-play, science shows. DBS-checked entertainers and a full structured plan so the chaos is the joyful kind.',
@@ -62,25 +47,11 @@ const SERVICES = [
     from: 'from £450',
     imageStyle: 'amber-tint',
     imageLabel: 'Kids party · joy detail',
-    imageLeft: true,
-  },
-  {
-    id: 'corporate',
-    num: '04',
-    cat: 'Corporate',
-    title: 'Corporate & office events',
-    body: 'Product launches, conferences, summer parties, off-sites and Christmas. Delivered for fintech, agencies, family offices and law firms — discreetly, on time, on budget.',
-    features: ['Product launches', 'Conferences', 'Summer / winter parties', 'Off-sites', 'Awards nights', 'Brand activations'],
-    href: '/corporate',
-    cta: 'Corporate page',
-    from: 'from £3,200',
-    imageStyle: 'dark',
-    imageLabel: 'Corporate launch · stage & lighting',
     imageLeft: false,
   },
   {
     id: 'dj',
-    num: '05',
+    num: '03',
     cat: 'Celebrations',
     title: 'DJ & club events',
     body: 'In-house DJs across genres — house, hip-hop, garage, Bollywood, soul. Plus full venue partnerships for one-night takeovers and brand club nights.',
@@ -94,7 +65,7 @@ const SERVICES = [
   },
   {
     id: 'private',
-    num: '06',
+    num: '04',
     cat: 'Celebrations',
     title: 'Private parties',
     body: 'Anniversaries, engagements, christenings, retirements, "just-because" suppers. Anything important to you, planned with the same care as a 200-guest wedding.',
@@ -108,7 +79,7 @@ const SERVICES = [
   },
   {
     id: 'outdoor',
-    num: '07',
+    num: '05',
     cat: 'Production',
     title: 'Outdoor events',
     body: 'Garden parties, marquee weddings, festival-style birthdays. We bring everything — flooring, generators, loos, bars, weather plans and a small army that\'s done it before.',
@@ -122,7 +93,7 @@ const SERVICES = [
   },
   {
     id: 'production',
-    num: '08',
+    num: '06',
     cat: 'Production',
     title: 'Event supplies & production',
     body: 'Marquees, staging, sound, lighting, AV, generators, dance floors, bars, furniture, tableware. Hire standalone or bundled into a planning package.',
@@ -136,7 +107,7 @@ const SERVICES = [
   },
   {
     id: 'decor',
-    num: '09',
+    num: '07',
     cat: 'Creative',
     title: 'Art work & décor',
     body: 'In-house design for backdrops, signage, florals, neon, installations. We design it, source it, build it, take it away the next morning.',
@@ -150,7 +121,7 @@ const SERVICES = [
   },
   {
     id: 'photography',
-    num: '10',
+    num: '08',
     cat: 'Creative',
     title: 'Photography & film',
     body: 'Documentary, editorial and corporate. Same-day socials, three-week edits, signature albums. Book on its own or bundled with planning.',
@@ -179,7 +150,7 @@ export default function ServicesPage() {
         <div className="container">
           <div className="hero-split">
             <div>
-              <Eyebrow>Ten things we do well</Eyebrow>
+              <Eyebrow>Eight things we do well</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Whatever the<br />moment,{' '}
                 <em className="brand-accent">we hold it</em>.
@@ -199,7 +170,6 @@ export default function ServicesPage() {
           <div className="chip-row reveal mb-14">
             <button className="chip active">All services</button>
             <button className="chip">Celebrations</button>
-            <button className="chip">Corporate</button>
             <button className="chip">Production</button>
             <button className="chip">Creative</button>
           </div>
@@ -246,7 +216,6 @@ function ServiceContent({ s }: { s: (typeof SERVICES)[0] }) {
     <div>
       <div className="actions-row mb-5">
         <Pill variant="amber">{s.num} — {s.cat}</Pill>
-        {s.tag && <Pill>{s.tag}</Pill>}
       </div>
       <h2 className="h-display h3">{s.title}</h2>
       <p className="body-text mt-4 max-w-[56ch]">{s.body}</p>
