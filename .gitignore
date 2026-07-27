@@ -28,6 +28,9 @@ Thumbs.db
 # Sanity
 .sanity/
 
+# Claude Code agent worktrees
+.claude/worktrees/
+
 # design reference (source prototypes, not needed in repo)
 design-reference/
 .vercel
