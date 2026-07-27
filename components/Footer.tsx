@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
 import {
   ButtonArrow,
@@ -112,8 +115,17 @@ export function Footer() {
 }
 
 function StickyBar() {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 600)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <div className="sticky-bar" id="stickyBar">
+    <div className={`sticky-bar${show ? ' show' : ''}`} id="stickyBar">
       <span className="text">
         Ready to plan? <b>Free consultation, no card needed.</b>
       </span>
