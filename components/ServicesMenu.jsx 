@@ -1,0 +1,107 @@
+'use client';
+
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
+export default function ServicesMenu() {
+  const [open, setOpen] = useState(false);
+
+  const services = [
+    'Weddings',
+    'Birthdays',
+    'Kids Entertainment',
+    'Corporate Events',
+    'DJ & Club Events',
+    'Private Parties',
+    'Outdoor Events',
+    'Event Production',
+    'Art Work & Décor',
+    'Photography & Film',
+  ];
+
+  return (
+    <div className="relative z-50">
+      {/* Button */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-2 rounded-full border border-[#f97316] bg-white px-4 py-2 text-sm font-medium text-[#f97316] shadow-sm transition hover:bg-orange-50"
+      >
+        Services
+        <ChevronDown
+          className={\`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}\`}
+        />
+      </button>
+
+      {/* Mega dropdown */}
+      {open && (
+        <div className="absolute left-1/2 top-full mt-4 w-[920px] -translate-x-1/2">
+          <div className="overflow-hidden rounded-[36px] border border-black/5 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+            <div className="grid grid-cols-[320px_1fr]">
+              {/* Left feature panel */}
+              <div className="bg-black p-6 text-white">
+                <h3 className="text-3xl font-semibold leading-tight">
+                  Exceptional Care for Aging with Dignity
+                </h3>
+
+                <p className="mt-4 text-white/70">
+                  High-quality caregiving designed around comfort and respect.
+                </p>
+
+                <img
+                  src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop"
+                  alt="Family"
+                  className="mt-6 h-72 w-full rounded-[24px] object-cover"
+                />
+              </div>
+
+              {/* Right services area */}
+              <div className="flex flex-col justify-between p-6">
+                <div>
+                  <div className="mb-4 flex items-center justify-between">
+                    <h4 className="text-lg font-semibold text-black">
+                      Special Services
+                    </h4>
+                    <span className="text-sm text-gray-400">Coming soon</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    {services.map((service) => (
+                      <button
+                        key={service}
+                        className="flex items-center gap-4 rounded-3xl border border-gray-200 p-4 text-left transition hover:border-gray-300 hover:shadow-sm"
+                      >
+                        <div className="h-12 w-12 rounded-2xl border border-gray-200 bg-gray-50" />
+                        <div>
+                          <p className="font-medium text-gray-900">{service}</p>
+                          <p className="text-sm text-gray-500">
+                            Explore service details
+                          </p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom CTA */}
+                <div className="mt-6 flex items-center justify-between rounded-3xl bg-gray-50 p-5">
+                  <div>
+                    <p className="font-semibold text-gray-900">
+                      Need help choosing a service?
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      We can help you find the right option.
+                    </p>
+                  </div>
+
+                  <button className="rounded-full bg-black px-6 py-3 text-white transition hover:bg-gray-900">
+                    Contact us
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
