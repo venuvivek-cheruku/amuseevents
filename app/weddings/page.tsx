@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import  Metadata  from 'next'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ButtonArrow, IconCheck } from '@/components/icons/AppIcons'

@@ -1,4 +1,6 @@
-import type { Metadata } from 'next'
+// app/services/page.tsx
+
+import  Metadata  from 'next'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ButtonArrow, IconSparkle } from '@/components/icons/AppIcons'
@@ -15,7 +17,8 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://amuseevents.co.uk/services' },
   openGraph: {
     title: 'Services — Amuse Events',
-    description: 'Ten event services. One team. From quiet 30-guest dinners to 600-person launches.',
+    description:
+      'Ten event services. One team. From quiet 30-guest dinners to 600-person launches.',
     url: 'https://amuseevents.co.uk/services',
   },
 }
@@ -28,7 +31,14 @@ const SERVICES = [
     tag: 'Most popular',
     title: 'Weddings',
     body: 'From day-of coordination to full design and planning. Three packages, no hidden costs, three quiet planners on your side from month -9 to last dance.',
-    features: ['Day-of coordination', 'Partial planning', 'Full planning & design', 'Vendor sourcing', 'Run-of-day timeline', 'On-site team of 2–4'],
+    features: [
+      'Day-of coordination',
+      'Partial planning',
+      'Full planning & design',
+      'Vendor sourcing',
+      'Run-of-day timeline',
+      'On-site team of 2–4',
+    ],
     href: '/weddings',
     cta: 'Wedding packages',
     from: 'from £1,400',
@@ -42,8 +52,15 @@ const SERVICES = [
     cat: 'Celebrations',
     title: 'Birthdays',
     body: 'Big numbers (50ths, 60ths, 70ths) and the small ones too. We handle the venue, food, music and styling — you just send the invites.',
-    features: ['Venue sourcing', 'Catering management', 'Bar & drinks', 'Décor & styling', 'Music & DJ', 'Photography optional'],
-    href: '/contact',
+    features: [
+      'Venue sourcing',
+      'Catering management',
+      'Bar & drinks',
+      'Décor & styling',
+      'Music & DJ',
+      'Photography optional',
+    ],
+    href: '/services/birthdays',
     cta: 'Plan a birthday',
     from: 'from £900',
     imageStyle: '',
@@ -56,8 +73,15 @@ const SERVICES = [
     cat: 'Celebrations',
     title: 'Kids entertainment',
     body: 'Magicians, character actors, balloon artists, soft-play, science shows. DBS-checked entertainers and a full structured plan so the chaos is the joyful kind.',
-    features: ['Magicians & clowns', 'Princess & superhero', 'Balloon & face paint', 'Soft-play hire', 'Party hosting', 'Cake & catering'],
-    href: '/contact',
+    features: [
+      'Magicians & clowns',
+      'Princess & superhero',
+      'Balloon & face paint',
+      'Soft-play hire',
+      'Party hosting',
+      'Cake & catering',
+    ],
+    href: '/services/kids',
     cta: 'Book a kids party',
     from: 'from £450',
     imageStyle: 'amber-tint',
@@ -70,7 +94,14 @@ const SERVICES = [
     cat: 'Corporate',
     title: 'Corporate & office events',
     body: 'Product launches, conferences, summer parties, off-sites and Christmas. Delivered for fintech, agencies, family offices and law firms — discreetly, on time, on budget.',
-    features: ['Product launches', 'Conferences', 'Summer / winter parties', 'Off-sites', 'Awards nights', 'Brand activations'],
+    features: [
+      'Product launches',
+      'Conferences',
+      'Summer / winter parties',
+      'Off-sites',
+      'Awards nights',
+      'Brand activations',
+    ],
     href: '/corporate',
     cta: 'Corporate page',
     from: 'from £3,200',
@@ -84,8 +115,15 @@ const SERVICES = [
     cat: 'Celebrations',
     title: 'DJ & club events',
     body: 'In-house DJs across genres — house, hip-hop, garage, Bollywood, soul. Plus full venue partnerships for one-night takeovers and brand club nights.',
-    features: ['Resident & guest DJs', 'Sound system hire', 'Club takeovers', 'MC & live vocals', 'Lighting & visuals', 'Bar packages'],
-    href: '/contact',
+    features: [
+      'Resident & guest DJs',
+      'Sound system hire',
+      'Club takeovers',
+      'MC & live vocals',
+      'Lighting & visuals',
+      'Bar packages',
+    ],
+    href: '/services/dj',
     cta: 'Book a DJ',
     from: 'from £350',
     imageStyle: 'dark',
@@ -98,8 +136,15 @@ const SERVICES = [
     cat: 'Celebrations',
     title: 'Private parties',
     body: 'Anniversaries, engagements, christenings, retirements, "just-because" suppers. Anything important to you, planned with the same care as a 200-guest wedding.',
-    features: ['Venue sourcing', 'Full catering', 'Décor & florals', 'Music & entertainment', 'Photographer optional', 'On-site coordination'],
-    href: '/contact',
+    features: [
+      'Venue sourcing',
+      'Full catering',
+      'Décor & florals',
+      'Music & entertainment',
+      'Photographer optional',
+      'On-site coordination',
+    ],
+    href: '/services/private',
     cta: 'Plan a party',
     from: 'from £700',
     imageStyle: '',
@@ -111,9 +156,16 @@ const SERVICES = [
     num: '07',
     cat: 'Production',
     title: 'Outdoor events',
-    body: 'Garden parties, marquee weddings, festival-style birthdays. We bring everything — flooring, generators, loos, bars, weather plans and a small army that\'s done it before.',
-    features: ['Marquee supply', 'Flooring & lighting', 'Generator hire', 'Weather contingency', 'Bar setup', 'Full logistics'],
-    href: '/contact',
+    body: "Garden parties, marquee weddings, festival-style birthdays. We bring everything — flooring, generators, loos, bars, weather plans and a small army that's done it before.",
+    features: [
+      'Marquee supply',
+      'Flooring & lighting',
+      'Generator hire',
+      'Weather contingency',
+      'Bar setup',
+      'Full logistics',
+    ],
+    href: '/services/outdoor',
     cta: 'Outdoor enquiry',
     from: 'from £2,400',
     imageStyle: '',
@@ -126,8 +178,15 @@ const SERVICES = [
     cat: 'Production',
     title: 'Event supplies & production',
     body: 'Marquees, staging, sound, lighting, AV, generators, dance floors, bars, furniture, tableware. Hire standalone or bundled into a planning package.',
-    features: ['Marquee & staging', 'Sound & AV', 'Lighting rigs', 'Dance floors', 'Furniture hire', 'Full strike crew'],
-    href: '/contact',
+    features: [
+      'Marquee & staging',
+      'Sound & AV',
+      'Lighting rigs',
+      'Dance floors',
+      'Furniture hire',
+      'Full strike crew',
+    ],
+    href: '/services/production',
     cta: 'Production quote',
     from: 'priced per spec',
     imageStyle: 'dark',
@@ -140,8 +199,15 @@ const SERVICES = [
     cat: 'Creative',
     title: 'Art work & décor',
     body: 'In-house design for backdrops, signage, florals, neon, installations. We design it, source it, build it, take it away the next morning.',
-    features: ['Bespoke backdrops', 'Custom signage', 'Floral design', 'Neon & lighting art', 'Installations', 'Morning strike'],
-    href: '/contact',
+    features: [
+      'Bespoke backdrops',
+      'Custom signage',
+      'Floral design',
+      'Neon & lighting art',
+      'Installations',
+      'Morning strike',
+    ],
+    href: '/services/decor',
     cta: 'Discuss creative',
     from: 'from £600',
     imageStyle: '',
@@ -154,8 +220,15 @@ const SERVICES = [
     cat: 'Creative',
     title: 'Photography & film',
     body: 'Documentary, editorial and corporate. Same-day socials, three-week edits, signature albums. Book on its own or bundled with planning.',
-    features: ['Documentary style', 'Same-day socials', 'Highlight film', 'Full day coverage', 'Signature albums', 'Corporate headshots'],
-    href: '/contact',
+    features: [
+      'Documentary style',
+      'Same-day socials',
+      'Highlight film',
+      'Full day coverage',
+      'Signature albums',
+      'Corporate headshots',
+    ],
+    href: '/services/photography',
     cta: 'Photography brief',
     from: 'from £750',
     imageStyle: '',
@@ -181,13 +254,15 @@ export default function ServicesPage() {
             <div>
               <Eyebrow>Ten things we do well</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
-                Whatever the<br />moment,{' '}
+                Whatever the
+                <br />
+                moment,{' '}
                 <em className="brand-accent">we hold it</em>.
               </h1>
             </div>
             <p className="lede">
-              From a quiet 30-guest dinner to a 600-person product launch, every service runs
-              through the same small team.
+              From a quiet 30-guest dinner to a 600-person product launch,
+              every service runs through the same small team.
             </p>
           </div>
         </div>
@@ -205,16 +280,30 @@ export default function ServicesPage() {
           </div>
 
           {SERVICES.map((s) => (
-            <Reveal key={s.id} id={s.id} className="grid grid-cols-1 lg:grid-cols-2 items-start lg:items-center gap-10 lg:gap-16 border-t border-line py-12">
+            <Reveal
+              key={s.id}
+              id={s.id}
+              className="grid grid-cols-1 items-start gap-10 border-t border-line py-12 lg:grid-cols-2 lg:items-center lg:gap-16"
+            >
               {s.imageLeft ? (
                 <>
-                  <div className={`ph image-4-3${s.imageStyle ? ' ' + s.imageStyle : ''}`} data-label={s.imageLabel} />
+                  <div
+                    className={`ph image-4-3${
+                      s.imageStyle ? ' ' + s.imageStyle : ''
+                    }`}
+                    data-label={s.imageLabel}
+                  />
                   <ServiceContent s={s} />
                 </>
               ) : (
                 <>
                   <ServiceContent s={s} />
-                  <div className={`ph image-4-3${s.imageStyle ? ' ' + s.imageStyle : ''}`} data-label={s.imageLabel} />
+                  <div
+                    className={`ph image-4-3${
+                      s.imageStyle ? ' ' + s.imageStyle : ''
+                    }`}
+                    data-label={s.imageLabel}
+                  />
                 </>
               )}
             </Reveal>
@@ -224,15 +313,25 @@ export default function ServicesPage() {
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="dark" sectionClass="section-page-tight-bottom">
-        <Eyebrow center className="text-paper-muted">Not sure which service?</Eyebrow>
+        <Eyebrow center className="text-paper-muted">
+          Not sure which service?
+        </Eyebrow>
         <h2 className="h-display h2 title-gap text-paper">
-          Tell us the day.<br />We'll suggest the shape.
+          Tell us the day.
+          <br />
+          We&apos;ll suggest the shape.
         </h2>
         <div className="actions-center mt-9">
           <Btn href="/contact" variant="amber" size="lg">
             Free 20-min consult <ButtonArrow />
           </Btn>
-          <Btn href={CONTACT.waUrl} variant="ghost" size="lg" external className="btn-paper-outline">
+          <Btn
+            href={CONTACT.waUrl}
+            variant="ghost"
+            size="lg"
+            external
+            className="btn-paper-outline"
+          >
             WhatsApp instead
           </Btn>
         </div>
@@ -245,11 +344,16 @@ function ServiceContent({ s }: { s: (typeof SERVICES)[0] }) {
   return (
     <div>
       <div className="actions-row mb-5">
-        <Pill variant="amber">{s.num} — {s.cat}</Pill>
+        <Pill variant="amber">
+          {s.num} — {s.cat}
+        </Pill>
         {s.tag && <Pill>{s.tag}</Pill>}
       </div>
+
       <h2 className="h-display h3">{s.title}</h2>
+
       <p className="body-text mt-4 max-w-[56ch]">{s.body}</p>
+
       <ul className="grid-two-list my-6">
         {s.features.map((f) => (
           <li key={f} className="flex gap-2">
@@ -258,6 +362,7 @@ function ServiceContent({ s }: { s: (typeof SERVICES)[0] }) {
           </li>
         ))}
       </ul>
+
       <div className="actions-row">
         <Btn href={s.href} variant="primary">
           {s.cta} <ButtonArrow />
