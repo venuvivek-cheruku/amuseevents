@@ -22,12 +22,14 @@ import {
   FaMusic,
   FaPalette,
   FaPhone,
+  FaPlay,
   FaShieldHalved,
   FaStar,
   FaTree,
   FaWandMagicSparkles,
   FaWhatsapp,
   FaXmark,
+  FaYoutube,
 } from 'react-icons/fa6'
 import type { SVGProps } from 'react'
 

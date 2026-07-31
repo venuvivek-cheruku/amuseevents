@@ -52,11 +52,14 @@ const MORE_SERVICES = [
   { name: 'Photography & film', href: '/services/photography', icon: IconCamera, desc: 'Capture every special moment.' },
 ]
 
+const ALL_SERVICES = [...SIGNATURE_SERVICES, ...MORE_SERVICES]
+
 export function Header() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
   const megaRef = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -71,6 +74,7 @@ export function Header() {
   useEffect(() => {
     setMenuOpen(false)
     setServicesOpen(false)
+    setMobileServicesOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -263,15 +267,48 @@ export function Header() {
         </button>
 
         <ul>
-          {[...NAV, { href: '/services', label: 'Services' }, ...NAV_MORE, { href: '/contact', label: 'Contact' }].map(
-            (n) => (
-              <li key={n.href}>
-                <Link href={n.href} onClick={() => setMenuOpen(false)}>
-                  {n.label}
+          <li>
+            <button
+              className="mobile-accordion-trigger"
+              aria-expanded={mobileServicesOpen}
+              onClick={() => setMobileServicesOpen((prev) => !prev)}
+            >
+              Services
+              <IconChevronDown aria-hidden="true" className="chev" />
+            </button>
+            <div className={`mobile-accordion-panel${mobileServicesOpen ? ' open' : ''}`}>
+              <div className="mobile-accordion-list">
+                {ALL_SERVICES.map((service) => (
+                  <Link
+                    key={service.href}
+                    href={service.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="mobile-accordion-item"
+                  >
+                    <span className="ico">
+                      <service.icon aria-hidden="true" />
+                    </span>
+                    <span>{service.name}</span>
+                  </Link>
+                ))}
+                <Link
+                  href="/services"
+                  onClick={() => setMenuOpen(false)}
+                  className="mobile-accordion-all"
+                >
+                  View all services <ButtonArrow />
                 </Link>
-              </li>
-            ),
-          )}
+              </div>
+            </div>
+          </li>
+
+          {[...NAV, ...NAV_MORE, { href: '/contact', label: 'Contact' }].map((n) => (
+            <li key={n.href}>
+              <Link href={n.href} onClick={() => setMenuOpen(false)}>
+                {n.label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <div className="stack-20 mt-8">
