@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ComponentType, ReactNode, SVGProps } from 'react'
 import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
@@ -8,6 +8,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ArticleCard } from '@/components/ui/ArticleCard'
 import { Testimonial } from '@/components/ui/Testimonial'
+import { ReviewCard } from '@/components/ui/ReviewCard'
 import { FaqList } from '@/components/ui/FaqList'
 import { CtaPanel } from '@/components/ui/CtaPanel'
 import { SITE_FAQS } from '@/lib/faqs'
@@ -47,9 +48,37 @@ export interface TestimonialData {
   where: string
 }
 
+export interface ReviewData {
+  text: string
+  initials: string
+  name: string
+  where: string
+}
+
 export interface GalleryImage {
   imageStyle?: 'amber-tint'
   label: string
+}
+
+export interface StatItem {
+  value: string
+  label: string
+}
+
+export interface Differentiator {
+  icon: ComponentType<SVGProps<SVGSVGElement>>
+  title: string
+  body: string
+}
+
+export interface AddOn {
+  name: string
+  price: string
+}
+
+export interface ProcessQuote {
+  quote: string
+  attribution: string
 }
 
 export interface ServiceDetailPageProps {
@@ -63,17 +92,30 @@ export interface ServiceDetailPageProps {
   heroPrimaryCta: string
   galleryImages: [GalleryImage, GalleryImage, GalleryImage, GalleryImage]
 
+  stats: [StatItem, StatItem, StatItem]
+
+  differentiatorsEyebrow: string
+  differentiatorsHeadline: ReactNode
+  differentiators: Differentiator[]
+
   packagesLede: string
   packages: PackageTier[]
-  packagesFootnote: string
+  packagesIncluded: string[]
+
+  addOnsLede: string
+  addOns: AddOn[]
 
   timelineHeadline: ReactNode
   timeline: TimelineStep[]
+  processQuote: ProcessQuote
+  processImageLabel: string
 
   recentEyebrow: string
-  recentEvents: RecentEvent[]
+  recentEvents: [RecentEvent, RecentEvent, RecentEvent, RecentEvent]
+  galleryStrip: [GalleryImage, GalleryImage, GalleryImage, GalleryImage]
 
   testimonial: TestimonialData
+  review: ReviewData
 
   ctaHeadline: ReactNode
   ctaBody: string
@@ -89,14 +131,24 @@ export function ServiceDetailPage({
   heroLede,
   heroPrimaryCta,
   galleryImages,
+  stats,
+  differentiatorsEyebrow,
+  differentiatorsHeadline,
+  differentiators,
   packagesLede,
   packages,
-  packagesFootnote,
+  packagesIncluded,
+  addOnsLede,
+  addOns,
   timelineHeadline,
   timeline,
+  processQuote,
+  processImageLabel,
   recentEyebrow,
   recentEvents,
+  galleryStrip,
   testimonial,
+  review,
   ctaHeadline,
   ctaBody,
   ctaButtonLabel,
@@ -106,8 +158,6 @@ export function ServiceDetailPage({
     { name: 'Services', url: 'https://amuseevents.co.uk/services' },
     { name: breadcrumbName, url: breadcrumbUrl },
   ])
-
-  const lastStep = timeline[timeline.length - 1]
 
   return (
     <>
@@ -153,11 +203,44 @@ export function ServiceDetailPage({
               />
             </div>
           </div>
+
+          {/* ── Trust stats ─────────────────────────────── */}
+          <Reveal className="stats-row stats-top-border">
+            {stats.map((s) => (
+              <div key={s.label} className="stat">
+                <div className="n">{s.value}</div>
+                <div className="l">{s.label}</div>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Why choose us ───────────────────────────────── */}
+      <section className="section-page section-paper-2">
+        <div className="container">
+          <Reveal className="center-intro">
+            <SectionHeading eyebrow={differentiatorsEyebrow} center>
+              {differentiatorsHeadline}
+            </SectionHeading>
+          </Reveal>
+
+          <Reveal className="grid-3-cards items-stretch">
+            {differentiators.map((d) => (
+              <div key={d.title} className="card flex flex-col">
+                <span className="mega-ico">
+                  <d.icon aria-hidden="true" />
+                </span>
+                <h3 className="h-display h4 mt-5">{d.title}</h3>
+                <p className="mt-2 text-sm text-ink-3">{d.body}</p>
+              </div>
+            ))}
+          </Reveal>
         </div>
       </section>
 
       {/* ── Packages ───────────────────────────────────── */}
-      <section id="packages" className="section-page section-paper-2">
+      <section id="packages" className="section-page-xl">
         <div className="container">
           <Reveal className="center-intro">
             <SectionHeading
@@ -230,12 +313,40 @@ export function ServiceDetailPage({
             ))}
           </Reveal>
 
-          <p className="reveal mono mt-8 text-center text-ink-3">{packagesFootnote}</p>
+          <Reveal className="chip-row mt-10 justify-center">
+            {packagesIncluded.map((item) => (
+              <span key={item} className="chip">
+                <IconCheck className="icon-check" aria-hidden="true" /> {item}
+              </span>
+            ))}
+          </Reveal>
         </div>
       </section>
 
-      {/* ── Timeline ───────────────────────────────────── */}
-      <section className="section-page-xl">
+      {/* ── Add-ons ──────────────────────────────────────── */}
+      <section className="section-page section-paper-2">
+        <div className="container">
+          <Reveal className="center-intro">
+            <SectionHeading eyebrow="— optional extras —" center lede={addOnsLede}>
+              Add it on,
+              <br />
+              <em className="italic">if you want it.</em>
+            </SectionHeading>
+          </Reveal>
+
+          <Reveal className="grid-4-cards">
+            {addOns.map((a) => (
+              <div key={a.name} className="addon-card">
+                <span>{a.name}</span>
+                <b>{a.price}</b>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Process ──────────────────────────────────────── */}
+      <section className="dark-section section-page-xl section-rounded-dark">
         <div className="container">
           <Reveal className="center-intro">
             <SectionHeading eyebrow="— how it works —" center>
@@ -243,26 +354,32 @@ export function ServiceDetailPage({
             </SectionHeading>
           </Reveal>
 
-          <Reveal className="timeline">
-            <div className="timeline-line" />
-            {timeline.map((t) => (
-              <div key={t.n} className="timeline-item">
-                <div
-                  className={`timeline-dot absolute left-1/2 top-0 -translate-x-1/2 ${
-                    t.amber
-                      ? 'border-0 bg-amber text-ink'
-                      : t.n === lastStep.n
-                        ? 'timeline-dot-final'
-                        : 'border-[1.5px] border-ink bg-paper text-ink'
-                  }`}
-                >
-                  {t.n}
+          <Reveal className="content-split-sticky">
+            <div>
+              {timeline.map((t) => (
+                <div key={t.n} className="step">
+                  <div className="num">{String(t.n).padStart(2, '0')}</div>
+                  <div>
+                    <div className="label">{t.month}</div>
+                    <h3>{t.title}</h3>
+                    <p>{t.body}</p>
+                  </div>
                 </div>
-                <div className="mono muted text-[11px] uppercase">{t.month}</div>
-                <h3 className="timeline-title">{t.title}</h3>
-                <p className="muted text-[13px]">{t.body}</p>
+              ))}
+            </div>
+
+            <div className="process-sidebar">
+              <div className="ph dark image-4-5" data-label={processImageLabel} />
+              <div className="mt-6 rounded-ae-lg border border-paper/10 bg-paper/5 p-7">
+                <div className="eyebrow mb-3 text-amber">— promise —</div>
+                <p className="m-0 font-serif text-[22px] leading-snug text-paper">
+                  &quot;{processQuote.quote}&quot;
+                </p>
+                <p className="mt-[18px] text-[13px] text-paper/55">
+                  — {processQuote.attribution}
+                </p>
               </div>
-            ))}
+            </div>
           </Reveal>
         </div>
       </section>
@@ -279,19 +396,33 @@ export function ServiceDetailPage({
             </Btn>
           </Reveal>
 
-          <Reveal className="grid-3-cards">
+          <Reveal className="grid-4-cards">
             {recentEvents.map((w) => (
               <ArticleCard key={w.title} imageTall {...w} />
+            ))}
+          </Reveal>
+
+          <Reveal className="home-gallery mt-8">
+            {galleryStrip.map((g) => (
+              <div
+                key={g.label}
+                className={`ph${g.imageStyle ? ` ${g.imageStyle}` : ''}`}
+                data-label={g.label}
+              />
             ))}
           </Reveal>
         </div>
       </section>
 
-      {/* ── Testimonial ────────────────────────────────── */}
-      <section className="section-page">
+      {/* ── Testimonials ─────────────────────────────────── */}
+      <section className="section-page-xl">
         <div className="container">
           <Reveal>
             <Testimonial {...testimonial} />
+          </Reveal>
+
+          <Reveal className="mt-10 max-w-[480px]">
+            <ReviewCard {...review} />
           </Reveal>
         </div>
       </section>

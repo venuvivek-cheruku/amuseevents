@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next'
 import { ServiceDetailPage } from '@/components/services/ServiceDetailPage'
+import { IconCheck, IconChild, IconShield } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Kids Entertainment & Parties London — Amuse Events',
@@ -39,6 +40,34 @@ export default function KidsPage() {
         { label: 'Kids · entertainment' },
         { label: 'Kids · décor' },
         { label: 'Kids · fun' },
+      ]}
+      stats={[
+        { value: '220+', label: 'Kids parties run' },
+        { value: '100%', label: 'DBS-checked entertainers' },
+        { value: '4.9★', label: 'Average parent rating' },
+      ]}
+      differentiatorsEyebrow="— why us —"
+      differentiatorsHeadline={
+        <>
+          Chaos, <em className="italic">beautifully managed</em>.
+        </>
+      }
+      differentiators={[
+        {
+          icon: IconChild,
+          title: 'Entertainers kids actually love',
+          body: 'Vetted magicians, character performers and hosts who know how to hold a room of 5-year-olds.',
+        },
+        {
+          icon: IconShield,
+          title: 'DBS-checked, fully insured',
+          body: 'Every entertainer and vendor we bring is background-checked and insured. Always.',
+        },
+        {
+          icon: IconCheck,
+          title: 'You get to actually attend',
+          body: 'We run the schedule, the vendors and the clean-up so you can be a parent, not a stage manager.',
+        },
       ]}
       packagesLede="Pick a starting point. Add a face painter, swap the magician. We'll re-quote same day."
       packages={[
@@ -87,7 +116,14 @@ export default function KidsPage() {
           featured: false,
         },
       ]}
-      packagesFootnote="all packages include the discovery call · theme consultation · vendor coordination · VAT inc."
+      packagesIncluded={['Discovery call', 'Theme consultation', 'Vendor coordination', 'VAT included']}
+      addOnsLede="Bolt these onto any package — priced separately, added in a day."
+      addOns={[
+        { name: 'Extra 30 minutes of entertainer time', price: '£90' },
+        { name: 'Face painter add-on', price: '£150' },
+        { name: 'Party bag filling & favours', price: '£120' },
+        { name: 'Professional photographer (2hrs)', price: '£350' },
+      ]}
       timelineHeadline={
         <>
           From <em className="italic">enquiry</em>
@@ -125,6 +161,11 @@ export default function KidsPage() {
           amber: false,
         },
       ]}
+      processQuote={{
+        quote: 'Parents get to sit down and watch, for once. That is the whole point.',
+        attribution: 'Aanya Mehta, Founder',
+      }}
+      processImageLabel="Kids · entertainer on-site"
       recentEyebrow="Recent kids parties"
       recentEvents={[
         {
@@ -149,6 +190,19 @@ export default function KidsPage() {
           title: "Ava & Mia's 3rd",
           body: '18 kids · party box · soft play, balloon artist, teddy bears picnic.',
         },
+        {
+          imageLabel: 'Freya · 8th',
+          category: 'August 2025',
+          meta: 'Wandsworth',
+          title: "Freya's 8th",
+          body: '30 kids · themed package · under-the-sea theme, mermaid host, bubble show.',
+        },
+      ]}
+      galleryStrip={[
+        { imageStyle: 'amber-tint', label: 'Themed table setting' },
+        { label: 'Character performer' },
+        { label: 'Balloon arch' },
+        { label: 'Party bag station' },
       ]}
       testimonial={{
         imageStyle: 'amber-tint',
@@ -158,6 +212,12 @@ export default function KidsPage() {
         initials: 'R',
         name: 'Rachel',
         where: 'Kids Party · Richmond · November 2025',
+      }}
+      review={{
+        text: '"The character performer was unreal with the kids and the clean-up was done before we\'d even finished the cake."',
+        initials: 'NJ',
+        name: 'Noah\'s mum',
+        where: '7th Birthday · Wimbledon',
       }}
       ctaHeadline="Tell us their age."
       ctaBody="We'll come back within 4 hours with party ideas."

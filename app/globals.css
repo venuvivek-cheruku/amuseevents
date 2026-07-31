@@ -1248,6 +1248,37 @@ section.huge {
   border-color: rgba(244, 112, 35, 0.42);
 }
 
+/* Add-on card */
+.addon-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: var(--r-md);
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+.addon-card:hover {
+  background: var(--glass-2);
+  border-color: var(--glass-line-2);
+}
+.addon-card span {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.addon-card b {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--amber-2);
+  white-space: nowrap;
+}
+
 /* Stats */
 .stat {
   text-align: center;

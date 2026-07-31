@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next'
 import { ServiceDetailPage } from '@/components/services/ServiceDetailPage'
+import { IconMusic, IconShield, IconSparkle } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'DJ & Club Events London — Amuse Events',
@@ -40,6 +41,34 @@ export default function DJPage() {
         { label: 'DJ · crowd' },
         { label: 'DJ · lights' },
         { label: 'DJ · production' },
+      ]}
+      stats={[
+        { value: '300+', label: 'Nights run since 2014' },
+        { value: '20+', label: 'In-house resident DJs' },
+        { value: '4.9★', label: 'Average client rating' },
+      ]}
+      differentiatorsEyebrow="— why us —"
+      differentiatorsHeadline={
+        <>
+          A dancefloor that <em className="italic">never empties</em>.
+        </>
+      }
+      differentiators={[
+        {
+          icon: IconMusic,
+          title: 'Resident DJs across every genre',
+          body: 'House, hip-hop, garage, Bollywood, soul — our own roster, not a booking agency middleman.',
+        },
+        {
+          icon: IconSparkle,
+          title: 'Sound & lighting designed for the room',
+          body: 'Every rig is spec\'d for the specific venue, not a one-size-fits-all setup.',
+        },
+        {
+          icon: IconShield,
+          title: 'Full liability & PRS covered',
+          body: 'Insurance, licensing and venue paperwork handled before you even ask about it.',
+        },
       ]}
       packagesLede="Pick a starting point. Add lighting, swap talent. We'll re-quote same day."
       packages={[
@@ -88,7 +117,14 @@ export default function DJPage() {
           featured: false,
         },
       ]}
-      packagesFootnote="all packages include the consultation · sound spec · vendor coordination · VAT inc."
+      packagesIncluded={['Consultation', 'Sound spec', 'Vendor coordination', 'VAT included']}
+      addOnsLede="Bolt these onto any package — priced separately, added in a day."
+      addOns={[
+        { name: 'Extra hour of DJ time', price: '£200' },
+        { name: 'Live percussionist / MC', price: '£400' },
+        { name: 'Cold spark or CO2 effects', price: '£350' },
+        { name: 'Live stream of the night', price: '£500' },
+      ]}
       timelineHeadline={
         <>
           From <em className="italic">brief</em>
@@ -126,6 +162,11 @@ export default function DJPage() {
           amber: false,
         },
       ]}
+      processQuote={{
+        quote: "Your only job on the night is to be on the dancefloor when the drop hits.",
+        attribution: 'Aanya Mehta, Founder',
+      }}
+      processImageLabel="DJ · sound check"
       recentEyebrow="Recent DJ events"
       recentEvents={[
         {
@@ -150,6 +191,19 @@ export default function DJPage() {
           title: 'Private Launch Party',
           body: '150 guests · solo set + lighting · brand launch, curated playlist, press photographer.',
         },
+        {
+          imageLabel: 'Garage night · N1',
+          category: 'June 2025',
+          meta: 'Islington',
+          title: 'UK Garage Revival',
+          body: '250 capacity · full club night · three DJs, MC, smoke effects, sold-out door.',
+        },
+      ]}
+      galleryStrip={[
+        { imageStyle: 'amber-tint', label: 'DJ booth close-up' },
+        { label: 'Crowd on the floor' },
+        { label: 'Lighting rig detail' },
+        { label: 'Late-night set' },
       ]}
       testimonial={{
         imageStyle: 'amber-tint',
@@ -159,6 +213,12 @@ export default function DJPage() {
         initials: 'J',
         name: 'James',
         where: 'Club Event · Shoreditch · November 2025',
+      }}
+      review={{
+        text: '"Booked the multi-stage package for a launch party — sound was flawless across both rooms and the transitions between DJs were seamless."',
+        initials: 'RA',
+        name: 'Raj A.',
+        where: 'Private Launch · Mayfair',
       }}
       ctaHeadline="Tell us the vibe."
       ctaBody="We'll come back within 4 hours with a plan."

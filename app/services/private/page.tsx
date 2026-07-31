@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next'
 import { ServiceDetailPage } from '@/components/services/ServiceDetailPage'
+import { IconLock, IconMartiniGlass, IconSparkle } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Private Party Planning London — Amuse Events',
@@ -39,6 +40,34 @@ export default function PrivatePartiesPage() {
         { label: 'Private · dinner' },
         { label: 'Private · guests' },
         { label: 'Private · details' },
+      ]}
+      stats={[
+        { value: '150+', label: 'Private parties run' },
+        { value: '100%', label: 'NDA available on request' },
+        { value: '4.9★', label: 'Average client rating' },
+      ]}
+      differentiatorsEyebrow="— why us —"
+      differentiatorsHeadline={
+        <>
+          Celebrated <em className="italic">quietly</em>, done properly.
+        </>
+      }
+      differentiators={[
+        {
+          icon: IconLock,
+          title: 'Discretion as standard',
+          body: 'No social posts, no name-dropping — an NDA is available for any celebration that needs one.',
+        },
+        {
+          icon: IconMartiniGlass,
+          title: 'Any venue, including yours',
+          body: 'Your home, a members\' club, a rooftop — we design around the space, not a fixed venue list.',
+        },
+        {
+          icon: IconSparkle,
+          title: 'Fully bespoke, every time',
+          body: 'No package templates — every private party is designed from a blank page around your occasion.',
+        },
       ]}
       packagesLede="Pick a starting point. Add entertainment, swap the menu. We'll re-quote same day."
       packages={[
@@ -87,7 +116,14 @@ export default function PrivatePartiesPage() {
           featured: false,
         },
       ]}
-      packagesFootnote="all packages include the discovery call · mood-board · vendor coordination · VAT inc."
+      packagesIncluded={['Discovery call', 'Mood-board', 'Vendor coordination', 'VAT included']}
+      addOnsLede="Bolt these onto any package — priced separately, added in a day."
+      addOns={[
+        { name: 'NDA & discretion package', price: '£0' },
+        { name: 'String quartet or live trio', price: '£900' },
+        { name: 'Champagne tower service', price: '£450' },
+        { name: 'Late-night canapé station', price: '£280' },
+      ]}
       timelineHeadline={
         <>
           From <em className="italic">enquiry</em>
@@ -125,6 +161,11 @@ export default function PrivatePartiesPage() {
           amber: false,
         },
       ]}
+      processQuote={{
+        quote: "Discretion isn't an add-on for us. It's the default, for every occasion.",
+        attribution: 'Aanya Mehta, Founder',
+      }}
+      processImageLabel="Private · styled interior"
       recentEyebrow="Recent private parties"
       recentEvents={[
         {
@@ -149,6 +190,19 @@ export default function PrivatePartiesPage() {
           title: "The Khans' Housewarming",
           body: '120 guests · bespoke package · garden party, BBQ, kids area, DJ till midnight.',
         },
+        {
+          imageLabel: 'Retirement · Chelsea',
+          category: 'July 2025',
+          meta: 'Chelsea',
+          title: "Margaret's Retirement",
+          body: '50 guests · full party · private members\' club, jazz trio, sit-down dinner.',
+        },
+      ]}
+      galleryStrip={[
+        { imageStyle: 'amber-tint', label: 'Styled bar setup' },
+        { label: 'Table centrepiece' },
+        { label: 'Live band setup' },
+        { label: 'Evening ambience' },
       ]}
       testimonial={{
         imageStyle: 'amber-tint',
@@ -158,6 +212,12 @@ export default function PrivatePartiesPage() {
         initials: 'R&L',
         name: 'Ruby & Leo',
         where: 'Anniversary · Kensington · October 2025',
+      }}
+      review={{
+        text: '"We needed total discretion for a surprise engagement and they handled every detail without a single leak."',
+        initials: 'TE',
+        name: 'Tom & Ella',
+        where: 'Engagement · Mayfair',
       }}
       ctaHeadline="Tell us the occasion."
       ctaBody="We'll come back within 4 hours with a plan."

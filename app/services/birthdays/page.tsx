@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next'
 import { ServiceDetailPage } from '@/components/services/ServiceDetailPage'
+import { IconClock, IconShield, IconSparkle } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Birthday Party Planning London — Amuse Events',
@@ -40,6 +41,34 @@ export default function BirthdaysPage() {
         { label: 'Birthday · celebration' },
         { label: 'Birthday · details' },
         { label: 'Birthday · guests' },
+      ]}
+      stats={[
+        { value: '180+', label: 'Birthdays run since 2014' },
+        { value: '4.9★', label: 'Average client rating' },
+        { value: '48hr', label: 'Average quote turnaround' },
+      ]}
+      differentiatorsEyebrow="— why us —"
+      differentiatorsHeadline={
+        <>
+          Your party, <em className="italic">without the admin</em>.
+        </>
+      }
+      differentiators={[
+        {
+          icon: IconSparkle,
+          title: 'Bespoke themes, not templates',
+          body: 'Every mood-board is built from scratch around you — no recycled Pinterest boards.',
+        },
+        {
+          icon: IconClock,
+          title: 'Fast, honest quoting',
+          body: 'A fixed price back within 48 hours, with nothing hidden for the week before.',
+        },
+        {
+          icon: IconShield,
+          title: 'Fully insured, always',
+          body: 'Every vendor and entertainer we bring is insured and vetted — no surprises on the day.',
+        },
       ]}
       packagesLede="Pick a starting point. Move things in or out. We'll re-quote in 24 hours."
       packages={[
@@ -88,7 +117,14 @@ export default function BirthdaysPage() {
           featured: false,
         },
       ]}
-      packagesFootnote="all packages include the discovery call · mood-board · vendor coordination · VAT inc."
+      packagesIncluded={['Discovery call', 'Mood-board', 'Vendor coordination', 'VAT included']}
+      addOnsLede="Bolt these onto any package — priced separately, added in a day."
+      addOns={[
+        { name: 'Extra hour of venue time', price: '£150' },
+        { name: 'Photo booth with props', price: '£300' },
+        { name: 'Late-night snack cart', price: '£220' },
+        { name: 'Custom cake topper & signage', price: '£90' },
+      ]}
       timelineHeadline={
         <>
           From <em className="italic">enquiry</em>
@@ -126,6 +162,11 @@ export default function BirthdaysPage() {
           amber: false,
         },
       ]}
+      processQuote={{
+        quote: "Your only job on the day is to show up dressed and blow out the candles.",
+        attribution: 'Aanya Mehta, Founder',
+      }}
+      processImageLabel="Birthday · planner on-site"
       recentEyebrow="Recent birthdays"
       recentEvents={[
         {
@@ -150,6 +191,19 @@ export default function BirthdaysPage() {
           title: "Leila's 21st",
           body: '45 guests · styled dinner · warehouse venue, neon theme, DJ till 2am.',
         },
+        {
+          imageLabel: 'Tom · 40th',
+          category: 'July 2025',
+          meta: 'Battersea',
+          title: "Tom's 40th",
+          body: '90 guests · full package · garden marquee, live band, fireworks finale.',
+        },
+      ]}
+      galleryStrip={[
+        { imageStyle: 'amber-tint', label: 'Table styling detail' },
+        { label: 'Balloon installation' },
+        { label: 'Cake table' },
+        { label: 'Evening lighting' },
       ]}
       testimonial={{
         imageStyle: 'amber-tint',
@@ -159,6 +213,12 @@ export default function BirthdaysPage() {
         initials: 'S',
         name: 'Sophia',
         where: '30th Birthday · Shoreditch · October 2025',
+      }}
+      review={{
+        text: '"Handled a last-minute venue change two days out without missing a beat. Genuinely calm under pressure."',
+        initials: 'MB',
+        name: 'Marcus B.',
+        where: '50th Birthday · Mayfair',
       }}
       ctaHeadline="Tell us the date."
       ctaBody="We'll come back within 4 hours with ideas, every time."
