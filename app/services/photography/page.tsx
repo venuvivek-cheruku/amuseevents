@@ -1,6 +1,7 @@
 // app/services/photography/page.tsx
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ButtonArrow, IconCheck } from '@/components/icons/AppIcons'
@@ -166,6 +167,9 @@ export default function PhotographyPage() {
         <div className="container">
           <div className="hero-split-wedding">
             <div>
+              <div className="crumb">
+                <Link href="/services">Services</Link> / <b>Photography & film</b>
+              </div>
               <Eyebrow>Photography & film · every moment, every angle</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Be present.

@@ -1,6 +1,7 @@
 // app/services/private/page.tsx
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ButtonArrow, IconCheck } from '@/components/icons/AppIcons'
@@ -167,6 +168,9 @@ export default function PrivatePartiesPage() {
         <div className="container">
           <div className="hero-split-wedding">
             <div>
+              <div className="crumb">
+                <Link href="/services">Services</Link> / <b>Private parties</b>
+              </div>
               <Eyebrow>Private parties · beautifully discreet</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Your celebration,

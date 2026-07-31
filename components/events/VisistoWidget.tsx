@@ -235,7 +235,7 @@ export function VisistoWidget({ event }: { event: Event }) {
 
       {/* Footer */}
       <div className="visisto-foot">
-        <span>Tickets &amp; refunds processed by Visisto · Order ref TBC</span>
+        <span>Tickets & refunds processed by Visisto · Order ref TBC</span>
         <span className="vstamp">
           <span className="v">V</span>
           Powered by Visisto

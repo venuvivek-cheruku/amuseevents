@@ -35,7 +35,7 @@ const NAV = [
 
 const NAV_MORE = [
   { href: '/about', label: 'About us' },
-  { href: '/journal', label: 'Blogs' },
+  { href: '/blogs', label: 'Blogs' },
 ]
 
 const SIGNATURE_SERVICES = [

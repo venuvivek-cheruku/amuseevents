@@ -10,12 +10,12 @@ import { ReviewCard } from '@/components/ui/ReviewCard'
 import { CtaPanel } from '@/components/ui/CtaPanel'
 
 export const metadata: Metadata = {
-  title: 'The Studio — About Amuse Events',
+  title: 'About Us — Amuse Events',
   description:
     'A small Isleworth studio, eleven years of saying yes carefully. Meet the team behind 640+ weddings, parties and launches across London.',
   alternates: { canonical: 'https://amuseevents.co.uk/about' },
   openGraph: {
-    title: 'The Studio — Amuse Events',
+    title: 'About Us — Amuse Events',
     description: 'Eleven of us. One office above a flower shop. Six hundred and forty events held without losing a single one.',
     url: 'https://amuseevents.co.uk/about',
   },

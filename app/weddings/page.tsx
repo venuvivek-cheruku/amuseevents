@@ -198,9 +198,7 @@ export default function WeddingsPage() {
             {PACKAGES.map((pkg) => (
               <div
                 key={pkg.title}
-                className={`card flex flex-col ${
-                  pkg.featured ? '!bg-black !text-white !border-black' : ''
-                }`}
+                className={`card flex flex-col ${pkg.featured ? 'card-featured' : ''}`}
               >
                 <span
                   className={`pill self-start !inline-flex px-[18px] py-2${
@@ -233,7 +231,7 @@ export default function WeddingsPage() {
 
                 <p
                   className={`text-sm${
-                    pkg.featured ? ' text-paper/70' : ' text-ink-3'
+                    pkg.featured ? ' !text-white/70' : ' text-ink-3'
                   }`}
                 >
                   {pkg.desc}
@@ -244,7 +242,7 @@ export default function WeddingsPage() {
                     <li
                       key={f}
                       className={`flex gap-2${
-                        pkg.featured ? ' text-paper/90' : ''
+                        pkg.featured ? ' !text-white/90' : ''
                       }`}
                     >
                       <IconCheck className="icon-check mt-0.5" aria-hidden="true" />

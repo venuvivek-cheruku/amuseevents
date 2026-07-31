@@ -1,6 +1,7 @@
 // app/services/dj/page.tsx
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ButtonArrow, IconCheck } from '@/components/icons/AppIcons'
@@ -171,7 +172,10 @@ export default function DJPage() {
         <div className="container">
           <div className="hero-split-wedding">
             <div>
-              <Eyebrow>DJ &amp; club events · sound done right</Eyebrow>
+              <div className="crumb">
+                <Link href="/services">Services</Link> / <b>DJ & club events</b>
+              </div>
+              <Eyebrow>DJ & club events · sound done right</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 The sound,
                 <br />

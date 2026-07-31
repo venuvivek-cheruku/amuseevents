@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
-import { NewsletterForm } from '@/components/journal/NewsletterForm'
+import { NewsletterForm } from '@/components/blogs/NewsletterForm'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Pill } from '@/components/ui/Pill'
 import { ArticleCard } from '@/components/ui/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'Journal — Notes from the Studio',
+  title: 'Blogs — Notes from the Studio',
   description:
     'Field reports, honest pricing breakdowns, and behind-the-scenes from real events. Written by the planners, not by marketing.',
-  alternates: { canonical: 'https://amuseevents.co.uk/journal' },
+  alternates: { canonical: 'https://amuseevents.co.uk/blogs' },
   openGraph: {
-    title: 'Journal — Amuse Events',
+    title: 'Blogs — Amuse Events',
     description: 'Things we learn, things we get wrong, things that work. Field notes from a London event studio.',
-    url: 'https://amuseevents.co.uk/journal',
+    url: 'https://amuseevents.co.uk/blogs',
   },
 }
 
@@ -71,10 +72,10 @@ const POSTS: {
   },
 ]
 
-export default function JournalPage() {
+export default function BlogsPage() {
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: 'https://amuseevents.co.uk' },
-    { name: 'Journal', url: 'https://amuseevents.co.uk/journal' },
+    { name: 'Blogs', url: 'https://amuseevents.co.uk/blogs' },
   ])
 
   return (
@@ -106,28 +107,33 @@ export default function JournalPage() {
       {/* ── Featured ───────────────────────────────────── */}
       <section className="section-page-short">
         <div className="container">
-          <Reveal className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
-            <div className="ph amber-tint image-4-3 rounded-media" data-label="Spring 2026 weddings · feature" />
-            <div>
-              <div className="actions-row mb-[18px] flex-wrap">
-                <Pill variant="amber">— Featured —</Pill>
-                <Pill>Trends</Pill>
-                <Pill>8 min read</Pill>
-              </div>
-              <h2 className="h-display h2">
-                What's actually changing in <em className="italic">spring 2026</em> weddings.
-              </h2>
-              <p className="lede mt-4 md:mt-5">
-                Less white tents. More dinner-plate moments. A field report from our last six bookings
-                — and the four trends we're seeing rise across the season.
-              </p>
-              <div className="actions-row mt-5 md:mt-6">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper-3 text-xs font-semibold">
-                  AM
+          <Reveal>
+            <Link
+              href="#"
+              className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12"
+            >
+              <div className="ph amber-tint image-4-3 rounded-media" data-label="Spring 2026 weddings · feature" />
+              <div>
+                <div className="actions-row mb-[18px] flex-wrap">
+                  <Pill variant="amber">— Featured —</Pill>
+                  <Pill>Trends</Pill>
+                  <Pill>8 min read</Pill>
                 </div>
-                <span className="muted text-[13px]">Aanya Mehta · 4 days ago</span>
+                <h2 className="h-display h2">
+                  What's actually changing in <em className="italic">spring 2026</em> weddings.
+                </h2>
+                <p className="lede mt-4 md:mt-5">
+                  Less white tents. More dinner-plate moments. A field report from our last six bookings
+                  — and the four trends we're seeing rise across the season.
+                </p>
+                <div className="actions-row mt-5 md:mt-6">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-paper-3 text-xs font-semibold">
+                    AM
+                  </div>
+                  <span className="muted text-[13px]">Aanya Mehta · 4 days ago</span>
+                </div>
               </div>
-            </div>
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -160,7 +166,7 @@ export default function JournalPage() {
             className="panel-cta-sm panel-cta-dark grid grid-cols-1 items-center gap-8 md:gap-12 lg:grid-cols-[1.1fr_1fr]"
           >
             <div>
-              <Eyebrow className="text-paper-muted">— quarterly journal —</Eyebrow>
+              <Eyebrow className="text-paper-muted">— quarterly blog —</Eyebrow>
               <h2 className="h-display h3 mt-3 text-paper">
                 Four times a year. <em className="italic">Never more.</em>
               </h2>

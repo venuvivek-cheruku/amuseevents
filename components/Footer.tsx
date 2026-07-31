@@ -57,7 +57,7 @@ export function Footer() {
                 <li><Link href="/services#birthdays">Birthdays</Link></li>
                 <li><Link href="/services#kids">Kids parties</Link></li>
                 <li><Link href="/corporate">Corporate</Link></li>
-                <li><Link href="/services#dj">DJ &amp; club</Link></li>
+                <li><Link href="/services#dj">DJ & club</Link></li>
                 <li><Link href="/services#production">Production</Link></li>
               </ul>
             </div>
@@ -67,7 +67,7 @@ export function Footer() {
               <ul>
                 <li><Link href="/about">About us</Link></li>
                 <li><Link href="/services">All services</Link></li>
-                <li><Link href="/journal">Blogs</Link></li>
+                <li><Link href="/blogs">Blogs</Link></li>
                 <li><Link href="/about#team">The team</Link></li>
               </ul>
             </div>

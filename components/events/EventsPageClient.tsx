@@ -207,7 +207,7 @@ function HostYourOwnCta() {
               Pitch us your night <ButtonArrow />
             </Btn>
             <Btn href="/services#dj" variant="ghost" size="lg" className="btn-paper-outline">
-              DJ &amp; club services
+              DJ & club services
             </Btn>
           </div>
         </Reveal>

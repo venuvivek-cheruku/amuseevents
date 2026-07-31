@@ -2921,6 +2921,16 @@ section:not(.dark-section) .step {
   .card-dark {
     @apply border-ink bg-ink text-paper;
   }
+  .card-featured {
+    color: #fff;
+    background: linear-gradient(
+      160deg,
+      rgba(244, 112, 35, 0.16),
+      rgba(223, 73, 58, 0.07) 60%,
+      rgba(255, 255, 255, 0.05)
+    );
+    border-color: rgba(244, 112, 35, 0.42);
+  }
   .small-muted {
     @apply text-[13px] text-ink-3;
   }

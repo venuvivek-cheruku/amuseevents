@@ -103,7 +103,7 @@ export default function ContactPage() {
               <Eyebrow>— visit —</Eyebrow>
               <h3 className="h-display h4 my-3.5 mb-2">The studio</h3>
               <p className="contact-address">
-                Above Bloom &amp; Petal<br />
+                Above Bloom & Petal<br />
                 112 South Street<br />
                 Isleworth, TW7 7BB
               </p>

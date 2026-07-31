@@ -61,7 +61,7 @@ export default function CorporatePage() {
           <div className="hero-split-corporate">
             <div>
               <div className="pb-4 pt-4 md:pb-6">
-                <Eyebrow>Corporate &amp; office events</Eyebrow>
+                <Eyebrow>Corporate & office events</Eyebrow>
               </div>
 
               <h1 className="h-display h1 hero-title-gap">

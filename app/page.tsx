@@ -64,7 +64,7 @@ const REVIEWS = [
   },
 ];
 
-const JOURNAL_TEASERS = [
+const BLOGS_TEASERS = [
   {
     imageLabel: "Spring 2026 weddings",
     category: "Trends",
@@ -159,7 +159,7 @@ export default function HomePage() {
               <div className="n">
                 640<span className="stat-accent">+</span>
               </div>
-              <div className="l">Weddings, parties &amp; launches</div>
+              <div className="l">Weddings, parties & launches</div>
             </div>
             <div className="stat">
               <div className="n">
@@ -243,14 +243,14 @@ export default function HomePage() {
               </div>
             </Link>
             <Link href="/services#dj" className="service-card mosaic-3x1">
-              <div className="ph dark" data-label="DJ &amp; club" />
+              <div className="ph dark" data-label="DJ & club" />
               <div className="gradient" />
               <span className="arrow-circle">
                 <IconArrowUpRight aria-hidden="true" />
               </span>
               <div className="content">
                 <div className="num">— 05 —</div>
-                <h3 className="service-card-title-sm">DJ &amp; Club</h3>
+                <h3 className="service-card-title-sm">DJ & Club</h3>
               </div>
             </Link>
             <Link href="/services#private" className="service-card mosaic-4x2">
@@ -434,7 +434,7 @@ export default function HomePage() {
             <Testimonial
               imageStyle="amber-tint"
               imageLabel="Couple at their wedding"
-              quote="From the first call to the last song, we never once felt like we had to chase anything. Every detail landed exactly as we'd pictured it — some even better. We'd book them again without a second thought."
+              quote="I cried twice and didn't have to lift a finger. They held our entire weekend so quietly we forgot we'd hired anyone — and yet every detail was exactly where we wanted it. Worth every single pound."
               initials="P&D"
               name="Priya & Daniel"
               where="Wedding · Richmond Hill · September 2025"
@@ -460,7 +460,7 @@ export default function HomePage() {
         <div className="container">
           <Reveal className="row-between flex-wrap items-end gap-6">
             <div className="section-heading-block">
-              <Eyebrow>— wall of love —</Eyebrow>
+              <Eyebrow>06 — wall of love</Eyebrow>
               <h2 className="h-display h2 title-gap">
                 Loved, tagged,
                 <br />
@@ -509,7 +509,7 @@ export default function HomePage() {
           <span className="dot">
             <IconSeparatorDot className="icon-marquee-dot" aria-hidden="true" />
           </span>
-          <span>DJ &amp; club nights</span>
+          <span>DJ & club nights</span>
           <span className="dot">
             <IconSeparatorDot className="icon-marquee-dot" aria-hidden="true" />
           </span>
@@ -541,7 +541,7 @@ export default function HomePage() {
           <span className="dot">
             <IconSeparatorDot className="icon-marquee-dot" aria-hidden="true" />
           </span>
-          <span>DJ &amp; club nights</span>
+          <span>DJ & club nights</span>
           <span className="dot">
             <IconSeparatorDot className="icon-marquee-dot" aria-hidden="true" />
           </span>
@@ -560,21 +560,21 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── Journal teaser ─────────────────────────────── */}
+      {/* ── Blogs teaser ─────────────────────────────── */}
       <section className="section-page">
         <div className="container">
           <Reveal className="section-heading-row mb-14">
-            <SectionHeading eyebrow="06 — journal">
+            <SectionHeading eyebrow="07 — blogs">
               Notes from <em className="italic">the studio</em>
             </SectionHeading>
-            <Btn href="/journal" variant="ghost">
+            <Btn href="/blogs" variant="ghost">
               All posts <ButtonArrow />
             </Btn>
           </Reveal>
 
           <Reveal className="grid-3-cards gap-8">
-            {JOURNAL_TEASERS.map((t) => (
-              <ArticleCard key={t.title} href="/journal" {...t} />
+            {BLOGS_TEASERS.map((t) => (
+              <ArticleCard key={t.title} href="/blogs" {...t} />
             ))}
           </Reveal>
         </div>

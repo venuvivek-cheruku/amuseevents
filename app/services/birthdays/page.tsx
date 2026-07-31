@@ -1,6 +1,7 @@
 // app/services/birthdays/page.tsx
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { JsonLd, buildBreadcrumbSchema } from '@/components/JsonLd'
 import { Reveal } from '@/components/Reveal'
 import { ButtonArrow, IconCheck } from '@/components/icons/AppIcons'
@@ -167,6 +168,9 @@ export default function BirthdaysPage() {
         <div className="container">
           <div className="hero-split-wedding">
             <div>
+              <div className="crumb">
+                <Link href="/services">Services</Link> / <b>Birthdays</b>
+              </div>
               <Eyebrow>Birthdays · every age, every style</Eyebrow>
               <h1 className="h-display h1 hero-title-gap">
                 Your birthday,
