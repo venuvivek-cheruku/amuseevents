@@ -135,25 +135,13 @@ export default function JournalPage() {
       {/* ── Posts grid ─────────────────────────────────── */}
       <section className="section-page-top">
         <div className="container">
-          <div className="mb-8 flex flex-wrap gap-2 md:mb-10 md:gap-3">
-            <button className="!rounded-full !bg-black !px-4 !py-2 !text-sm !text-white md:!px-5">
-              All posts
-            </button>
-            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
-              Weddings
-            </button>
-            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
-              Corporate
-            </button>
-            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
-              Honest pricing
-            </button>
-            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
-              How-to
-            </button>
-            <button className="rounded-full !border !border-[#d9ccb8] px-4 py-2 text-sm md:px-5">
-              Behind the scenes
-            </button>
+          <div className="chip-row mb-8 md:mb-10">
+            <button className="chip active">All posts</button>
+            <button className="chip">Weddings</button>
+            <button className="chip">Corporate</button>
+            <button className="chip">Honest pricing</button>
+            <button className="chip">How-to</button>
+            <button className="chip">Behind the scenes</button>
           </div>
 
           <Reveal className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 [&_h3]:font-bold">

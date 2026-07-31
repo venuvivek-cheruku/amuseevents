@@ -2,18 +2,29 @@ import {
   FaArrowRight,
   FaArrowUpRightFromSquare,
   FaBars,
+  FaBuilding,
+  FaCakeCandles,
   FaCalendarDays,
+  FaCamera,
   FaCheck,
+  FaChevronDown,
+  FaChildReaching,
   FaCircle,
   FaClock,
   FaEnvelope,
   FaFacebookF,
+  FaGear,
+  FaHeart,
   FaInstagram,
   FaLocationDot,
   FaLock,
+  FaMartiniGlassCitrus,
+  FaMusic,
+  FaPalette,
   FaPhone,
   FaShieldHalved,
   FaStar,
+  FaTree,
   FaWandMagicSparkles,
   FaWhatsapp,
   FaXmark,
@@ -40,18 +51,29 @@ export function RatingStars({ count = 5 }: { count?: number }) {
 
 export const IconArrowUpRight = FaArrowUpRightFromSquare
 export const IconBars = FaBars
+export const IconBuilding = FaBuilding
+export const IconCake = FaCakeCandles
 export const IconCalendar = FaCalendarDays
+export const IconCamera = FaCamera
 export const IconCheck = FaCheck
+export const IconChevronDown = FaChevronDown
+export const IconChild = FaChildReaching
 export const IconClock = FaClock
 export const IconEmail = FaEnvelope
 export const IconFacebook = FaFacebookF
+export const IconGear = FaGear
+export const IconHeart = FaHeart
 export const IconInstagram = FaInstagram
 export const IconLocation = FaLocationDot
 export const IconLock = FaLock
+export const IconMartiniGlass = FaMartiniGlassCitrus
+export const IconMusic = FaMusic
+export const IconPalette = FaPalette
 export const IconPhone = FaPhone
 export const IconSeparatorDot = FaCircle
 export const IconShield = FaShieldHalved
 export const IconSparkle = FaWandMagicSparkles
 export const IconStar = FaStar
+export const IconTree = FaTree
 export const IconWhatsApp = FaWhatsapp
 export const IconX = FaXmark

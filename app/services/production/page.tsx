@@ -290,7 +290,6 @@ export default function ProductionPage() {
       </section>
 
       <CtaPanel variant="amber">
-        <div className="cta-orb-lg" />
         <h2 className="h-display h2">Tell us the spec.</h2>
         <p className="mt-[18px] text-lg text-ink-2">We&apos;ll come back within 4 hours with a technical proposal.</p>
         <div className="actions-center mt-8">

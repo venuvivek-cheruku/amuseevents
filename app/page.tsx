@@ -545,8 +545,6 @@ export default function HomePage() {
       <section className="section-page">
         <div className="container">
           <Reveal data-scroll="cta" className="panel-cta panel-cta-amber">
-            <div className="cta-orb-lg" />
-            <div className="cta-orb-sm" />
             <div className="cta-split">
               <div>
                 <Eyebrow>— say hi —</Eyebrow>

@@ -290,7 +290,6 @@ export default function DecorPage() {
       </section>
 
       <CtaPanel variant="amber">
-        <div className="cta-orb-lg" />
         <h2 className="h-display h2">Share your vision.</h2>
         <p className="mt-[18px] text-lg text-ink-2">We&apos;ll come back within 4 hours with a concept.</p>
         <div className="actions-center mt-8">

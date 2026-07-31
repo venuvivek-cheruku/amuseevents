@@ -291,7 +291,6 @@ export default function PhotographyPage() {
       </section>
 
       <CtaPanel variant="amber">
-        <div className="cta-orb-lg" />
         <h2 className="h-display h2">Tell us the date.</h2>
         <p className="mt-[18px] text-lg text-ink-2">We&apos;ll match you with the right photographer within 4 hours.</p>
         <div className="actions-center mt-8">

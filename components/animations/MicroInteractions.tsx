@@ -1,14 +1,22 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 
 /**
  * Global hover micro-interactions: buttons, event cards, nav links, WA FAB.
- * Mounted once in the layout — uses event delegation to avoid per-component overhead.
+ * Mounted once in the layout, but the layout persists across client-side
+ * navigations — so this must re-run per route change (via the pathname
+ * dependency), or anything mounted after the very first page load never
+ * gets its listeners attached.
  */
 export function MicroInteractions() {
+  const pathname = usePathname()
+
   useEffect(() => {
+    const cleanups: Array<() => void> = []
+
     const ctx = gsap.context(() => {
       /* ── Primary / amber / ghost buttons ─────────────── */
       const btnSelectors = '.btn-amber, .btn-primary, .btn-ghost, .btn-light'
@@ -21,8 +29,10 @@ export function MicroInteractions() {
 
         btn.addEventListener('mouseenter', enter)
         btn.addEventListener('mouseleave', leave)
-        ;(btn as EventTarget & { _gsapEnter?: () => void; _gsapLeave?: () => void })._gsapEnter = enter
-        ;(btn as EventTarget & { _gsapEnter?: () => void; _gsapLeave?: () => void })._gsapLeave = leave
+        cleanups.push(() => {
+          btn.removeEventListener('mouseenter', enter)
+          btn.removeEventListener('mouseleave', leave)
+        })
       })
 
       /* ── Pay button pulse (draw attention) ───────────── */
@@ -56,6 +66,10 @@ export function MicroInteractions() {
 
         card.addEventListener('mouseenter', enter)
         card.addEventListener('mouseleave', leave)
+        cleanups.push(() => {
+          card.removeEventListener('mouseenter', enter)
+          card.removeEventListener('mouseleave', leave)
+        })
       })
 
       /* ── WhatsApp FAB pulse glow ──────────────────────── */
@@ -90,6 +104,10 @@ export function MicroInteractions() {
 
         card.addEventListener('mouseenter', enter)
         card.addEventListener('mouseleave', leave)
+        cleanups.push(() => {
+          card.removeEventListener('mouseenter', enter)
+          card.removeEventListener('mouseleave', leave)
+        })
       })
 
       /* ── Countdown units: flip on value change ────────── */
@@ -110,11 +128,15 @@ export function MicroInteractions() {
           }
         })
         observer.observe(unit, { childList: true, characterData: true, subtree: true })
+        cleanups.push(() => observer.disconnect())
       })
     })
 
-    return () => ctx.revert()
-  }, [])
+    return () => {
+      cleanups.forEach((fn) => fn())
+      ctx.revert()
+    }
+  }, [pathname])
 
   return null
 }

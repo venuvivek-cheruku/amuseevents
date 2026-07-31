@@ -1,37 +1,27 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /**
- * Global scroll-triggered animations. Mounted once in the root layout.
- * Targets elements by data-scroll-* attributes and standard class names.
+ * Global scroll-triggered animations. Mounted once in the root layout, but
+ * the layout itself persists across client-side navigations — so this must
+ * re-run per route change (via the pathname dependency) or animations for
+ * anything mounted after the very first page load never get wired up.
+ *
+ * Plain `.reveal` fade-ins are handled by <Reveal> itself (IntersectionObserver,
+ * per-instance) — not duplicated here, to avoid two systems fighting over the
+ * same opacity/transform.
  */
 export function ScrollAnimations() {
+  const pathname = usePathname()
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* ── Section reveals ───────────────────────────── */
-      gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.85,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 88%',
-              toggleActions: 'play none none none',
-            },
-          }
-        )
-      })
-
       /* ── Event card stagger ──────────────────────────── */
       const cardList = document.getElementById('eventList')
       if (cardList) {
@@ -136,10 +126,13 @@ export function ScrollAnimations() {
           }
         )
       }
+
+      // Recalculate trigger positions now that this route's DOM is settled.
+      ScrollTrigger.refresh()
     })
 
     return () => ctx.revert()
-  }, [])
+  }, [pathname])
 
   return null
 }

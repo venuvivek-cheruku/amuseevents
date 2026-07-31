@@ -1,23 +1,17 @@
 import type { Metadata } from 'next'
-import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google'
+import { Poppins, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { JsonLd, buildOrganizationSchema } from '@/components/JsonLd'
 import { ScrollAnimations } from '@/components/animations/ScrollAnimations'
 import { MicroInteractions } from '@/components/animations/MicroInteractions'
+import { RevealObserver } from '@/components/animations/RevealObserver'
 
-const fraunces = Fraunces({
+const poppins = Poppins({
   subsets: ['latin'],
-  axes: ['opsz', 'SOFT'],
-  style: ['normal', 'italic'],
-  variable: '--font-fraunces',
-  display: 'swap',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
   display: 'swap',
 })
 
@@ -45,10 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en" className={`${poppins.variable} ${jetbrainsMono.variable}`}>
       <body>
         <JsonLd data={buildOrganizationSchema()} />
         <Header />
@@ -56,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <ScrollAnimations />
         <MicroInteractions />
+        <RevealObserver />
       </body>
     </html>
   )

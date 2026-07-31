@@ -203,17 +203,15 @@ export default function WeddingsPage() {
                 }`}
               >
                 <span
-                  className={`pill self-start !inline-flex${
+                  className={`pill self-start !inline-flex px-[18px] py-2${
                     pkg.featured ? ' !bg-amber !text-white !border-amber' : ''
                   }`}
-                  style={{ padding: '8px 18px' }}
                 >
                   {pkg.pill}
                 </span>
 
                 <h3
-                  className={`h-display h4${pkg.featured ? ' !text-white' : ''}`}
-                  style={{ padding: '14px 0' }}
+                  className={`h-display h4 py-[14px]${pkg.featured ? ' !text-white' : ''}`}
                 >
                   {pkg.title}
                 </h3>
@@ -225,10 +223,9 @@ export default function WeddingsPage() {
                 >
                   {pkg.price}
                   <span
-                    className={`font-sans${
+                    className={`font-sans text-sm${
                       pkg.featured ? ' !text-white/60' : ' text-ink-3'
                     }`}
-                    style={{ fontSize: '14px' }}
                   >
                     {' '}/ from
                   </span>
@@ -373,7 +370,6 @@ export default function WeddingsPage() {
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="amber">
-        <div className="cta-orb-lg" />
         <h2 className="h-display h2 !text-paper">Tell us your date.</h2>
         <p className="mt-[18px] text-lg !text-paper">
           We'll come back within 4 hours, every time.

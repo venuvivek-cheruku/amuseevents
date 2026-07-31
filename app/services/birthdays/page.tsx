@@ -389,7 +389,6 @@ export default function BirthdaysPage() {
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="amber">
-        <div className="cta-orb-lg" />
         <h2 className="h-display h2">Tell us the date.</h2>
         <p className="mt-[18px] text-lg text-ink-2">
           We&apos;ll come back within 4 hours with ideas, every time.

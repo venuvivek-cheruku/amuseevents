@@ -22,10 +22,13 @@ export function Footer() {
           <div className="footer-grid">
             <div className="footer-brand">
               <Link href="/" className="brand">
-                <Image src="/assets/logo-mark.png" alt="" width={38} height={38} />
-                <span className="brand-name">
-                  amuse <em className="brand-accent">events</em>
-                </span>
+                <Image
+                  src="/assets/logo-mark.png"
+                  alt="Amuse Events"
+                  width={139}
+                  height={132}
+                  className="brand-mark footer-mark"
+                />
               </Link>
               <p>
                 A small London studio crafting weddings, parties and corporate moments
@@ -60,12 +63,12 @@ export function Footer() {
             </div>
 
             <div>
-              <h4>Studio</h4>
+              <h4>Company</h4>
               <ul>
-                <li><Link href="/studio">About us</Link></li>
+                <li><Link href="/about">About us</Link></li>
                 <li><Link href="/services">All services</Link></li>
-                <li><Link href="/journal">Journal</Link></li>
-                <li><Link href="/studio#team">The team</Link></li>
+                <li><Link href="/journal">Blogs</Link></li>
+                <li><Link href="/about#team">The team</Link></li>
               </ul>
             </div>
 
