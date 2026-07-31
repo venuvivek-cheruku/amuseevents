@@ -288,7 +288,7 @@ export default function WeddingsPage() {
                     t.amber
                       ? 'border-0 bg-amber text-ink'
                       : t.n === 5
-                        ? 'border-0 bg-ink text-paper'
+                        ? 'timeline-dot-final'
                         : 'border-[1.5px] border-ink bg-paper text-ink'
                   }`}
                 >

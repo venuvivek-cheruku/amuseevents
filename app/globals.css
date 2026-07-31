@@ -1228,6 +1228,25 @@ section.huge {
   border-color: var(--glass-line-2);
   box-shadow: var(--liquid-hi);
 }
+/* Higher-specificity compound selectors so these reliably win over the
+   base .card background regardless of Tailwind's utility/component layer
+   ordering — a plain .card-dark class inside @layer components was being
+   silently beaten by .card's unlayered background. */
+.card.card-dark {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.card.card-featured {
+  color: #fff;
+  background: linear-gradient(
+    160deg,
+    rgba(244, 112, 35, 0.16),
+    rgba(223, 73, 58, 0.07) 60%,
+    rgba(255, 255, 255, 0.05)
+  );
+  border-color: rgba(244, 112, 35, 0.42);
+}
 
 /* Stats */
 .stat {
@@ -1432,14 +1451,17 @@ section.huge {
 .field select,
 .field textarea {
   font: inherit;
-  background: var(--paper);
-  border: 1px solid var(--line);
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
   border-radius: var(--r-md);
   padding: 14px 16px;
   color: var(--ink);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
   transition:
     border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 .field input:focus,
 .field select:focus,
@@ -2918,19 +2940,6 @@ section:not(.dark-section) .step {
   .card-pad {
     @apply p-8;
   }
-  .card-dark {
-    @apply border-ink bg-ink text-paper;
-  }
-  .card-featured {
-    color: #fff;
-    background: linear-gradient(
-      160deg,
-      rgba(244, 112, 35, 0.16),
-      rgba(223, 73, 58, 0.07) 60%,
-      rgba(255, 255, 255, 0.05)
-    );
-    border-color: rgba(244, 112, 35, 0.42);
-  }
   .small-muted {
     @apply text-[13px] text-ink-3;
   }
@@ -3095,6 +3104,10 @@ section:not(.dark-section) .step {
   }
   .timeline-dot {
     @apply mx-auto mb-5 flex h-8 w-8 items-center justify-center rounded-full border-4 border-paper-2 bg-amber font-mono text-[11px] font-semibold text-white;
+  }
+  .timeline-dot-final {
+    background: var(--amber-grad);
+    color: #fff;
   }
   .timeline-title {
     @apply my-2 font-serif text-[22px] tracking-[-.015em];
