@@ -5,9 +5,12 @@ import { HeroIntro } from "@/components/animations/HeroIntro";
 import {
   ButtonArrow,
   IconArrowUpRight,
+  IconFacebook,
+  IconInstagram,
   IconSeparatorDot,
   IconStar,
   IconWhatsApp,
+  IconYoutube,
 } from "@/components/icons/AppIcons";
 import { Btn } from "@/components/ui/Btn";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -16,6 +19,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ReviewCard } from "@/components/ui/ReviewCard";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { Testimonial } from "@/components/ui/Testimonial";
+import { WallOfLove } from "@/components/home/WallOfLove";
 import { CONTACT } from "@/lib/utils";
 import Link from "next/link";
 
@@ -447,6 +451,41 @@ export default function HomePage() {
             <Btn href="/about#reviews" variant="ghost">
               Read 213 verified reviews <ButtonArrow />
             </Btn>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Wall of Love ───────────────────────────────── */}
+      <section className="section-page-xl section-paper-2">
+        <div className="container">
+          <Reveal className="row-between flex-wrap items-end gap-6">
+            <div className="section-heading-block">
+              <Eyebrow>— wall of love —</Eyebrow>
+              <h2 className="h-display h2 title-gap">
+                Loved, tagged,
+                <br />
+                <em className="italic">shared</em>.
+              </h2>
+              <p className="lede mt-6 max-w-[44ch]">
+                Pulled live from our Instagram, Facebook and YouTube — the moments our
+                clients and guests chose to post themselves.
+              </p>
+            </div>
+            <div className="wall-follow">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="wall-follow-btn">
+                <IconInstagram aria-hidden="true" /> Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="wall-follow-btn">
+                <IconFacebook aria-hidden="true" /> Facebook
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="wall-follow-btn">
+                <IconYoutube aria-hidden="true" /> YouTube
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <WallOfLove />
           </Reveal>
         </div>
       </section>
