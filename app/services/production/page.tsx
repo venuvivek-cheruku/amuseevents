@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next'
 import { ServiceDetailPage } from '@/components/services/ServiceDetailPage'
+import { IconGear, IconShield, IconClock } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Event Production London — Amuse Events',
@@ -39,6 +40,34 @@ export default function ProductionPage() {
         { label: 'Production · lighting' },
         { label: 'Production · AV' },
         { label: 'Production · crew' },
+      ]}
+      stats={[
+        { value: '200+', label: 'Technical builds delivered' },
+        { value: '0', label: 'Missed cues on record' },
+        { value: '8+', label: 'Technicians on a full crew' },
+      ]}
+      differentiatorsEyebrow="— why us —"
+      differentiatorsHeadline={
+        <>
+          Nothing left to <em className="italic">chance</em>.
+        </>
+      }
+      differentiators={[
+        {
+          icon: IconGear,
+          title: 'In-house technical crew',
+          body: 'Our own riggers, sound engineers and LD\'s — not sub-contracted freelancers on the day.',
+        },
+        {
+          icon: IconClock,
+          title: 'Dress rehearsal, every time',
+          body: 'Every cue is walked and timed before doors open — no live surprises.',
+        },
+        {
+          icon: IconShield,
+          title: 'Redundancy built in',
+          body: 'Backup power, backup mics, backup feeds — critical shows never run on a single point of failure.',
+        },
       ]}
       packagesLede="Pick a starting point. Add a stage, drop the pyro. We'll re-quote same day."
       packages={[
@@ -87,7 +116,14 @@ export default function ProductionPage() {
           featured: false,
         },
       ]}
-      packagesFootnote="all packages include the site visit · technical drawings · crew · VAT inc."
+      packagesIncluded={['Site visit', 'Technical drawings', 'Crew', 'VAT included']}
+      addOnsLede="Bolt these onto any package — priced separately, added in a day."
+      addOns={[
+        { name: 'Live stream & multi-cam recording', price: '£1,200' },
+        { name: 'Confetti or pyro cue', price: '£600' },
+        { name: 'Extra LED wall panel', price: '£450' },
+        { name: 'On-site backup generator', price: '£800' },
+      ]}
       timelineHeadline={
         <>
           From <em className="italic">brief</em>
@@ -125,6 +161,11 @@ export default function ProductionPage() {
           amber: false,
         },
       ]}
+      processQuote={{
+        quote: "By the time doors open, every cue has already run once in an empty room.",
+        attribution: 'Aanya Mehta, Founder',
+      }}
+      processImageLabel="Production · rig build"
       recentEyebrow="Recent productions"
       recentEvents={[
         {
@@ -149,6 +190,19 @@ export default function ProductionPage() {
           title: 'Product Launch',
           body: '300 guests · core AV · projection mapping, spatial audio, press wall.',
         },
+        {
+          imageLabel: 'Festival stage · Kent',
+          category: 'July 2025',
+          meta: 'Kent',
+          title: 'Festival Main Stage',
+          body: '2 stages · turnkey · full rig, 12-act changeover, weatherproofed power.',
+        },
+      ]}
+      galleryStrip={[
+        { imageStyle: 'amber-tint', label: 'Rigging & truss detail' },
+        { label: 'FOH sound desk' },
+        { label: 'LED wall build' },
+        { label: 'Load-in crew' },
       ]}
       testimonial={{
         imageStyle: 'amber-tint',
@@ -158,6 +212,12 @@ export default function ProductionPage() {
         initials: 'K',
         name: 'Karen',
         where: 'Conference · ExCeL London · November 2025',
+      }}
+      review={{
+        text: '"Our LED wall content was delivered late by our own agency — their team fixed the sync live without us even noticing until after."',
+        initials: 'IA',
+        name: 'Industry Awards Team',
+        where: 'Awards Night · The Savoy',
       }}
       ctaHeadline="Tell us the spec."
       ctaBody="We'll come back within 4 hours with a technical proposal."

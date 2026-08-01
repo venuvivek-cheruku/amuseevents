@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next'
 import { ServiceDetailPage } from '@/components/services/ServiceDetailPage'
+import { IconCamera, IconClock, IconSparkle } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Event Photography & Film London — Amuse Events',
@@ -39,6 +40,34 @@ export default function PhotographyPage() {
         { label: 'Photo · portrait' },
         { label: 'Photo · detail' },
         { label: 'Film · behind scenes' },
+      ]}
+      stats={[
+        { value: '400+', label: 'Events shot since 2014' },
+        { value: '14 days', label: 'Average gallery delivery' },
+        { value: '4.9', label: 'Average client rating' },
+      ]}
+      differentiatorsEyebrow="— why us —"
+      differentiatorsHeadline={
+        <>
+          You won&apos;t notice us — <em className="italic">until you see the photos</em>.
+        </>
+      }
+      differentiators={[
+        {
+          icon: IconCamera,
+          title: 'Documentary-first style',
+          body: 'Natural, unposed coverage — we shoot what actually happens, not staged re-creations.',
+        },
+        {
+          icon: IconClock,
+          title: 'Gallery within 14 days',
+          body: 'No six-week wait — full edited galleries land in your inbox inside two weeks.',
+        },
+        {
+          icon: IconSparkle,
+          title: 'Same-day social edits',
+          body: 'A handful of hero shots edited and sent before the event even ends, for the people who couldn\'t be there.',
+        },
       ]}
       packagesLede="Pick a starting point. Add a videographer, drop the drone. We'll re-quote same day."
       packages={[
@@ -87,7 +116,14 @@ export default function PhotographyPage() {
           featured: false,
         },
       ]}
-      packagesFootnote="all packages include the pre-event brief · shot list · editing · online gallery · VAT inc."
+      packagesIncluded={['Pre-event brief', 'Shot list', 'Editing', 'Online gallery', 'VAT included']}
+      addOnsLede="Bolt these onto any package — priced separately, added in a day."
+      addOns={[
+        { name: 'Extra hour of coverage', price: '£150' },
+        { name: 'Drone footage', price: '£300' },
+        { name: 'Printed album (30 pages)', price: '£450' },
+        { name: 'Same-day edit for evening screening', price: '£600' },
+      ]}
       timelineHeadline={
         <>
           From <em className="italic">brief</em>
@@ -125,6 +161,11 @@ export default function PhotographyPage() {
           amber: false,
         },
       ]}
+      processQuote={{
+        quote: "The best compliment we get is 'I forgot you were even there'.",
+        attribution: 'Aanya Mehta, Founder',
+      }}
+      processImageLabel="Photography · shot in progress"
       recentEyebrow="Recent shoots"
       recentEvents={[
         {
@@ -149,6 +190,19 @@ export default function PhotographyPage() {
           title: '40th Birthday Film',
           body: 'Editorial package · art-directed portraits, same-day edit screened at dinner.',
         },
+        {
+          imageLabel: 'Launch · Shoreditch',
+          category: 'July 2025',
+          meta: 'Shoreditch',
+          title: 'Brand Launch Coverage',
+          body: 'Photo & film · same-day social edit, press wall portraits, highlight reel.',
+        },
+      ]}
+      galleryStrip={[
+        { imageStyle: 'amber-tint', label: 'Candid guest moment' },
+        { label: 'Editorial portrait' },
+        { label: 'Behind-the-scenes setup' },
+        { label: 'Golden hour shot' },
       ]}
       testimonial={{
         imageStyle: 'amber-tint',
@@ -158,6 +212,12 @@ export default function PhotographyPage() {
         initials: 'P&D',
         name: 'Priya & Daniel',
         where: 'Wedding Photography · Richmond · September 2025',
+      }}
+      review={{
+        text: '"Gallery landed nine days after our gala and every single press shot was usable. Fastest turnaround we\'ve had from any photographer."',
+        initials: 'CG',
+        name: 'City Gala Team',
+        where: 'Corporate Coverage · City of London',
       }}
       ctaHeadline="Tell us the date."
       ctaBody="We'll match you with the right photographer within 4 hours."

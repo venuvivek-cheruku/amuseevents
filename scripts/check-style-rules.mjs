@@ -19,6 +19,7 @@ const ALLOWED_ARBITRARY_CLASS_TOKENS = new Set([
   'max-w-[48ch]',
   'max-w-[52ch]',
   'max-w-[56ch]',
+  'max-w-[480px]',
   'max-w-[600px]',
   'mb-[18px]',
   'md:pb-[140px]',

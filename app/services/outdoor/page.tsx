@@ -44,7 +44,7 @@ export default function OutdoorPage() {
       stats={[
         { value: '90+', label: 'Outdoor events delivered' },
         { value: '100%', label: 'Weather contingency planned' },
-        { value: '4.8★', label: 'Average client rating' },
+        { value: '4.8', label: 'Average client rating' },
       ]}
       differentiatorsEyebrow="— why us —"
       differentiatorsHeadline={

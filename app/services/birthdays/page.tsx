@@ -44,7 +44,7 @@ export default function BirthdaysPage() {
       ]}
       stats={[
         { value: '180+', label: 'Birthdays run since 2014' },
-        { value: '4.9★', label: 'Average client rating' },
+        { value: '4.9', label: 'Average client rating' },
         { value: '48hr', label: 'Average quote turnaround' },
       ]}
       differentiatorsEyebrow="— why us —"

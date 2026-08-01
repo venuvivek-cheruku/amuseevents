@@ -44,7 +44,7 @@ export default function PrivatePartiesPage() {
       stats={[
         { value: '150+', label: 'Private parties run' },
         { value: '100%', label: 'NDA available on request' },
-        { value: '4.9★', label: 'Average client rating' },
+        { value: '4.9', label: 'Average client rating' },
       ]}
       differentiatorsEyebrow="— why us —"
       differentiatorsHeadline={

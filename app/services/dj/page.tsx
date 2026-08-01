@@ -45,7 +45,7 @@ export default function DJPage() {
       stats={[
         { value: '300+', label: 'Nights run since 2014' },
         { value: '20+', label: 'In-house resident DJs' },
-        { value: '4.9★', label: 'Average client rating' },
+        { value: '4.9', label: 'Average client rating' },
       ]}
       differentiatorsEyebrow="— why us —"
       differentiatorsHeadline={

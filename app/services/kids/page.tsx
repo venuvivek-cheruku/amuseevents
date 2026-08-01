@@ -44,7 +44,7 @@ export default function KidsPage() {
       stats={[
         { value: '220+', label: 'Kids parties run' },
         { value: '100%', label: 'DBS-checked entertainers' },
-        { value: '4.9★', label: 'Average parent rating' },
+        { value: '4.9', label: 'Average parent rating' },
       ]}
       differentiatorsEyebrow="— why us —"
       differentiatorsHeadline={

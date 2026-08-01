@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next'
 import { ServiceDetailPage } from '@/components/services/ServiceDetailPage'
+import { IconPalette, IconSparkle, IconClock } from '@/components/icons/AppIcons'
 
 export const metadata: Metadata = {
   title: 'Art Work & Décor London — Amuse Events',
@@ -39,6 +40,34 @@ export default function DecorPage() {
         { label: 'Décor · table' },
         { label: 'Décor · installation' },
         { label: 'Décor · detail' },
+      ]}
+      stats={[
+        { value: '130+', label: 'Spaces transformed' },
+        { value: '100%', label: 'Bespoke, no repeated designs' },
+        { value: '4.9', label: 'Average client rating' },
+      ]}
+      differentiatorsEyebrow="— why us —"
+      differentiatorsHeadline={
+        <>
+          We don&apos;t decorate — <em className="italic">we transform</em>.
+        </>
+      }
+      differentiators={[
+        {
+          icon: IconSparkle,
+          title: 'In-house design & build',
+          body: 'Backdrops, florals and installations are designed, sourced and built by our own studio team.',
+        },
+        {
+          icon: IconPalette,
+          title: 'Never a repeated concept',
+          body: 'Every mood-board is built fresh around your palette — nothing lifted from a catalogue.',
+        },
+        {
+          icon: IconClock,
+          title: 'Gone by morning',
+          body: 'Full strike and clean removal the next day, so venues get their space back on time.',
+        },
       ]}
       packagesLede="Pick a starting point. Add florals, drop the furniture. We'll re-quote same day."
       packages={[
@@ -87,7 +116,14 @@ export default function DecorPage() {
           featured: false,
         },
       ]}
-      packagesFootnote="all packages include the consultation · mood-board · sourcing · VAT inc."
+      packagesIncluded={['Consultation', 'Mood-board', 'Sourcing', 'VAT included']}
+      addOnsLede="Bolt these onto any package — priced separately, added in a day."
+      addOns={[
+        { name: 'Hanging floral installation', price: '£1,400' },
+        { name: 'Neon or custom signage', price: '£350' },
+        { name: 'Extra lounge furniture set', price: '£600' },
+        { name: 'Next-day strike & removal', price: '£250' },
+      ]}
       timelineHeadline={
         <>
           From <em className="italic">inspiration</em>
@@ -125,6 +161,11 @@ export default function DecorPage() {
           amber: false,
         },
       ]}
+      processQuote={{
+        quote: "You should walk into the room and not recognise it. That's the brief every time.",
+        attribution: 'Aanya Mehta, Founder',
+      }}
+      processImageLabel="Décor · install morning"
       recentEyebrow="Recent styling"
       recentEvents={[
         {
@@ -149,6 +190,19 @@ export default function DecorPage() {
           title: 'Golden Anniversary',
           body: 'Styling package · elegant gold palette, orchid centrepieces, vintage linen.',
         },
+        {
+          imageLabel: 'Gala · Mayfair',
+          category: 'July 2025',
+          meta: 'Mayfair',
+          title: 'Charity Gala',
+          body: 'Bespoke build · immersive entrance tunnel, custom stage backdrop, art direction.',
+        },
+      ]}
+      galleryStrip={[
+        { imageStyle: 'amber-tint', label: 'Hanging floral detail' },
+        { label: 'Table centrepiece' },
+        { label: 'Custom signage' },
+        { label: 'Backdrop installation' },
       ]}
       testimonial={{
         imageStyle: 'amber-tint',
@@ -158,6 +212,12 @@ export default function DecorPage() {
         initials: 'S&J',
         name: 'Sarah & James',
         where: 'Wedding Décor · Kew Gardens · September 2025',
+      }}
+      review={{
+        text: '"Our brand launch needed a completely immersive space and they nailed the concept from a single mood board call."',
+        initials: 'SB',
+        name: 'Soho Brand Launch',
+        where: 'Art Direction · Soho',
       }}
       ctaHeadline="Share your vision."
       ctaBody="We'll come back within 4 hours with a concept."
