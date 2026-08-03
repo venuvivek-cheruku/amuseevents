@@ -192,12 +192,12 @@ function HostYourOwnCta() {
             <span className="eyebrow text-paper-muted">
               — promote your own night? —
             </span>
-            <h2 className="h-display h3 mt-3 text-paper">
+            <h2 className="h-display h3 mt-3">
               We can host{' '}
               <em className="italic">your event</em> on the same
               ticketing engine.
             </h2>
-            <p className="mt-5 text-paper/75">
+            <p className="mt-5 text-ink/75">
               Same Visisto embed, your branding, our event team behind it. From
               80-cap basement parties to 1,200-cap warehouse nights.
             </p>

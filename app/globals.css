@@ -2975,7 +2975,7 @@ section:not(.dark-section) .step {
     @apply text-[13px] text-ink-3;
   }
   .small-paper-muted {
-    @apply text-sm text-paper/65;
+    @apply text-sm text-ink/65;
   }
   .serif-card-title {
     @apply font-serif text-[22px] tracking-[-.015em];
@@ -3023,7 +3023,7 @@ section:not(.dark-section) .step {
     @apply inline-flex bg-white text-amber-2;
   }
   .btn-paper-outline {
-    @apply border border-paper/40 text-paper;
+    @apply border border-ink/40 text-ink;
   }
   .btn-white-outline {
     @apply border-[1.5px] border-white/50 bg-transparent text-white;

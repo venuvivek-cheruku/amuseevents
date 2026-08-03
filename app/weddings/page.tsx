@@ -368,8 +368,8 @@ export default function WeddingsPage() {
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="amber">
-        <h2 className="h-display h2 !text-paper">Tell us your date.</h2>
-        <p className="mt-[18px] text-lg !text-paper">
+        <h2 className="h-display h2">Tell us your date.</h2>
+        <p className="mt-[18px] text-lg text-ink-2">
           We'll come back within 4 hours, every time.
         </p>
         <div className="actions-center mt-8">

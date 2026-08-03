@@ -7,6 +7,7 @@ import { JsonLd, buildOrganizationSchema } from '@/components/JsonLd'
 import { ScrollAnimations } from '@/components/animations/ScrollAnimations'
 import { MicroInteractions } from '@/components/animations/MicroInteractions'
 import { RevealObserver } from '@/components/animations/RevealObserver'
+import { ScrollToTop } from '@/components/animations/ScrollToTop'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollAnimations />
         <MicroInteractions />
         <RevealObserver />
+        <ScrollToTop />
       </body>
     </html>
   )

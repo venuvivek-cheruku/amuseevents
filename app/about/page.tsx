@@ -127,7 +127,7 @@ export default function AboutPage() {
             {PRINCIPLES.map((p) => (
               <div key={p.n}>
                 <div className="serif-accent text-[40px] md:text-[56px]">{p.n}</div>
-                <h3 className="serif-card-title !font-bold my-3.5 mb-2 text-paper">
+                <h3 className="serif-card-title !font-bold my-3.5 mb-2 text-ink">
                   {p.title}
                 </h3>
                 <p className="small-paper-muted">{p.body}</p>
@@ -196,8 +196,8 @@ export default function AboutPage() {
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="amber">
-        <h2 className="h-display h2 !text-paper">Come say hi.</h2>
-        <p className="mt-[18px] text-lg !text-paper">
+        <h2 className="h-display h2">Come say hi.</h2>
+        <p className="mt-[18px] text-lg text-ink-2">
           Coffee at the studio in Isleworth. No deposit, no pitch.
         </p>
         <Btn

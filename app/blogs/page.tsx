@@ -167,10 +167,10 @@ export default function BlogsPage() {
           >
             <div>
               <Eyebrow className="text-paper-muted">— quarterly blog —</Eyebrow>
-              <h2 className="h-display h3 mt-3 text-paper">
+              <h2 className="h-display h3 mt-3">
                 Four times a year. <em className="italic">Never more.</em>
               </h2>
-              <p className="mt-4 text-paper/70">
+              <p className="mt-4 text-ink/70">
                 Field notes, post-mortems, real numbers from real events. We hate inbox noise too.
               </p>
             </div>

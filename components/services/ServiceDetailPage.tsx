@@ -9,9 +9,8 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ArticleCard } from '@/components/ui/ArticleCard'
 import { Testimonial } from '@/components/ui/Testimonial'
 import { ReviewCard } from '@/components/ui/ReviewCard'
-import { FaqList } from '@/components/ui/FaqList'
+import { FaqSection } from '@/components/ui/FaqSection'
 import { CtaPanel } from '@/components/ui/CtaPanel'
-import { SITE_FAQS } from '@/lib/faqs'
 
 export interface PackageTier {
   pill: string
@@ -372,10 +371,10 @@ export function ServiceDetailPage({
               <div className="ph dark image-4-5" data-label={processImageLabel} />
               <div className="mt-6 rounded-ae-lg border border-paper/10 bg-paper/5 p-7">
                 <div className="eyebrow mb-3 text-amber">— promise —</div>
-                <p className="m-0 font-serif text-[22px] leading-snug text-paper">
+                <p className="m-0 font-serif text-[22px] leading-snug text-ink">
                   &quot;{processQuote.quote}&quot;
                 </p>
-                <p className="mt-[18px] text-[13px] text-paper/55">
+                <p className="mt-[18px] text-[13px] text-ink/55">
                   — {processQuote.attribution}
                 </p>
               </div>
@@ -428,20 +427,15 @@ export function ServiceDetailPage({
       </section>
 
       {/* ── FAQ ────────────────────────────────────────── */}
-      <section className="section-paper-2 section-page-md">
-        <div className="container">
-          <Reveal className="content-split-start">
-            <div className="sticky-aside">
-              <SectionHeading eyebrow="— FAQ —">
-                The questions
-                <br />
-                we hear <em className="italic">most</em>.
-              </SectionHeading>
-            </div>
-            <FaqList items={SITE_FAQS} />
-          </Reveal>
-        </div>
-      </section>
+      <FaqSection
+        headline={
+          <>
+            The questions
+            <br />
+            we hear <em className="italic">most</em>.
+          </>
+        }
+      />
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="amber">

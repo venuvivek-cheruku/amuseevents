@@ -78,12 +78,7 @@ export default function CorporatePage() {
                 <Btn href="/contact" variant="amber" size="lg">
                   Brief us in 5 minutes <ButtonArrow />
                 </Btn>
-                <Btn
-                  href="#case-studies"
-                  variant="ghost"
-                  size="lg"
-                  className="!border !border-line !text-paper hover:!border-line hover:!text-paper hover:!bg-transparent"
-                >
+                <Btn href="#case-studies" variant="ghost" size="lg">
                   See case studies
                 </Btn>
               </div>
@@ -197,10 +192,10 @@ export default function CorporatePage() {
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="dark" sectionClass="section-page-deep-bottom">
-        <h2 className="h-display h2 text-paper">
+        <h2 className="h-display h2">
           Brief us in <em className="brand-accent">five minutes</em>.
         </h2>
-        <p className="mx-auto mt-[18px] max-w-[52ch] text-lg text-paper/75">
+        <p className="mx-auto mt-[18px] max-w-[52ch] text-lg text-ink/75">
           NDA on request. Procurement-friendly invoicing. We work with internal events teams
           or take it end-to-end.
         </p>

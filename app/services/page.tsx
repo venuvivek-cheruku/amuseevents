@@ -315,7 +315,7 @@ export default function ServicesPage() {
         <Eyebrow center className="text-paper-muted">
           Not sure which service?
         </Eyebrow>
-        <h2 className="h-display h2 title-gap text-paper">
+        <h2 className="h-display h2 title-gap">
           Tell us the day.
           <br />
           We&apos;ll suggest the shape.

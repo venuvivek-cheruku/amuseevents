@@ -5,10 +5,8 @@ import { ContactForm } from '@/components/contact/ContactForm'
 import { ButtonArrow } from '@/components/icons/AppIcons'
 import { Btn } from '@/components/ui/Btn'
 import { Eyebrow } from '@/components/ui/Eyebrow'
-import { SectionHeading } from '@/components/ui/SectionHeading'
-import { FaqList } from '@/components/ui/FaqList'
+import { FaqSection } from '@/components/ui/FaqSection'
 import { CONTACT } from '@/lib/utils'
-import { SITE_FAQS } from '@/lib/faqs'
 
 export const metadata: Metadata = {
   title: 'Contact — Get in Touch',
@@ -109,18 +107,15 @@ export default function ContactPage() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────── */}
-      <section id="faq" className="section-paper-2 section-page-faq">
-        <div className="container content-split-start">
-          <div className="sticky-aside">
-            <SectionHeading eyebrow="— FAQ —">
-              Before you<br />get in <em className="italic">touch</em>.
-            </SectionHeading>
-          </div>
-          <Reveal>
-            <FaqList items={SITE_FAQS} />
-          </Reveal>
-        </div>
-      </section>
+      <FaqSection
+        id="faq"
+        sectionClassName="section-paper-2 section-page-faq"
+        headline={
+          <>
+            Before you<br />get in <em className="italic">touch</em>.
+          </>
+        }
+      />
     </>
   )
 }

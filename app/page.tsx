@@ -414,11 +414,11 @@ export default function HomePage() {
               />
               <div className="mt-6 rounded-ae-lg border border-paper/10 bg-paper/5 p-7">
                 <div className="eyebrow mb-3 text-amber">— promise —</div>
-                <p className="m-0 font-serif text-[22px] leading-snug text-paper">
+                <p className="m-0 font-serif text-[22px] leading-snug text-ink">
                   "Your only job on the day is to show up dressed and decide
                   nothing."
                 </p>
-                <p className="mt-[18px] text-[13px] text-paper/55">
+                <p className="mt-[18px] text-[13px] text-ink/55">
                   — Aanya Mehta, Founder
                 </p>
               </div>
