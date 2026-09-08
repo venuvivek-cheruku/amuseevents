@@ -141,11 +141,13 @@ export default function WeddingsPage() {
       <JsonLd data={breadcrumb} />
 
       {/* ── Page hero ──────────────────────────────────── */}
-      <section className="pb-16 pt-0 md:pb-20 lg:pb-28">
-        <div className="container">
-          <div className="hero-split-wedding">
-            <div>
-              <Eyebrow className="pb-4 md:pb-8">Weddings · the calm way</Eyebrow>
+     <section className="pb-8 pt-0 md:pb-20 lg:pb-28">
+  <div className="container">
+    <div className="hero-split-wedding">
+      <div>
+        <Eyebrow className="pb-4 md:pb-8">
+          Weddings · the calm way
+        </Eyebrow>
               <h1 className="h-display h1 hero-title-gap pt-4 md:pt-6">
                 Your wedding,
                 <br />
@@ -153,10 +155,10 @@ export default function WeddingsPage() {
                 <br />
                 by people who care.
               </h1>
-              <p className="lede lede-gap mt-6 md:mt-10 lg:mt-20">
-                Eleven years. Two hundred weddings. One promise — nothing on the day
-                surprises you except the good bits.
-              </p>
+              <p className="lede lede-gap pt-4 md:pt-6 lg:pt-8">
+  Eleven years. Two hundred weddings. One promise — nothing on the day
+  surprises you except the good bits.
+</p>
               <div className="actions-row mt-6 md:mt-9">
                 <Btn href="/contact" variant="amber" size="lg">
                   Check 2026 availability <ButtonArrow />
