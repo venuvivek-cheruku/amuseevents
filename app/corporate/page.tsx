@@ -69,10 +69,10 @@ export default function CorporatePage() {
                 <em className="brand-accent">on brand</em>.
               </h1>
 
-              <p className="lede lede-gap">
-                Launches, conferences, summer parties, off-sites, awards nights. We've delivered
-                for fintech, agencies, family offices and law firms — quietly, since 2014.
-              </p>
+              <p className="lede lede-gap pt-6">
+  Launches, conferences, summer parties, off-sites, awards nights. We've delivered
+  for fintech, agencies, family offices and law firms — quietly, since 2014.
+</p>
 
               <div className="actions-row mt-6 flex-wrap md:mt-9">
                 <Btn href="/contact" variant="amber" size="lg">
