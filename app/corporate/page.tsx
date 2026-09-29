@@ -78,7 +78,11 @@ export default function CorporatePage() {
                 <Btn href="/contact" variant="amber" size="lg">
                   Brief us in 5 minutes <ButtonArrow />
                 </Btn>
-                <Btn href="#case-studies" variant="ghost" size="lg">
+                <Btn
+                  href="#case-studies"
+                  variant="ghost"
+                  size="lg"
+                >
                   See case studies
                 </Btn>
               </div>
