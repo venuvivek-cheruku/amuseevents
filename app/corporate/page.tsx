@@ -93,7 +93,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      {/* ── Trust logos ────────────────────────────────── */}
+      {/* ── Trust logos ──────────────────────────────────
       <section className="section-page-short section-bordered">
         <div className="container">
           <p className="mono mb-6 text-center uppercase tracking-[.14em] text-ink-3 md:mb-8">
@@ -106,6 +106,8 @@ export default function CorporatePage() {
           </Reveal>
         </div>
       </section>
+       */}
+     
 
       {/* ── What we deliver ────────────────────────────── */}
       <section className="section-page">
@@ -178,7 +180,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      {/* ── Testimonial ────────────────────────────────── */}
+      {/* ── Testimonial ────────────────────────────────── 
       <section className="section-page">
         <div className="container">
           <Reveal>
@@ -193,6 +195,7 @@ export default function CorporatePage() {
           </Reveal>
         </div>
       </section>
+      */}
 
       {/* ── CTA ────────────────────────────────────────── */}
       <CtaPanel variant="dark" sectionClass="section-page-deep-bottom">

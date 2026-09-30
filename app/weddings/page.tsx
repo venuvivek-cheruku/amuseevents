@@ -28,7 +28,7 @@ const PACKAGES = [
   {
     pill: 'Essential',
     title: 'Day-of coordination',
-    price: '£1,400',
+    //price: '£1,400',
     desc: "For couples who've planned it themselves and need calm hands on the day.",
     features: [
       'Two coordinators on the day',
@@ -43,7 +43,7 @@ const PACKAGES = [
   {
     pill: 'Most chosen',
     title: 'Partial planning',
-    price: '£4,200',
+    //price: '£4,200',
     desc: 'For couples with the venue locked, the rest still in the cloud.',
     features: [
       'Everything in Essential',
@@ -59,7 +59,7 @@ const PACKAGES = [
   {
     pill: 'Full',
     title: 'Full planning & design',
-    price: '£8,800',
+    //price: '£8,800',
     desc: 'For couples who want to hand it over. We design the day from blank page.',
     features: [
       'Everything in Partial',
@@ -172,8 +172,8 @@ export default function WeddingsPage() {
             <div className="wedding-gallery">
               <div className="ph amber-tint image-3-4" data-label="Wedding · ceremony" />
               <div className="ph image-3-4 wedding-gallery-offset" data-label="Wedding · reception" />
-              <div className="ph image-3-4" data-label="Wedding · couple" />
-              <div className="ph image-3-4" data-label="Wedding · detail" />
+              {/* <div className="ph image-3-4" data-label="Wedding · couple" /> */}
+              {/* <div className="ph image-3-4" data-label="Wedding · detail" /> */}
             </div>
           </div>
         </div>
@@ -221,13 +221,13 @@ export default function WeddingsPage() {
                     pkg.featured ? ' !text-white' : ''
                   }`}
                 >
-                  {pkg.price}
+                  {/* {pkg.price} */}
                   <span
                     className={`font-sans text-sm${
                       pkg.featured ? ' !text-white/60' : ' text-ink-3'
                     }`}
                   >
-                    {' '}/ from
+                    {/* {' '}/ from */}
                   </span>
                 </div>
 
@@ -330,7 +330,7 @@ export default function WeddingsPage() {
         </div>
       </section>
 
-      {/* ── Testimonial ────────────────────────────────── */}
+      {/* ── Testimonial ────────────────────────────────── 
       <section className="section-page">
         <div className="container">
           <Reveal>
@@ -345,6 +345,7 @@ export default function WeddingsPage() {
           </Reveal>
         </div>
       </section>
+      */}
 
       {/* ── FAQ ────────────────────────────────────────── */}
       <section className="section-paper-2 section-page-md">
